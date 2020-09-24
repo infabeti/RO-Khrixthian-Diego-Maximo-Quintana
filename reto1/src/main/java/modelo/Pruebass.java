@@ -39,7 +39,7 @@ String ruta = "E:\\DESARROLLO DE APLICACIONES MULTIMEDIA\\2 ANYO\\ACCESO A DATOS
 			System.out.println("Error E/S: " + e);
 		}
 		
-		String texto = entradaArch;
+		String texto = "entradaArch";
 	
 	
 	}
