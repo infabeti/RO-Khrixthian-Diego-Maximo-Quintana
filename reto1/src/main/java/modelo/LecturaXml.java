@@ -21,19 +21,20 @@ public class LecturaXml {
 			DocumentBuilder builder = factory.newDocumentBuilder();
 
 			// Obtengo el documento, a partir del XML
-			Document documento = builder.parse(new File("concesionario.xml"));
+			Document documento = builder.parse(new File(".//ficheros//videoteca.xml"));
 
 			// Cojo todas las etiquetas coche del documento
-			NodeList listaCoches = documento.getElementsByTagName("coche");
+			NodeList listaPelis = documento.getElementsByTagName("pelicula");
 			Element archivo = documento.getDocumentElement();
 			NodeList hijos = archivo.getChildNodes();
-			System.out.println("Nodo raiz: "+ archivo.getNodeName());
-System.out.println("Nodo hijo: " + hijos.item(1).getNodeName());
+			System.out.println("Nodo raiz: " + archivo.getNodeName());
+			System.out.println("Nodo hijo: " + hijos.item(1).getNodeName());
+			System.out.println();
 
 			// Recorro las etiquetas
 			for (int i = 0; i < hijos.getLength(); i++) {
 				// Cojo el nodo actual
-				Node nodo = listaCoches.item(i);
+				Node nodo = listaPelis.item(i);
 				// Compruebo si el nodo es un elemento
 				if (nodo.getNodeType() == Node.ELEMENT_NODE) {
 					// Lo transformo a Element
@@ -47,8 +48,7 @@ System.out.println("Nodo hijo: " + hijos.item(1).getNodeName());
 						// Compruebo si es un nodo
 						if (hijo.getNodeType() == Node.ELEMENT_NODE) {
 							// Muestro el contenido
-							System.out
-									.println("Coche: " + hijo.getNodeName() + ", Valor: " + hijo.getTextContent());
+							System.out.println("Pelicula: " + hijo.getNodeName() + ": " + hijo.getTextContent());
 						}
 
 					}
