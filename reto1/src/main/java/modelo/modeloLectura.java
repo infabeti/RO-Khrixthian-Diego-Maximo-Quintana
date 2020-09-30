@@ -29,6 +29,10 @@ public class modeloLectura {
 		catch(FileNotFoundException ex) {
 			System.out.print(ex.getMessage());
 		}
+		
+		catch(IOException ex1) {
+			System.out.print(ex1.getMessage());
+		}
 	
 	}
 
