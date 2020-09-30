@@ -2,6 +2,8 @@ package modelo;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -12,8 +14,12 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class LecturaXml {
-//	public void LecturaXml() {
+	
+	ArrayList peliculas;
+	
 	public static void main(String[] args) {
+		
+		ArrayList peliculas = new ArrayList();
 		try {
 			// Creo una instancia de DocumentBuilderFactory
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -27,9 +33,12 @@ public class LecturaXml {
 			NodeList listaPelis = documento.getElementsByTagName("pelicula");
 			Element archivo = documento.getDocumentElement();
 			NodeList hijos = archivo.getChildNodes();
-			System.out.println("Nodo raiz: " + archivo.getNodeName());
-			System.out.println("Nodo hijo: " + hijos.item(1).getNodeName());
-			System.out.println();
+			peliculas.add("Nodo raiz: " + archivo.getNodeName());
+//			System.out.println("Nodo raiz: " + archivo.getNodeName());
+//			System.out.println("Nodo hijo: " + hijos.item(1).getNodeName());
+			peliculas.add("Nodo hijo: " + hijos.item(1).getNodeName());
+//			System.out.println();
+			peliculas.add("");
 
 			// Recorro las etiquetas
 			for (int i = 0; i < hijos.getLength(); i++) {
@@ -48,11 +57,13 @@ public class LecturaXml {
 						// Compruebo si es un nodo
 						if (hijo.getNodeType() == Node.ELEMENT_NODE) {
 							// Muestro el contenido
-							System.out.println("Pelicula: " + hijo.getNodeName() + ": " + hijo.getTextContent());
+//							System.out.println("Pelicula: " + hijo.getNodeName() + ": " + hijo.getTextContent());
+							peliculas.add("Pelicula: " + hijo.getNodeName() + ": " + hijo.getTextContent());
 						}
 
 					}
-					System.out.println("");
+					peliculas.add("");
+//					System.out.println("");
 				}
 
 			}
@@ -60,5 +71,11 @@ public class LecturaXml {
 		} catch (ParserConfigurationException | SAXException | IOException ex) {
 			System.out.println(ex.getMessage());
 		}
+		
+	}	
+	//FUNCIÓN QUE DEVUELVE LAS PELICULAS
+	public ArrayList getPeliculas() {
+		return peliculas;
 	}
+	
 }

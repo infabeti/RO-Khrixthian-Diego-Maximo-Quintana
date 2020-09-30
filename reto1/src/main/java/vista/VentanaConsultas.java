@@ -7,10 +7,17 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+
+import controlador.GesXml;
+
 import javax.swing.JScrollPane;
+
+import java.awt.Component;
 import java.awt.Font;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+
 import javax.swing.Action;
 
 public class VentanaConsultas extends JFrame {
@@ -139,13 +146,20 @@ public class VentanaConsultas extends JFrame {
 	}
 	
 	private class Acceder extends AbstractAction {
+		
+	
 		public Acceder() {
 			putValue(NAME, "Acceder");
 			putValue(SHORT_DESCRIPTION, "Accede a las peliculas");
 		}
 		public void actionPerformed(ActionEvent e) {
 			textPane.setText("");
-			texto = "PELICULAS";
+			controlador.GesXml pelis = new GesXml();
+			
+			ArrayList peliculas = pelis.mostrarPeliculas();
+			for (int i=0;i<peliculas .size();i++) {
+//				
+			}
 			textPane.setText(texto);
 		}
 	}
