@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.ArrayList;
 
-import modelo.leer_todo_html;
+import modelo.LeerHtml;
 import modelo.para_txt;
 import vista.VentanaBienvenida;
 import vista.VentanaUser;
