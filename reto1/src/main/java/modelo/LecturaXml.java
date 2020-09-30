@@ -2,8 +2,8 @@ package modelo;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -15,11 +15,11 @@ import org.xml.sax.SAXException;
 
 public class LecturaXml {
 	
-	ArrayList peliculas;
+	static DefaultListModel peliculas = new DefaultListModel();;
 	
-	public static void main(String[] args) {
-		
-		ArrayList peliculas = new ArrayList();
+	//Lee el .xml y lo mete en peliculas
+	public static DefaultListModel LecturaXml() {
+
 		try {
 			// Creo una instancia de DocumentBuilderFactory
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -33,12 +33,9 @@ public class LecturaXml {
 			NodeList listaPelis = documento.getElementsByTagName("pelicula");
 			Element archivo = documento.getDocumentElement();
 			NodeList hijos = archivo.getChildNodes();
-			peliculas.add("Nodo raiz: " + archivo.getNodeName());
-//			System.out.println("Nodo raiz: " + archivo.getNodeName());
-//			System.out.println("Nodo hijo: " + hijos.item(1).getNodeName());
-			peliculas.add("Nodo hijo: " + hijos.item(1).getNodeName());
-//			System.out.println();
-			peliculas.add("");
+			peliculas.addElement("Nodo raiz: " + archivo.getNodeName());
+			peliculas.addElement("Nodo hijo: " + hijos.item(1).getNodeName());
+			peliculas.addElement("");
 
 			// Recorro las etiquetas
 			for (int i = 0; i < hijos.getLength(); i++) {
@@ -57,13 +54,11 @@ public class LecturaXml {
 						// Compruebo si es un nodo
 						if (hijo.getNodeType() == Node.ELEMENT_NODE) {
 							// Muestro el contenido
-//							System.out.println("Pelicula: " + hijo.getNodeName() + ": " + hijo.getTextContent());
-							peliculas.add("Pelicula: " + hijo.getNodeName() + ": " + hijo.getTextContent());
+							peliculas.addElement("Pelicula: " + hijo.getNodeName() + ": " + hijo.getTextContent());
 						}
 
 					}
-					peliculas.add("");
-//					System.out.println("");
+					peliculas.addElement("");
 				}
 
 			}
@@ -72,10 +67,7 @@ public class LecturaXml {
 			System.out.println(ex.getMessage());
 		}
 		
+		return peliculas;	
 	}	
-	//FUNCIÓN QUE DEVUELVE LAS PELICULAS
-	public ArrayList getPeliculas() {
-		return peliculas;
-	}
 	
 }

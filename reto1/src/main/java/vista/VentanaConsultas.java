@@ -19,6 +19,7 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 import javax.swing.Action;
+import javax.swing.DefaultListModel;
 
 public class VentanaConsultas extends JFrame {
 	private JPanel contentPane;
@@ -29,7 +30,7 @@ public class VentanaConsultas extends JFrame {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	JTextPane textPane = new JTextPane();
-	String texto;
+	String texto ="";
 	private final Action action = new Acceder();
 
 	// Crea la ventana
@@ -119,7 +120,7 @@ public class VentanaConsultas extends JFrame {
 		contentPane.add(btnPelis);
 
 		JButton btnUsuarios = new JButton("Acceder");
-		btnUsuarios.setAction(action);
+//		btnUsuarios.setAction(action);
 		btnUsuarios.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnUsuarios.setBounds(260, 194, 71, 23);
 		contentPane.add(btnUsuarios);
@@ -156,9 +157,12 @@ public class VentanaConsultas extends JFrame {
 			textPane.setText("");
 			controlador.GesXml pelis = new GesXml();
 			
-			ArrayList peliculas = pelis.mostrarPeliculas();
-			for (int i=0;i<peliculas .size();i++) {
-//				
+			DefaultListModel peliculas = pelis.mostrarPeliculas();
+			
+
+			for (int i=0;i<peliculas.size();i++) {
+			texto += peliculas.get(i) + "\n";
+				
 			}
 			textPane.setText(texto);
 		}
