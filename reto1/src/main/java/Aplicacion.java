@@ -1,3 +1,8 @@
+import java.io.IOException;
+import java.util.ArrayList;
+
+import modelo.leer_todo_html;
+import modelo.para_txt;
 import vista.VentanaBienvenida;
 import vista.VentanaUser;
 
@@ -7,5 +12,18 @@ public class Aplicacion {
 		
 		new VentanaBienvenida();
 		new VentanaUser().setVisible(true);
+		
+		//para ejecutar la lectura del txt  lo de abajo
+		para_txt aaa = new para_txt();		
+		try {
+			ArrayList array = aaa.leertxt();
+			for(int i = 0; i> array.size(); i++) {
+				System.out.println(array);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

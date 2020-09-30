@@ -10,9 +10,9 @@ import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
 public class modeloLectura {
 	
-	public void leerDocx() {
+	public void leerDocx() throws IOException {
 	
-		String path = "C:\\Users\\IN2DAM\\Desktop\\wordprueba.docx";
+		String path = "C:\\Users\\IN2DAM\\Desktop\\wordklase.docx";
 		
 		try {
 			FileInputStream fps = new FileInputStream(path);
@@ -23,7 +23,7 @@ public class modeloLectura {
 			for(XWPFParagraph p : data) {
 				System.out.print(p.getText() + "\n");
 			}
-			
+			docu.close();
 			
 		}
 		catch(FileNotFoundException ex) {
