@@ -9,6 +9,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
 import controlador.GesHtml;
+import controlador.GesOds;
 import controlador.GesTxt;
 import controlador.GesXml;
 import modelo.LeerHtml;
@@ -192,6 +193,18 @@ public class VentanaConsultas extends JFrame {
 
 				String textoAMostrar = infoHtml.mostrarHtml();
 				textPane.setText(textoAMostrar);
+			}
+
+		});
+
+		// Botón Prestamos (.ods)
+		btnPrestamos.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GesOds infoOds = new GesOds();
+
+				String contenidoOds = infoOds.mostrarOds();
+				textPane.setText(contenidoOds);
 			}
 
 		});
