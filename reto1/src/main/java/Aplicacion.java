@@ -21,7 +21,6 @@ public class Aplicacion {
 				System.out.println(array);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

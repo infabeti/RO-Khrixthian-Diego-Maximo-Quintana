@@ -8,11 +8,12 @@ import java.util.List;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
+
 public class modeloLectura {
 	
-	public void leerDocx() throws IOException {
+	public static void main(String[] args) throws IOException {
 	
-		String path = "C:\\Users\\IN2DAM\\Desktop\\wordklase.docx";
+		String path = "C:\\Users\\IN2DAM\\Desktop\\wordprueba.docx";
 		
 		try {
 			FileInputStream fps = new FileInputStream(path);

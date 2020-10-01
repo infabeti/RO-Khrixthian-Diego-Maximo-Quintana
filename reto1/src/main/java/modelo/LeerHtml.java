@@ -4,20 +4,34 @@ import java.io.*;
 
 public class LeerHtml {
 
-	public static void main(String[] args) throws FileNotFoundException, IOException {
-		String cadena = ("E:\\DESARROLLO DE APLICACIONES MULTIMEDIA\\2 ANYO\\ACCESO A DATOS\\RETO1\\RO-Khrixthian-Ibai-M-ximo\\reto1\\ficheros\\Usuarios.html");
-		muestraContenido(cadena);
-
-	}
-	
-	public static void muestraContenido(String archivo) throws FileNotFoundException, IOException {
+	public String muestraContenido(String archivo) {
+		String total = "";
         String cadena;
-        FileReader f = new FileReader(archivo);
+        FileReader f = null;
+        
+		try {
+			archivo = "ficheros\\" + archivo + ".html";
+			f = new FileReader(archivo);
+		} catch (FileNotFoundException e) {
+			System.out.println("No se ha podido encontrar el archivo. ERROR: " + e.toString());
+		}
+		
         BufferedReader b = new BufferedReader(f);
-        while((cadena = b.readLine())!=null) {
-            System.out.println(cadena);
-        }
-        b.close();
+        
+        try {
+			while((cadena = b.readLine())!=null) {
+			    total += cadena + "\n";
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        
+        try {
+			b.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        return total;
     }
 
 }

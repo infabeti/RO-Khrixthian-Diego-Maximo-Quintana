@@ -9,6 +9,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
 import controlador.GesXml;
+import modelo.LeerHtml;
 
 import javax.swing.JScrollPane;
 
@@ -16,6 +17,7 @@ import java.awt.Component;
 import java.awt.Font;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.Action;
@@ -49,7 +51,7 @@ public class VentanaConsultas extends JFrame {
 
 	// Crea la ventana
 	public VentanaConsultas() {
-		setSize(700, 500);
+		setSize(1000, 950);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -134,7 +136,7 @@ public class VentanaConsultas extends JFrame {
 		contentPane.add(btnPelis);
 
 		btnUsuarios = new JButton("Acceder");
-//		btnUsuarios.setAction(action);
+		//btnUsuarios.setAction(action);
 		btnUsuarios.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnUsuarios.setBounds(260, 194, 71, 23);
 		contentPane.add(btnUsuarios);
@@ -149,16 +151,31 @@ public class VentanaConsultas extends JFrame {
 		btnPrestamos.setBounds(260, 294, 71, 23);
 		contentPane.add(btnPrestamos);
 
-		// Area de texto
+		//Area de texto
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(365, 45, 282, 381);
+		scrollPane.setBounds(365, 45, 600, 810);
 		contentPane.add(scrollPane);
 
 		//JTextPane textPane = new JTextPane();
 		scrollPane.setViewportView(textPane);
 		textPane.setContentType("text");
 		textPane.setText(texto);
+		
+		btnUsuarios.addActionListener(new ActionListener () {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				LeerHtml modeloHtml = new LeerHtml();
+				
+				String archivo = lblNewLabel_3.getText();
+				String textoAMostrar = modeloHtml.muestraContenido(archivo);
+				
+				textPane.setText(textoAMostrar);
+				
+			}
+			
+		});
 	}
+	
 	
 	private class Acceder extends AbstractAction {
 		

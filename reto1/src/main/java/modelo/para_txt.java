@@ -13,7 +13,7 @@ public class para_txt {
 		
 		//FileWriter archivotxt =  new FileWriter(ruta);
 		//archivotxt.write("esto es una prueba");
-	//	archivotxt.close();
+		//archivotxt.close();
 		
 		FileReader leerfic = new FileReader(ruta);
 		int valor = leerfic.read();
