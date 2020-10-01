@@ -29,6 +29,20 @@ public class VentanaConsultas extends JFrame {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel_3;
+	private JLabel lblNewLabel_4;
+	private JLabel lblNewLabel_5;
+	private JButton btnLibros;
+	private JButton btnCDs;
+	private JButton btnPelis;
+	private JButton btnUsuarios;
+	private JButton btnTrabajadores;
+	private JButton btnPrestamos;
+	private JScrollPane scrollPane;
+	
 	JTextPane textPane = new JTextPane();
 	String texto ="";
 	private final Action action = new Acceder();
@@ -43,7 +57,7 @@ public class VentanaConsultas extends JFrame {
 		setResizable(false); // No resizable
 		setLocationRelativeTo(null); // Ubica la ventana en el cento
 
-		JLabel lblNewLabel = new JLabel("Libros");
+		lblNewLabel = new JLabel("Libros");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblNewLabel.setBounds(20, 48, 48, 14);
 		contentPane.add(lblNewLabel);
@@ -53,7 +67,7 @@ public class VentanaConsultas extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 
-		JLabel lblNewLabel_1 = new JLabel("CDs");
+		lblNewLabel_1 = new JLabel("CDs");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblNewLabel_1.setBounds(20, 98, 48, 14);
 		contentPane.add(lblNewLabel_1);
@@ -63,7 +77,7 @@ public class VentanaConsultas extends JFrame {
 		textField_1.setBounds(86, 95, 153, 20);
 		contentPane.add(textField_1);
 
-		JLabel lblNewLabel_2 = new JLabel("Peliculas");
+		lblNewLabel_2 = new JLabel("Peliculas");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblNewLabel_2.setBounds(20, 148, 48, 14);
 		contentPane.add(lblNewLabel_2);
@@ -73,7 +87,7 @@ public class VentanaConsultas extends JFrame {
 		textField_2.setBounds(86, 145, 153, 20);
 		contentPane.add(textField_2);
 
-		JLabel lblNewLabel_3 = new JLabel("Usuarios");
+		lblNewLabel_3 = new JLabel("Usuarios");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblNewLabel_3.setBounds(20, 198, 48, 14);
 		contentPane.add(lblNewLabel_3);
@@ -83,7 +97,7 @@ public class VentanaConsultas extends JFrame {
 		textField_3.setBounds(86, 195, 153, 20);
 		contentPane.add(textField_3);
 
-		JLabel lblNewLabel_4 = new JLabel("Trabajadores");
+		lblNewLabel_4 = new JLabel("Trabajadores");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblNewLabel_4.setBounds(20, 248, 71, 14);
 		contentPane.add(lblNewLabel_4);
@@ -93,7 +107,7 @@ public class VentanaConsultas extends JFrame {
 		textField_4.setBounds(86, 245, 153, 20);
 		contentPane.add(textField_4);
 
-		JLabel lblNewLabel_5 = new JLabel("Prestamos");
+		lblNewLabel_5 = new JLabel("Prestamos");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblNewLabel_5.setBounds(20, 298, 68, 14);
 		contentPane.add(lblNewLabel_5);
@@ -103,44 +117,44 @@ public class VentanaConsultas extends JFrame {
 		textField_5.setBounds(86, 295, 153, 20);
 		contentPane.add(textField_5);
 
-		JButton btnLibros = new JButton("Acceder");
+		btnLibros = new JButton("Acceder");
 		btnLibros.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnLibros.setBounds(260, 44, 71, 23);
 		contentPane.add(btnLibros);
 
-		JButton btnCDs = new JButton("Acceder");
+		btnCDs = new JButton("Acceder");
 		btnCDs.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnCDs.setBounds(260, 94, 71, 23);
 		contentPane.add(btnCDs);
 
-		JButton btnPelis = new JButton("Acceder");
+		btnPelis = new JButton("Acceder");
 		btnPelis.setAction(action);
 		btnPelis.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnPelis.setBounds(260, 144, 71, 23);
 		contentPane.add(btnPelis);
 
-		JButton btnUsuarios = new JButton("Acceder");
+		btnUsuarios = new JButton("Acceder");
 //		btnUsuarios.setAction(action);
 		btnUsuarios.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnUsuarios.setBounds(260, 194, 71, 23);
 		contentPane.add(btnUsuarios);
 
-		JButton btnTrabajadores = new JButton("Acceder");
+		btnTrabajadores = new JButton("Acceder");
 		btnTrabajadores.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnTrabajadores.setBounds(260, 244, 71, 23);
 		contentPane.add(btnTrabajadores);
 
-		JButton btnPrestamos = new JButton("Acceder");
+		btnPrestamos = new JButton("Acceder");
 		btnPrestamos.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnPrestamos.setBounds(260, 294, 71, 23);
 		contentPane.add(btnPrestamos);
 
 		// Area de texto
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setBounds(365, 45, 282, 381);
 		contentPane.add(scrollPane);
 
-//		JTextPane textPane = new JTextPane();
+		//JTextPane textPane = new JTextPane();
 		scrollPane.setViewportView(textPane);
 		textPane.setContentType("text");
 		textPane.setText(texto);
@@ -148,13 +162,13 @@ public class VentanaConsultas extends JFrame {
 	
 	private class Acceder extends AbstractAction {
 		
-	
 		public Acceder() {
 			putValue(NAME, "Acceder");
 			putValue(SHORT_DESCRIPTION, "Accede a las peliculas");
 		}
+		
 		public void actionPerformed(ActionEvent e) {
-			textPane.setText("");
+			textPane.setText(null);
 			controlador.GesXml pelis = new GesXml();
 			
 			DefaultListModel peliculas = pelis.mostrarPeliculas();

@@ -17,6 +17,11 @@ public class VentanaUser extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private final Action action = new SwingAction();
+	
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JButton btnNewButton;
 
 	// Crea la ventana
 	public VentanaUser() {
@@ -29,12 +34,12 @@ public class VentanaUser extends JFrame {
 		setResizable(false); // No resizable
 		setLocationRelativeTo(null); // Ubica la ventana en el cento
 
-		JLabel lblNewLabel = new JLabel("Acceso Usuarios");
+		lblNewLabel = new JLabel("Acceso Usuarios");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNewLabel.setBounds(127, 24, 169, 23);
 		contentPane.add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("Usuario");
+		lblNewLabel_1 = new JLabel("Usuario");
 		lblNewLabel_1.setBounds(127, 65, 48, 14);
 		contentPane.add(lblNewLabel_1);
 
@@ -43,7 +48,7 @@ public class VentanaUser extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 
-		JLabel lblNewLabel_2 = new JLabel("Contrase\u00F1a");
+		lblNewLabel_2 = new JLabel("Contrase\u00F1a");
 		lblNewLabel_2.setBounds(127, 108, 76, 14);
 		contentPane.add(lblNewLabel_2);
 
@@ -52,7 +57,7 @@ public class VentanaUser extends JFrame {
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 
-		JButton btnNewButton = new JButton("Acceder");
+		btnNewButton = new JButton("Acceder");
 		btnNewButton.setBounds(165, 166, 89, 23);
 		contentPane.add(btnNewButton);
 		btnNewButton.setAction(action);
