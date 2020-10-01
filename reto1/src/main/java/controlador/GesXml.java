@@ -1,16 +1,12 @@
 package controlador;
 
-import javax.swing.DefaultListModel;
-
-import modelo.LecturaXml;
-import vista.VentanaConsultas;
+import modelo.LeerXml;
 
 public class GesXml {
-	LecturaXml pelis = new LecturaXml();
 
-	public DefaultListModel mostrarPeliculas() {
+	public String mostrarXml() {
 
-		return pelis.LecturaXml();
+		return LeerXml.LecturaXml();
 	}
 
 }

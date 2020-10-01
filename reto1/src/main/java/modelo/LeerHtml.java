@@ -4,13 +4,14 @@ import java.io.*;
 
 public class LeerHtml {
 
-	public String muestraContenido(String archivo) {
+	public static String muestraContenido() {
 		String total = "";
         String cadena;
+        String archivo;
         FileReader f = null;
         
 		try {
-			archivo = "ficheros\\" + archivo + ".html";
+			archivo = "ficheros\\Usuarios.html";
 			f = new FileReader(archivo);
 		} catch (FileNotFoundException e) {
 			System.out.println("No se ha podido encontrar el archivo. ERROR: " + e.toString());

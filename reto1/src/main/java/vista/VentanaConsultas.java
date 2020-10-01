@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
+import controlador.GesHtml;
+import controlador.GesTxt;
 import controlador.GesXml;
 import modelo.LeerHtml;
 
@@ -44,10 +46,8 @@ public class VentanaConsultas extends JFrame {
 	private JButton btnTrabajadores;
 	private JButton btnPrestamos;
 	private JScrollPane scrollPane;
-	
+
 	JTextPane textPane = new JTextPane();
-	String texto ="";
-	private final Action action = new Acceder();
 
 	// Crea la ventana
 	public VentanaConsultas() {
@@ -119,6 +119,7 @@ public class VentanaConsultas extends JFrame {
 		textField_5.setBounds(86, 295, 153, 20);
 		contentPane.add(textField_5);
 
+		// Botones
 		btnLibros = new JButton("Acceder");
 		btnLibros.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnLibros.setBounds(260, 44, 71, 23);
@@ -130,13 +131,11 @@ public class VentanaConsultas extends JFrame {
 		contentPane.add(btnCDs);
 
 		btnPelis = new JButton("Acceder");
-		btnPelis.setAction(action);
 		btnPelis.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnPelis.setBounds(260, 144, 71, 23);
 		contentPane.add(btnPelis);
 
 		btnUsuarios = new JButton("Acceder");
-		//btnUsuarios.setAction(action);
 		btnUsuarios.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnUsuarios.setBounds(260, 194, 71, 23);
 		contentPane.add(btnUsuarios);
@@ -151,51 +150,51 @@ public class VentanaConsultas extends JFrame {
 		btnPrestamos.setBounds(260, 294, 71, 23);
 		contentPane.add(btnPrestamos);
 
-		//Area de texto
+		// Area de texto
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(365, 45, 600, 810);
 		contentPane.add(scrollPane);
 
-		//JTextPane textPane = new JTextPane();
 		scrollPane.setViewportView(textPane);
 		textPane.setContentType("text");
-		textPane.setText(texto);
-		
-		btnUsuarios.addActionListener(new ActionListener () {
+
+		// Acciones de los botones
+
+		// Botón Libros (.txt)
+		btnLibros.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				LeerHtml modeloHtml = new LeerHtml();
-				
-				String archivo = lblNewLabel_3.getText();
-				String textoAMostrar = modeloHtml.muestraContenido(archivo);
-				
-				textPane.setText(textoAMostrar);
-				
+				GesTxt infoTxt = new GesTxt();
+
+				String textoTxt = infoTxt.mostrarTxt();
+				textPane.setText(textoTxt);
 			}
-			
+
+		});
+
+		// Botón Peliculas (.xml)
+		btnPelis.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GesXml infoXml = new GesXml();
+
+				String textoXml = infoXml.mostrarXml();
+				textPane.setText(textoXml);
+			}
+
+		});
+
+		// Botón Usuarios (.html)
+		btnUsuarios.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GesHtml infoHtml = new GesHtml();
+
+				String textoAMostrar = infoHtml.mostrarHtml();
+				textPane.setText(textoAMostrar);
+			}
+
 		});
 	}
-	
-	
-	private class Acceder extends AbstractAction {
-		
-		public Acceder() {
-			putValue(NAME, "Acceder");
-			putValue(SHORT_DESCRIPTION, "Accede a las peliculas");
-		}
-		
-		public void actionPerformed(ActionEvent e) {
-			textPane.setText(null);
-			controlador.GesXml pelis = new GesXml();
-			
-			DefaultListModel peliculas = pelis.mostrarPeliculas();
-			
 
-			for (int i=0;i<peliculas.size();i++) {
-			texto += peliculas.get(i) + "\n";
-				
-			}
-			textPane.setText(texto);
-		}
-	}
 }

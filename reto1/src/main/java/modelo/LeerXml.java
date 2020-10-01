@@ -13,13 +13,14 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class LecturaXml {
-	
-	static DefaultListModel peliculas = new DefaultListModel();;
-	
-	//Lee el .xml y lo mete en peliculas
-	public static DefaultListModel LecturaXml() {
+public class LeerXml {
 
+	static DefaultListModel contenidotXml = new DefaultListModel();
+
+	// Lee el .xml y lo mete en peliculas
+	public static String LecturaXml() {
+		String textoXml = "";
+		contenidotXml.clear();
 		try {
 			// Creo una instancia de DocumentBuilderFactory
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -33,9 +34,9 @@ public class LecturaXml {
 			NodeList listaPelis = documento.getElementsByTagName("pelicula");
 			Element archivo = documento.getDocumentElement();
 			NodeList hijos = archivo.getChildNodes();
-			peliculas.addElement("Nodo raiz: " + archivo.getNodeName());
-			peliculas.addElement("Nodo hijo: " + hijos.item(1).getNodeName());
-			peliculas.addElement("");
+			contenidotXml.addElement("Nodo raiz: " + archivo.getNodeName());
+			contenidotXml.addElement("Nodo hijo: " + hijos.item(1).getNodeName());
+			contenidotXml.addElement("");
 
 			// Recorro las etiquetas
 			for (int i = 0; i < hijos.getLength(); i++) {
@@ -54,20 +55,23 @@ public class LecturaXml {
 						// Compruebo si es un nodo
 						if (hijo.getNodeType() == Node.ELEMENT_NODE) {
 							// Muestro el contenido
-							peliculas.addElement("Pelicula: " + hijo.getNodeName() + ": " + hijo.getTextContent());
+							contenidotXml.addElement("Pelicula: " + hijo.getNodeName() + ": " + hijo.getTextContent());
 						}
 
 					}
-					peliculas.addElement("");
+					contenidotXml.addElement("");
 				}
 
 			}
-
+			textoXml = "";
+			for (int i = 0; i < contenidotXml.size(); i++) {
+				textoXml += contenidotXml.get(i) + "\n";
+			}
 		} catch (ParserConfigurationException | SAXException | IOException ex) {
 			System.out.println(ex.getMessage());
 		}
-		
-		return peliculas;	
-	}	
-	
+
+		return textoXml;
+	}
+
 }
