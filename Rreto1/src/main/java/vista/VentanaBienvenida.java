@@ -10,7 +10,7 @@ public class VentanaBienvenida {
 	// Crea la Ventana de Bienvenida
 	public VentanaBienvenida() {
 
-		imagenBienvenida = new ImageIcon("librerias/imagenes/biblioteca.jfif");
+		imagenBienvenida = new ImageIcon("imagenes/biblioteca.jfif");
 		JOptionPane.showMessageDialog(null, "", " **********"  
 		+ "\n¡Bienvenid@s a BIDEBARRIETA!\n"+ "**********", 
 		JOptionPane.DEFAULT_OPTION,imagenBienvenida);	

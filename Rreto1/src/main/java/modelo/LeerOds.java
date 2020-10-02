@@ -36,6 +36,10 @@ public class LeerOds {
 				for (int nColIndex = 0; nColIndex < nColumnas; nColIndex++) {
 					cell = sheet.getCellAt(nColIndex, nRowIndex);
 					contenidoOds += cell.getValue() + " ";
+					
+					if(nColIndex == nColumnas--) {
+						cell = sheet.getCellAt(nColIndex++, nRowIndex);
+					}
 				}
 				contenidoOds += "\n";
 			}
