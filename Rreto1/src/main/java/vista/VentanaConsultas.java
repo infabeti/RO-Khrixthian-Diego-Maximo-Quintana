@@ -10,6 +10,7 @@ import javax.swing.JTextPane;
 
 import controlador.GesHtml;
 import controlador.GesOds;
+import controlador.GesOdt;
 import controlador.GesTxt;
 import controlador.GesXml;
 import modelo.LeerHtml;
@@ -193,6 +194,18 @@ public class VentanaConsultas extends JFrame {
 
 				String textoAMostrar = infoHtml.mostrarHtml();
 				textPane.setText(textoAMostrar);
+			}
+
+		});
+
+		// Botón Trabajadores (.odt)
+		btnTrabajadores.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GesOdt infoOdt = new GesOdt();
+
+				String contenidoOdt = infoOdt.mostrarOdt();
+				textPane.setText(contenidoOdt);
 			}
 
 		});
