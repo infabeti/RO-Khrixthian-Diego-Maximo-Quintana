@@ -16,12 +16,10 @@ public class LeerTxtTest {
 				
 		resultado = testtxt.leertxt();
 		
-		//para asegurarnos de que devuelve lo que queremos no algo diferente
-		System.out.println(resultado);
-		
-		if (resultado != null) {
-			resultadoesperado = resultado;
-		} ;
+		resultadoesperado ="999, El señor de los anillos, J.R. Tolkien, novela fantástica." + (char) 13 + (char) 10
+				+ "8888, La columna de la muerte, Francisco Espinosa, ensayo histórico." + (char) 13 + (char) 10
+				+ "7777, El enemigo conoce el sistema, Marta Peirano, ensayo sobre la aplicación capitalista de la informática." + (char) 13 + (char) 10
+				+ "6666, El segundo sexo, Simone de Beauvoir, ensayo sobre la opresión de la mujer." + (char) -1;
 		
 		assertEquals(resultado, resultadoesperado);
 		

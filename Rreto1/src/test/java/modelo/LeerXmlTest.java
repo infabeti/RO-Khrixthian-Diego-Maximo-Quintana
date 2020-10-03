@@ -15,12 +15,20 @@ public class LeerXmlTest {
 
 		resultado = testxml.LecturaXml();
 		
-		//para asegurarnos de que devuelve lo que queremos no algo diferente
-		System.out.println(resultado);
-		
-		if (resultado != null) {
-			resultadoesperado = resultado;
-		} ;
+		resultadoesperado = "Nodo raiz: videoteca" + (char) 13 + (char) 10
+				+ "Nodo hijo: peliculas" + (char) 13 + (char) 10
+				+ "\r\n" + (char) 13 + (char) 10
+				+ "Pelicula: titulo: El señor de los anillos - La comunidad del anillo" + (char) 13 + (char) 10
+				+ "Pelicula: director: Peter Jackson" + (char) 13 + (char) 10
+				+ "Pelicula: año: 2001" + (char) 13 + (char) 10
+				+ "\r\n" + (char) 13 + (char) 10
+				+ "Pelicula: titulo: Titanic" + (char) 13 + (char) 10
+				+ "Pelicula: director: James Cameron" + (char) 13 + (char) 10
+				+ "Pelicula: año: 1997" + (char) 13 + (char) 10
+				+ "\r\n" + (char) 13 + (char) 10
+				+ "Pelicula: titulo: Seven" + (char) 13 + (char) 10
+				+ "Pelicula: director: David Fincher" + (char) 13 + (char) 10
+				+ "Pelicula: año: 1995" + (char) -1;
 		
 		assertEquals(resultado, resultadoesperado);
 	}
