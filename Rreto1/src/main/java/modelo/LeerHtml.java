@@ -32,6 +32,7 @@ public class LeerHtml {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+        
         return total;
     }
 

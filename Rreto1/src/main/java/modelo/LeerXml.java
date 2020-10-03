@@ -67,6 +67,7 @@ public class LeerXml {
 			for (int i = 0; i < contenidotXml.size(); i++) {
 				textoXml += contenidotXml.get(i) + "\n";
 			}
+			
 		} catch (ParserConfigurationException | SAXException | IOException ex) {
 			System.out.println(ex.getMessage());
 		}

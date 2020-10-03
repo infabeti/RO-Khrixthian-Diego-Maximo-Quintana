@@ -7,6 +7,8 @@ import org.jopendocument.dom.spreadsheet.MutableCell;
 import org.jopendocument.dom.spreadsheet.Sheet;
 import org.jopendocument.dom.spreadsheet.SpreadSheet;
 
+import controlador.GesHtml;
+
 public class LeerOds {
 	public static String LecturadOds() {
 		String contenidoOds = "";
@@ -36,8 +38,8 @@ public class LeerOds {
 				for (int nColIndex = 0; nColIndex < nColumnas; nColIndex++) {
 					cell = sheet.getCellAt(nColIndex, nRowIndex);
 					contenidoOds += cell.getValue() + " ";
-					
-					if(nColIndex == nColumnas--) {
+
+					if (nColIndex == nColumnas--) {
 						cell = sheet.getCellAt(nColIndex++, nRowIndex);
 					}
 				}
@@ -48,7 +50,19 @@ public class LeerOds {
 			e.printStackTrace();
 		}
 
-		return contenidoOds;
+		// Elimino espacios repetidos (ascii 32)
+		String contenidoOdsFinal = "";
+
+		for (int i = 0; i < contenidoOds.length() - 1; i++) {
+
+			if ((int) contenidoOds.charAt(i) == (int) contenidoOds.charAt(i + 1) && contenidoOds.charAt(i) == 32) {
+
+			} else {
+				contenidoOdsFinal += contenidoOds.charAt(i);
+			}
+		}
+
+		return contenidoOdsFinal;
 	}
 
 }
