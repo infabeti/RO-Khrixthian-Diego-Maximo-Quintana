@@ -28,19 +28,20 @@ import javax.swing.Action;
 import javax.swing.DefaultListModel;
 
 public class VentanaConsultas extends JFrame {
+	
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JLabel lblNewLabel;
-	private JLabel lblNewLabel_1;
-	private JLabel lblNewLabel_2;
-	private JLabel lblNewLabel_3;
-	private JLabel lblNewLabel_4;
-	private JLabel lblNewLabel_5;
+	private JTextField campoLibros;
+	private JTextField campoCDs;
+	private JTextField campoPeliculas;
+	private JTextField campoUsuarios;
+	private JTextField campoTrabajadores;
+	private JTextField campoPrestamos;
+	private JLabel lblLibros;
+	private JLabel lblCDs;
+	private JLabel lblPeliculas;
+	private JLabel lblUsuarios;
+	private JLabel lblTrabajadores;
+	private JLabel lblPrestamos;
 	private JButton btnLibros;
 	private JButton btnCDs;
 	private JButton btnPelis;
@@ -61,65 +62,65 @@ public class VentanaConsultas extends JFrame {
 		setResizable(false); // No resizable
 		setLocationRelativeTo(null); // Ubica la ventana en el cento
 
-		lblNewLabel = new JLabel("Libros");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		lblNewLabel.setBounds(20, 48, 48, 14);
-		contentPane.add(lblNewLabel);
+		lblLibros = new JLabel("Libros");
+		lblLibros.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblLibros.setBounds(20, 48, 48, 14);
+		contentPane.add(lblLibros);
 
-		textField = new JTextField();
-		textField.setBounds(86, 45, 153, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		campoLibros = new JTextField();
+		campoLibros.setBounds(86, 45, 153, 20);
+		contentPane.add(campoLibros);
+		campoLibros.setColumns(10);
 
-		lblNewLabel_1 = new JLabel("CDs");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		lblNewLabel_1.setBounds(20, 98, 48, 14);
-		contentPane.add(lblNewLabel_1);
+		lblCDs = new JLabel("CDs");
+		lblCDs.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblCDs.setBounds(20, 98, 48, 14);
+		contentPane.add(lblCDs);
 
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(86, 95, 153, 20);
-		contentPane.add(textField_1);
+		campoCDs = new JTextField();
+		campoCDs.setColumns(10);
+		campoCDs.setBounds(86, 95, 153, 20);
+		contentPane.add(campoCDs);
 
-		lblNewLabel_2 = new JLabel("Peliculas");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		lblNewLabel_2.setBounds(20, 148, 48, 14);
-		contentPane.add(lblNewLabel_2);
+		lblPeliculas = new JLabel("Peliculas");
+		lblPeliculas.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblPeliculas.setBounds(20, 148, 48, 14);
+		contentPane.add(lblPeliculas);
 
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(86, 145, 153, 20);
-		contentPane.add(textField_2);
+		campoPeliculas = new JTextField();
+		campoPeliculas.setColumns(10);
+		campoPeliculas.setBounds(86, 145, 153, 20);
+		contentPane.add(campoPeliculas);
 
-		lblNewLabel_3 = new JLabel("Usuarios");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		lblNewLabel_3.setBounds(20, 198, 48, 14);
-		contentPane.add(lblNewLabel_3);
+		lblUsuarios = new JLabel("Usuarios");
+		lblUsuarios.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblUsuarios.setBounds(20, 198, 48, 14);
+		contentPane.add(lblUsuarios);
 
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(86, 195, 153, 20);
-		contentPane.add(textField_3);
+		campoUsuarios = new JTextField();
+		campoUsuarios.setColumns(10);
+		campoUsuarios.setBounds(86, 195, 153, 20);
+		contentPane.add(campoUsuarios);
 
-		lblNewLabel_4 = new JLabel("Trabajadores");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		lblNewLabel_4.setBounds(20, 248, 71, 14);
-		contentPane.add(lblNewLabel_4);
+		lblTrabajadores = new JLabel("Trabajadores");
+		lblTrabajadores.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblTrabajadores.setBounds(20, 248, 71, 14);
+		contentPane.add(lblTrabajadores);
 
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(86, 245, 153, 20);
-		contentPane.add(textField_4);
+		campoTrabajadores = new JTextField();
+		campoTrabajadores.setColumns(10);
+		campoTrabajadores.setBounds(86, 245, 153, 20);
+		contentPane.add(campoTrabajadores);
 
-		lblNewLabel_5 = new JLabel("Prestamos");
-		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		lblNewLabel_5.setBounds(20, 298, 68, 14);
-		contentPane.add(lblNewLabel_5);
+		lblPrestamos = new JLabel("Prestamos");
+		lblPrestamos.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblPrestamos.setBounds(20, 298, 68, 14);
+		contentPane.add(lblPrestamos);
 
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(86, 295, 153, 20);
-		contentPane.add(textField_5);
+		campoPrestamos = new JTextField();
+		campoPrestamos.setColumns(10);
+		campoPrestamos.setBounds(86, 295, 153, 20);
+		contentPane.add(campoPrestamos);
 
 		// Botones
 		btnLibros = new JButton("Acceder");

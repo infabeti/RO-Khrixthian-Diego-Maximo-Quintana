@@ -5,11 +5,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class VentanaBienvenida {
+	
 	private Icon imagenBienvenida;
 
 	// Crea la Ventana de Bienvenida
 	public VentanaBienvenida() {
-
 		imagenBienvenida = new ImageIcon("imagenes/biblioteca.jfif");
 		JOptionPane.showMessageDialog(null, "", " **********"  
 		+ "\n¡Bienvenid@s a BIDEBARRIETA!\n"+ "**********", 
