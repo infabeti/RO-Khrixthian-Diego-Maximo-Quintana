@@ -2,8 +2,13 @@ package vista;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import controlador.ControladorUser;
+
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.AbstractAction;
@@ -12,10 +17,11 @@ import javax.swing.Action;
 
 @SuppressWarnings("serial")
 public class VentanaUser extends JFrame {
+	ControladorUser controladorUser = new ControladorUser();
 	final VentanaConsultas consultas = new VentanaConsultas();// declaramos la ventana de consultas
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
+	private JPasswordField password;
 	private final Action action = new SwingAction();
 	
 	private JLabel lblNewLabel;
@@ -52,10 +58,10 @@ public class VentanaUser extends JFrame {
 		lblNewLabel_2.setBounds(127, 108, 76, 14);
 		contentPane.add(lblNewLabel_2);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(127, 124, 169, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		password = new JPasswordField();
+		password.setBounds(127, 124, 169, 20);
+		contentPane.add(password);
+		password.setColumns(10);
 
 		btnNewButton = new JButton("Acceder");
 		btnNewButton.setBounds(165, 166, 89, 23);
@@ -71,8 +77,20 @@ public class VentanaUser extends JFrame {
 		}
 
 		public void actionPerformed(ActionEvent e) {
-			consultas.setVisible(true); // apertura de la ventana de consultas
-			dispose();
+			boolean control = controladorUser.validarContrasena(password.getText());
+			
+			if(control == false) {
+				JOptionPane.showMessageDialog(
+						null, "La contraseña solo puede tener carácteres alfanuméricos, no símbolos.", 
+						"ERROR AL INTRODUCIR LA CONTRASEÑA", 
+						JOptionPane.ERROR_MESSAGE);
+			}
+			
+			if(control == true) {
+				consultas.setVisible(true); //apertura de la ventana de consultas
+				dispose();
+			}
+			
 		}
 	}
 }
