@@ -23,7 +23,7 @@ public class LeerHtmlTest {
 			resultadoesperado = resultado;
 		} ;
 		
-		assertEquals(resultado, resultadoesperado);
+		assertEquals(resultado, resultadoesperado); 
 		
 	}
 
