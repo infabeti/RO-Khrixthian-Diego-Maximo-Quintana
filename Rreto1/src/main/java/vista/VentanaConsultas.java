@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
+import controlador.GesEscOdt;
 import controlador.GesEscTxt;
 import controlador.GesHtml;
 import controlador.GesOds;
@@ -186,7 +187,7 @@ public class VentanaConsultas extends JFrame {
 
 		});
 		
-		// EN PROCESO
+		// Escribir Nuevos Libros
 		btnLibrosESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -204,10 +205,7 @@ public class VentanaConsultas extends JFrame {
 				    }
 			}
 
-		});
-		
-		
-		
+		});		
 
 		// Botón Peliculas (.xml)
 		btnPelisLEER.addActionListener(new ActionListener() {
@@ -241,6 +239,26 @@ public class VentanaConsultas extends JFrame {
 
 				String contenidoOdt = infoOdt.mostrarOdt();
 				textPane.setText(contenidoOdt);
+			}
+
+		});
+		
+		// Escribir Nuevos Trabajadores
+		btnTrabajadoresESCRIBIR.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GesEscOdt aux = new GesEscOdt();
+				String aux2 = aux.gesEscOdt();				
+				
+			    try {
+			        FileWriter fstream = new FileWriter(".\\ficheros\\trabajadores.odt");
+			        BufferedWriter out = new BufferedWriter(fstream);
+			        
+			        out.write( aux2);
+			        out.close();
+			    } catch (IOException ex) {
+			        System.out.println("Error: "+ex.getMessage());
+			    }
 			}
 
 		});

@@ -4,27 +4,17 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import vista.VentanaConsultas;
+
 public class AgregarAlOdt {
 	
-	public static boolean agregar(String resul){
+	public static String agregar(){
 		
-		boolean correcto = true;
-		
-    try {
-        FileWriter fstream = new FileWriter(".\\ficheros\\Trabajadores.odt", true);
-        BufferedWriter out = new BufferedWriter(fstream);
-        
-        out.write( "\n" + resul);
-        out.close();
-    } catch (IOException ex) {
-        System.out.println("Error: "+ex.getMessage());
-        correcto = false;
-    }
-    
-    return correcto;
-	}
+		String resul= VentanaConsultas.textPane.getText();
+		String fich = LeerOdt.LecturadOdt();
+		String resulfinal = fich + "\n" + resul;
 	
-	public static void main(String[] args) {
-		AgregarAlOdt.agregar("hola");
+    
+    return resulfinal;
 	}
 }
