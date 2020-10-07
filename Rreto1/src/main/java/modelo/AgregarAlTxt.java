@@ -2,21 +2,15 @@ package modelo;
 
 import java.io.*;
 
+import vista.VentanaConsultas;
+
 public class AgregarAlTxt {
 	
-	public static boolean agregar(String resul){
-		boolean correcto = true;
-    try {
-        FileWriter fstream = new FileWriter(".\\ficheros\\Libros.txt", true);
-        BufferedWriter out = new BufferedWriter(fstream);
-        
-        out.write( "\n" + resul);
-        out.close();
-    } catch (IOException ex) {
-        System.out.println("Error: "+ex.getMessage());
-        correcto = false;
-    }
+	public static String agregar(){
+		String resul= VentanaConsultas.textPane.getText();
+		String fich = LeerTxt.leertxt();
+		String resulfinal = fich + "\n" + resul;   
     
-    return correcto;
+    return resulfinal;
 	}
 }

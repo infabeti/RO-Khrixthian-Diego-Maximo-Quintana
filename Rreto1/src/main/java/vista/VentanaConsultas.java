@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
+import controlador.GesEscTxt;
 import controlador.GesHtml;
 import controlador.GesOds;
 import controlador.GesOdt;
@@ -22,6 +23,9 @@ import java.awt.Font;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.Action;
@@ -54,7 +58,7 @@ public class VentanaConsultas extends JFrame {
 
 	private JScrollPane scrollPane;
 
-	JTextPane textPane = new JTextPane();
+	public static JTextPane textPane = new JTextPane();
 
 	// Crea la ventana
 	public VentanaConsultas() {
@@ -181,6 +185,29 @@ public class VentanaConsultas extends JFrame {
 			}
 
 		});
+		
+		// EN PROCESO
+		btnLibrosESCRIBIR.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GesEscTxt aux = new GesEscTxt();
+				String aux2 = aux.gesEscTxt();
+				
+				 try {
+				        FileWriter fstream = new FileWriter(".\\ficheros\\Libros.txt");
+				        BufferedWriter out = new BufferedWriter(fstream);
+				        
+				        out.write( aux2);
+				        out.close();
+				    } catch (IOException ex) {
+				        System.out.println("Error: "+ex.getMessage());
+				    }
+			}
+
+		});
+		
+		
+		
 
 		// Botón Peliculas (.xml)
 		btnPelisLEER.addActionListener(new ActionListener() {
