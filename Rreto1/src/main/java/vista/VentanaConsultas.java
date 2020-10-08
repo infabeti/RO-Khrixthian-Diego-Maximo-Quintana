@@ -248,7 +248,7 @@ public class VentanaConsultas extends JFrame {
 
 		});
 		
-		//Boton Escribir Trabajadores(funciona)
+		//Boton Escribir Nuevos Trabajadores
 		btnTrabajadoresESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

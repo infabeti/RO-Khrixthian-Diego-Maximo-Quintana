@@ -1,10 +1,10 @@
 package modelo;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
+import org.apache.poi.hwpf.extractor.WordExtractor;
+import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
@@ -13,7 +13,10 @@ public class modeloLectura {
 	
 	public static void main(String[] args) throws IOException {
 	
-		String path = "C:\\Users\\IN2DAM\\Desktop\\wordprueba.docx";
+		String path = ".//ficheros//CDs.docx";
+		//
+		File archivodoc = new File(path);
+		
 		
 		try {
 			FileInputStream fps = new FileInputStream(path);

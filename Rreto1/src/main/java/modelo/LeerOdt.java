@@ -1,10 +1,7 @@
 package modelo;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-
-import org.jopendocument.dom.text.TextDocument;
 
 public class LeerOdt {
 	public static String LecturadOdt() {
