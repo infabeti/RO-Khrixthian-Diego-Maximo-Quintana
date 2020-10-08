@@ -8,6 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
+import org.jopendocument.dom.text.TextDocument;
+
+import controlador.GesEscOdt;
 import controlador.GesEscTxt;
 import controlador.GesHtml;
 import controlador.GesOds;
@@ -24,8 +27,10 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 import javax.swing.Action;
@@ -186,7 +191,7 @@ public class VentanaConsultas extends JFrame {
 
 		});
 		
-		// EN PROCESO
+		// Escribir Nuevos Libros
 		btnLibrosESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -194,7 +199,7 @@ public class VentanaConsultas extends JFrame {
 				String aux2 = aux.gesEscTxt();
 				
 				 try {
-				        FileWriter fstream = new FileWriter(".\\ficheros\\Libros.txt");
+				        FileWriter fstream = new FileWriter(".//ficheros//Libros.txt");
 				        BufferedWriter out = new BufferedWriter(fstream);
 				        
 				        out.write( aux2);
@@ -204,10 +209,7 @@ public class VentanaConsultas extends JFrame {
 				    }
 			}
 
-		});
-		
-		
-		
+		});		
 
 		// Botón Peliculas (.xml)
 		btnPelisLEER.addActionListener(new ActionListener() {
@@ -241,6 +243,31 @@ public class VentanaConsultas extends JFrame {
 
 				String contenidoOdt = infoOdt.mostrarOdt();
 				textPane.setText(contenidoOdt);
+				
+			}
+
+		});
+		
+		//Boton Escribir Trabajadores(funciona)
+		btnTrabajadoresESCRIBIR.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GesEscOdt aux = new GesEscOdt();
+				String aux2 = aux.gesEscOdt();
+				
+				try {
+			        FileWriter fstream = new FileWriter(".//ficheros//trabajadores.odt");
+			        BufferedWriter out = new BufferedWriter(fstream);
+					
+			        PrintWriter escribir = new PrintWriter(out);
+			        escribir.println(aux2);
+			        escribir.flush();
+			        escribir.close();
+			       
+			        out.close();
+			    } catch (IOException ex) {
+			        System.out.println("Error: "+ex.getMessage());
+			    }
 			}
 
 		});

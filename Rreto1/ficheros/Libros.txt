@@ -1,4 +1,8 @@
- El señor de los anillos, J.R. Tolkien, novela fantástica.
-8888, La columna de la muerte, Francisco Espinosa, ensayo histórico.
-7777, El enemigo conoce el sistema, Marta Peirano, ensayo sobre la aplicación capitalista de la informática.
-6666, El segundo sexo, Simone de Beauvoir, ensayo sobre la opresión de la mujer.
+ FILAS y COLUMNAS
+Filas : 4
+Columnas : 1024
+
+Usuario CodUser libro fecha entrega 
+Ibai 1234 el se�or de los anillos 5-10-2020 20-10-2020 
+khrixthian 1235 el enemigo conoce el sistema 5-10-2020 20-10-2020 
+Maximo 1236 la columna de la muerte 5-10-2020 20-10-2020

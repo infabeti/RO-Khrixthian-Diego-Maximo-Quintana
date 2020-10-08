@@ -1,30 +1,15 @@
 package modelo;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import vista.VentanaConsultas;
 
 public class AgregarAlOdt {
 	
-	public static boolean agregar(String resul){
+	public static String agregar(){
 		
-		boolean correcto = true;
+		String resul= VentanaConsultas.textPane.getText();
 		
-    try {
-        FileWriter fstream = new FileWriter(".\\ficheros\\Trabajadores.odt", true);
-        BufferedWriter out = new BufferedWriter(fstream);
-        
-        out.write( "\n" + resul);
-        out.close();
-    } catch (IOException ex) {
-        System.out.println("Error: "+ex.getMessage());
-        correcto = false;
-    }
-    
-    return correcto;
+		return resul;
+		
 	}
 	
-	public static void main(String[] args) {
-		AgregarAlOdt.agregar("hola");
-	}
 }
