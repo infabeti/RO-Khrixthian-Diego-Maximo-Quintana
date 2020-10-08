@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class GesHtmlTest {
-	String resultado;
-	String resultadoesperado;
-	GesHtml testGesHtml = new GesHtml();
+public class ControladorGesHtmlTest {
+	private String resultado;
+	private String resultadoesperado;
+	private ControladorGesHtml testGesHtml = new ControladorGesHtml();
 	
 	@Test
 	public void test() {

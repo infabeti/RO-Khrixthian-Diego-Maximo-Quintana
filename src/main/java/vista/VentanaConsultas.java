@@ -5,27 +5,19 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
-import controlador.GesHtml;
-import controlador.GesOds;
-import controlador.GesOdt;
-import controlador.GesTxt;
-import controlador.GesXml;
-import modelo.LeerHtml;
+import controlador.ControladorGesHtml;
+import controlador.ControladorGesOds;
+import controlador.ControladorGesOdt;
+import controlador.ControladorGesTxt;
+import controlador.ControladorGesXml;
 
 import javax.swing.JScrollPane;
 
-import java.awt.Component;
 import java.awt.Font;
-import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
-import javax.swing.Action;
-import javax.swing.DefaultListModel;
 
 public class VentanaConsultas extends JFrame {
 	
@@ -50,7 +42,7 @@ public class VentanaConsultas extends JFrame {
 	private JButton btnPrestamos;
 	private JScrollPane scrollPane;
 
-	JTextPane textPane = new JTextPane();
+	private JTextPane textPane = new JTextPane();
 
 	// Crea la ventana
 	public VentanaConsultas() {
@@ -167,7 +159,7 @@ public class VentanaConsultas extends JFrame {
 		btnLibros.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GesTxt infoTxt = new GesTxt();
+				ControladorGesTxt infoTxt = new ControladorGesTxt();
 
 				String textoTxt = infoTxt.mostrarTxt();
 				textPane.setText(textoTxt);
@@ -179,7 +171,7 @@ public class VentanaConsultas extends JFrame {
 		btnPelis.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GesXml infoXml = new GesXml();
+				ControladorGesXml infoXml = new ControladorGesXml();
 
 				String textoXml = infoXml.mostrarXml();
 				textPane.setText(textoXml);
@@ -191,7 +183,7 @@ public class VentanaConsultas extends JFrame {
 		btnUsuarios.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GesHtml infoHtml = new GesHtml();
+				ControladorGesHtml infoHtml = new ControladorGesHtml();
 
 				String textoAMostrar = infoHtml.mostrarHtml();
 				textPane.setText(textoAMostrar);
@@ -203,7 +195,7 @@ public class VentanaConsultas extends JFrame {
 		btnTrabajadores.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GesOdt infoOdt = new GesOdt();
+				ControladorGesOdt infoOdt = new ControladorGesOdt();
 
 				String contenidoOdt = infoOdt.mostrarOdt();
 				textPane.setText(contenidoOdt);
@@ -215,7 +207,7 @@ public class VentanaConsultas extends JFrame {
 		btnPrestamos.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GesOds infoOds = new GesOds();
+				ControladorGesOds infoOds = new ControladorGesOds();
 
 				String contenidoOds = infoOds.mostrarOds();
 				textPane.setText(contenidoOds);

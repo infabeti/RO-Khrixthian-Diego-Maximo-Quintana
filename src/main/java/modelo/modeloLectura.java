@@ -11,9 +11,9 @@ import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
 public class modeloLectura {
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, FileNotFoundException  {
 	
-		String path = "C:\\Users\\IN2DAM\\Desktop\\wordprueba.docx";
+		String path = ".//ficheros//CDs.docx";
 		
 		try {
 			FileInputStream fps = new FileInputStream(path);
@@ -28,11 +28,11 @@ public class modeloLectura {
 			
 		}
 		catch(FileNotFoundException ex) {
-			System.out.print(ex.getMessage());
+			System.out.print("Excepción de fichero no encontrado:" + ex.getMessage());
 		}
 		
 		catch(IOException ex1) {
-			System.out.print(ex1.getMessage());
+			System.out.print("Excepción de Entrada / Salida:" + ex1.getMessage());
 		}
 	
 	}

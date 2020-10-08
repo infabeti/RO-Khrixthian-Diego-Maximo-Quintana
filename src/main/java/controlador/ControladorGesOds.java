@@ -2,7 +2,7 @@ package controlador;
 
 import modelo.LeerOds;
 
-public class GesOds {
+public class ControladorGesOds {
 	public String mostrarOds() {
 
 		return LeerOds.LecturadOds();

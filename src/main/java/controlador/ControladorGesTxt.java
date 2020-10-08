@@ -2,7 +2,7 @@ package controlador;
 
 import modelo.LeerTxt;
 
-public class GesTxt {
+public class ControladorGesTxt {
 	
 	public String mostrarTxt() {
 

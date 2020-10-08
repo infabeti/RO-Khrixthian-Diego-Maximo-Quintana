@@ -19,7 +19,7 @@ import javax.swing.Action;
 
 @SuppressWarnings("serial")
 public class VentanaUser extends JFrame {
-	ControladorUser controladorUser = new ControladorUser();
+	public ControladorUser controladorUser = new ControladorUser();
 	final VentanaConsultas consultas = new VentanaConsultas();// declaramos la ventana de consultas
 	private JPanel contentPane;
 	

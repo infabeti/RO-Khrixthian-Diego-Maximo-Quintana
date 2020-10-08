@@ -2,7 +2,7 @@ package controlador;
 
 import modelo.LeerHtml;
 
-public class GesHtml {
+public class ControladorGesHtml {
 
 	public String mostrarHtml() {
 

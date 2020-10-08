@@ -7,7 +7,7 @@ import org.jopendocument.dom.spreadsheet.MutableCell;
 import org.jopendocument.dom.spreadsheet.Sheet;
 import org.jopendocument.dom.spreadsheet.SpreadSheet;
 
-import controlador.GesHtml;
+import controlador.ControladorGesHtml;
 
 public class LeerOds {
 	public static String LecturadOds() {

@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class GesXmlTest {
-	String resultado;
-	String resultadoesperado;
-	GesXml testGesXml = new GesXml();
+public class ControladorGesXmlTest {
+	private String resultado;
+	private String resultadoesperado;
+	private ControladorGesXml testGesXml = new ControladorGesXml();
 	
 	@Test
 	public void test() {

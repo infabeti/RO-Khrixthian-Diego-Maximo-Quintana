@@ -5,21 +5,22 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class ControladorUserTest {
-	
-	ControladorUser controladorUser = new ControladorUser();
+	private boolean resultadoEsperado;
+	private boolean resultado;
+	private ControladorUser controladorUser = new ControladorUser();
 
 	@Test
 	public void testControladorUserTrue() {
-		boolean resultadoEsperado = true;
-		boolean resultado = controladorUser.validarContrasena("letra1");
+		resultadoEsperado = true;
+		resultado = controladorUser.validarContrasena("letra1");
 		
 		assertEquals(resultado, resultadoEsperado);
 	}
 	
 	@Test
 	public void testControladorUserFalse() {
-		boolean resultadoEsperado = false;
-		boolean resultado = controladorUser.validarContrasena("αινσϊ");
+		resultadoEsperado = false;
+		resultado = controladorUser.validarContrasena("αινσϊ");
 		
 		assertEquals(resultado, resultadoEsperado);
 	}
