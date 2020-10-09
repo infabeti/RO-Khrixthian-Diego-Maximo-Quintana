@@ -6,7 +6,7 @@ public class LeerTxt {
 
 	public static String leertxt() {
 
-		String contenido = "";
+		String contenido = " ";
 		String ruta = ".\\ficheros\\Libros.txt";
 		try {
 			FileReader leerfic = new FileReader(ruta);
@@ -18,7 +18,7 @@ public class LeerTxt {
 			leerfic.close();
 
 		} catch (Exception e) {
-			System.out.println("Error E/S");
+			System.out.println("Error E/S");  
 		}
 
 		return contenido;

@@ -9,7 +9,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
 import controlador.ControladorGesDocx;
-import controlador.GesEscOdt;
+import controlador.GesEscHtml;
 import controlador.GesEscTxt;
 import controlador.GesHtml;
 import controlador.GesOds;
@@ -187,7 +187,8 @@ public class VentanaConsultas extends JFrame {
 			}
 
 		});
-
+		
+		
 		// Botón Cds (.docx)
 		btnCDsLEER.addActionListener(new ActionListener() {
 			@Override
@@ -244,6 +245,26 @@ public class VentanaConsultas extends JFrame {
 
 		});
 
+		//Escribir nuevos usuarios
+		btnUsuariosESCRIBIR.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GesEscHtml aux = new GesEscHtml();
+				String aux2 = aux.gesEscHtml();				
+				
+			    try {
+			        FileWriter fstream = new FileWriter(".\\ficheros\\Usuarios.html");
+			        BufferedWriter out = new BufferedWriter(fstream);
+			        
+			        out.write( aux2);
+			        out.close();
+			    } catch (IOException ex) {
+			        System.out.println("Error: "+ex.getMessage());   
+			    }
+			} 
+
+		});
+
 		// Botón Trabajadores (.odt)
 		btnTrabajadoresLEER.addActionListener(new ActionListener() {
 			@Override
@@ -254,27 +275,7 @@ public class VentanaConsultas extends JFrame {
 				textPane.setText(contenidoOdt);
 			}
 
-		});
-
-		// Escribir Nuevos Trabajadores
-		btnTrabajadoresESCRIBIR.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				GesEscOdt aux = new GesEscOdt();
-				String aux2 = aux.gesEscOdt();
-
-				try {
-					FileWriter fstream = new FileWriter(".\\ficheros\\trabajadores.odt");
-					BufferedWriter out = new BufferedWriter(fstream);
-
-					out.write(aux2);
-					out.close();
-				} catch (IOException ex) {
-					System.out.println("Error: " + ex.getMessage());
-				}
-			}
-
-		});
+		});		
 
 		// Botón Prestamos (.ods)
 		btnPrestamosLEER.addActionListener(new ActionListener() {

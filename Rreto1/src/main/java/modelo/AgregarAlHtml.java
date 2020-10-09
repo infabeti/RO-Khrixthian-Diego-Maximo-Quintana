@@ -1,14 +1,12 @@
 package modelo;
 
-import java.io.*;
-
 import vista.VentanaConsultas;
 
-public class AgregarAlTxt {
-	
+public class AgregarAlHtml {
+
 	public static String agregar(){
 		String resul= VentanaConsultas.textPane.getText();
-		String resulfinal =  resul;
-    return resulfinal;
+    
+    return resul; 
 	}
 }
