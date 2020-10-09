@@ -229,6 +229,7 @@ public class VentanaConsultas extends JFrame {
 				textPane.setText(textoAMostrar);
 			}
 
+
 		});
 
 		// Botón Trabajadores (.odt)
@@ -259,7 +260,7 @@ public class VentanaConsultas extends JFrame {
 			    } catch (IOException ex) {
 			        System.out.println("Error: "+ex.getMessage());
 			    }
-			}
+			} 
 
 		});
 
