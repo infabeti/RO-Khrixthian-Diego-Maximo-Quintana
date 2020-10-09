@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
 
+import controlador.ControladorGesDocx;
 import controlador.ControladorGesHtml;
 import controlador.ControladorGesOds;
 import controlador.ControladorGesOdt;
@@ -20,7 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class VentanaConsultas extends JFrame {
-	
+
 	private JPanel contentPane;
 	private JTextField campoLibros;
 	private JTextField campoCDs;
@@ -163,6 +164,18 @@ public class VentanaConsultas extends JFrame {
 
 				String textoTxt = infoTxt.mostrarTxt();
 				textPane.setText(textoTxt);
+			}
+
+		});
+
+		// Botón CDs (.docx)
+		btnCDs.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ControladorGesDocx infoDocx = new ControladorGesDocx();
+
+				String textoDocx = infoDocx.mostrarDocx();
+				textPane.setText(textoDocx);
 			}
 
 		});
