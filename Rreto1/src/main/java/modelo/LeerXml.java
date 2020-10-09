@@ -28,7 +28,7 @@ public class LeerXml {
 			DocumentBuilder builder = factory.newDocumentBuilder();
 
 			// Obtengo el documento, a partir del XML
-			Document documento = builder.parse(new File(".//ficheros//videoteca.xml"));
+			Document documento = builder.parse(new File(".//ficheros//videoteca.xml")); 
 
 			// Cojo todas las etiquetas coche del documento
 			NodeList listaPelis = documento.getElementsByTagName("pelicula");

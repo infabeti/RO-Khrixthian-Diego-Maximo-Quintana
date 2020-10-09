@@ -6,7 +6,7 @@ public class GesXml {
 
 	public String mostrarXml() {
 
-		return LeerXml.LecturaXml();
+		return LeerXml.LecturaXml(); 
 	}
 
 }

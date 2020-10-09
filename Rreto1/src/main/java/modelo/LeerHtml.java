@@ -4,11 +4,11 @@ import java.io.*;
 
 public class LeerHtml {
 
-	public static String muestraContenido() {
+	public static String muestraContenido() { 
 		String total = "";
         String cadena;
         String archivo;
-        FileReader f = null;
+        FileReader f = null; 
         
 		try {
 			archivo = "ficheros\\Usuarios.html";

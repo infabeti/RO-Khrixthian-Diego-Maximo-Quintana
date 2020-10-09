@@ -8,8 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
-import org.jopendocument.dom.text.TextDocument;
-
+import controlador.GesEscHtml;
 import controlador.GesEscOdt;
 import controlador.GesEscTxt;
 import controlador.GesHtml;
@@ -18,6 +17,7 @@ import controlador.GesOdt;
 import controlador.GesTxt;
 import controlador.GesXml;
 import modelo.LeerHtml;
+import modelo.LeerXml;
 
 import javax.swing.JScrollPane;
 
@@ -27,10 +27,8 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.*;
 import java.util.ArrayList;
 
 import javax.swing.Action;
@@ -63,7 +61,7 @@ public class VentanaConsultas extends JFrame {
 
 	private JScrollPane scrollPane;
 
-	public static JTextPane textPane = new JTextPane();
+	public static JTextPane textPane = new JTextPane(); 
 
 	// Crea la ventana
 	public VentanaConsultas() {
@@ -199,13 +197,13 @@ public class VentanaConsultas extends JFrame {
 				String aux2 = aux.gesEscTxt();
 				
 				 try {
-				        FileWriter fstream = new FileWriter(".//ficheros//Libros.txt");
+				        FileWriter fstream = new FileWriter(".\\ficheros\\Libros.txt");
 				        BufferedWriter out = new BufferedWriter(fstream);
 				        
 				        out.write( aux2);
 				        out.close();
 				    } catch (IOException ex) {
-				        System.out.println("Error: "+ex.getMessage());
+				        System.out.println("Error: "+ex.getMessage()); 
 				    }
 			}
 
@@ -233,6 +231,27 @@ public class VentanaConsultas extends JFrame {
 				textPane.setText(textoAMostrar);
 			}
 
+
+		});
+		
+		//Escribir nuevos usuarios
+		btnUsuariosESCRIBIR.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GesEscHtml aux = new GesEscHtml();
+				String aux2 = aux.gesEscHtml();				
+				
+			    try {
+			        FileWriter fstream = new FileWriter(".\\ficheros\\Usuarios.html");
+			        BufferedWriter out = new BufferedWriter(fstream);
+			        
+			        out.write( aux2);
+			        out.close();
+			    } catch (IOException ex) {
+			        System.out.println("Error: "+ex.getMessage()); 
+			    }
+			} 
+
 		});
 
 		// Botón Trabajadores (.odt)
@@ -242,33 +261,28 @@ public class VentanaConsultas extends JFrame {
 				GesOdt infoOdt = new GesOdt();
 
 				String contenidoOdt = infoOdt.mostrarOdt();
-				textPane.setText(contenidoOdt);
-				
+				textPane.setText(contenidoOdt); 
 			}
 
 		});
 		
-		//Boton Escribir Nuevos Trabajadores
+		// Escribir Nuevos Trabajadores
 		btnTrabajadoresESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				GesEscOdt aux = new GesEscOdt();
-				String aux2 = aux.gesEscOdt();
+				String aux2 = aux.gesEscOdt();				
 				
-				try {
-			        FileWriter fstream = new FileWriter(".//ficheros//trabajadores.odt");
+			    try {
+			        FileWriter fstream = new FileWriter(".\\ficheros\\trabajadores.odt");
 			        BufferedWriter out = new BufferedWriter(fstream);
-					
-			        PrintWriter escribir = new PrintWriter(out);
-			        escribir.println(aux2);
-			        escribir.flush();
-			        escribir.close();
-			       
+			        
+			        out.write( aux2);
 			        out.close();
 			    } catch (IOException ex) {
 			        System.out.println("Error: "+ex.getMessage());
 			    }
-			}
+			} 
 
 		});
 
