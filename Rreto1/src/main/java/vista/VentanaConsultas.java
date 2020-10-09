@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
+import controlador.ControladorGesDocx;
 import controlador.GesEscOdt;
 import controlador.GesEscTxt;
 import controlador.GesHtml;
@@ -186,26 +187,38 @@ public class VentanaConsultas extends JFrame {
 			}
 
 		});
-		
+
+		// Botón Cds (.docx)
+		btnCDsLEER.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ControladorGesDocx infoDocx = new ControladorGesDocx();
+
+				String textoDocx = infoDocx.mostrarDocx();
+				textPane.setText(textoDocx);
+			}
+
+		});
+
 		// Escribir Nuevos Libros
 		btnLibrosESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				GesEscTxt aux = new GesEscTxt();
 				String aux2 = aux.gesEscTxt();
-				
-				 try {
-				        FileWriter fstream = new FileWriter(".\\ficheros\\Libros.txt");
-				        BufferedWriter out = new BufferedWriter(fstream);
-				        
-				        out.write( aux2);
-				        out.close();
-				    } catch (IOException ex) {
-				        System.out.println("Error: "+ex.getMessage());
-				    }
+
+				try {
+					FileWriter fstream = new FileWriter(".\\ficheros\\Libros.txt");
+					BufferedWriter out = new BufferedWriter(fstream);
+
+					out.write(aux2);
+					out.close();
+				} catch (IOException ex) {
+					System.out.println("Error: " + ex.getMessage());
+				}
 			}
 
-		});		
+		});
 
 		// Botón Peliculas (.xml)
 		btnPelisLEER.addActionListener(new ActionListener() {
@@ -229,7 +242,6 @@ public class VentanaConsultas extends JFrame {
 				textPane.setText(textoAMostrar);
 			}
 
-
 		});
 
 		// Botón Trabajadores (.odt)
@@ -243,24 +255,24 @@ public class VentanaConsultas extends JFrame {
 			}
 
 		});
-		
+
 		// Escribir Nuevos Trabajadores
 		btnTrabajadoresESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				GesEscOdt aux = new GesEscOdt();
-				String aux2 = aux.gesEscOdt();				
-				
-			    try {
-			        FileWriter fstream = new FileWriter(".\\ficheros\\trabajadores.odt");
-			        BufferedWriter out = new BufferedWriter(fstream);
-			        
-			        out.write( aux2);
-			        out.close();
-			    } catch (IOException ex) {
-			        System.out.println("Error: "+ex.getMessage());
-			    }
-			} 
+				String aux2 = aux.gesEscOdt();
+
+				try {
+					FileWriter fstream = new FileWriter(".\\ficheros\\trabajadores.odt");
+					BufferedWriter out = new BufferedWriter(fstream);
+
+					out.write(aux2);
+					out.close();
+				} catch (IOException ex) {
+					System.out.println("Error: " + ex.getMessage());
+				}
+			}
 
 		});
 
