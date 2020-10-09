@@ -11,7 +11,7 @@ import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
 public class modeloLectura {
 	
-	public static void main(String[] args) throws IOException, FileNotFoundException  {
+	public static String LecturaHtml() {
 	
 		String path = ".//ficheros//CDs.docx";
 		
@@ -35,6 +35,7 @@ public class modeloLectura {
 			System.out.print("Excepción de Entrada / Salida:" + ex1.getMessage());
 		}
 	
+		return 
 	}
 
 }

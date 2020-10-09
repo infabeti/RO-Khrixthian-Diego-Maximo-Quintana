@@ -11,7 +11,7 @@ public class LeerHtml {
         FileReader f = null;
         
 		try {
-			archivo = "ficheros\\Usuarios.html";
+			archivo = "ficheros//Usuarios.html";
 			f = new FileReader(archivo);
 		} catch (FileNotFoundException e) {
 			System.out.println("No se ha podido encontrar el archivo. ERROR: " + e.toString());
