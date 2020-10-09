@@ -27,10 +27,8 @@ public class LeerOds {
 			// El nº de cada fila y columna
 			nColumnas = sheet.getColumnCount();
 			nFilas = sheet.getRowCount();
-			contenidoOds += "Nº de FILAS y COLUMNAS" + "\n";
-			contenidoOds += "Filas : " + nFilas + "\n";
-			contenidoOds += "Columnas : " + nColumnas + "\n";
-			contenidoOds += "\n";
+			contenidoOds += String.format("%s%s%s%d%s%s%d%s%s", "Nº de FILAS y COLUMNAS","\n","Filas : ",nFilas,"\n","Columnas : ",nColumnas,"\n","\n");
+
 			// Repitiendo por cada fila de la hoja seleccionada
 			MutableCell cell = null;
 			for (int nRowIndex = 0; nRowIndex < nFilas; nRowIndex++) {

@@ -26,6 +26,7 @@ public class LeerXml {
 		NodeList listaPelis;
 		Element archivo;
 		NodeList hijos;
+		String elemento;
 		
 		contenidotXml.clear();
 		try {
@@ -41,9 +42,8 @@ public class LeerXml {
 			listaPelis = documento.getElementsByTagName("pelicula");
 			archivo = documento.getDocumentElement();
 			hijos = archivo.getChildNodes();
-			contenidotXml.addElement("Nodo raiz: " + archivo.getNodeName());
-			contenidotXml.addElement("Nodo hijo: " + hijos.item(1).getNodeName());
-			contenidotXml.addElement("");
+			elemento = String.format("%s%s%s%s%s","Nodo raiz: ",archivo.getNodeName(),"Nodo hijo: ",hijos.item(1).getNodeName(),"");
+			contenidotXml.addElement(elemento);
 
 			// Recorro las etiquetas
 			for (int i = 0; i < hijos.getLength(); i++) {
@@ -62,7 +62,7 @@ public class LeerXml {
 						// Compruebo si es un nodo
 						if (hijo.getNodeType() == Node.ELEMENT_NODE) {
 							// Muestro el contenido
-							contenidotXml.addElement("Pelicula: " + hijo.getNodeName() + ": " + hijo.getTextContent());
+							contenidotXml.addElement(String.format("%s%s%s%s","Pelicula: ",hijo.getNodeName(),": ",hijo.getTextContent()));
 						}
 
 					}
