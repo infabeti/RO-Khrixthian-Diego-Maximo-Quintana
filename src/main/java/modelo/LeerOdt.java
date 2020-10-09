@@ -6,13 +6,13 @@ import java.io.IOException;
 import org.jopendocument.dom.text.TextDocument;
 
 public class LeerOdt {
+	private static String contenidoOdt = "";
+	// Obtengo el documento, a partir del Odt
+	private static String Dir = ".//ficheros//trabajadores.odt";
+	private static File archivo = new File(Dir);
+			
 	public static String LecturadOdt() {
-		String contenidoOdt = "";
-
-		// Obtengo el documento, a partir del Odt
-		String Dir = ".//ficheros//trabajadores.odt";
-		File archivo = new File(Dir);
-
+		
 		try {
 			// Cojo el contenido del documento
 			contenidoOdt = TextDocument.createFromFile(archivo).getCharacterContent(true);

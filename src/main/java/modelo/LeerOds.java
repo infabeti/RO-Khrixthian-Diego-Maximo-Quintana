@@ -10,22 +10,23 @@ import org.jopendocument.dom.spreadsheet.SpreadSheet;
 import controlador.ControladorGesHtml;
 
 public class LeerOds {
-	public static String LecturadOds() {
-		String contenidoOds = "";
-		Sheet sheet;
-
-		// Obtengo el documento, a partir del ODS
-		String Dir = ".//ficheros//Prestamos.ods";
-		File archivo = new File(Dir);
-
+	private static String contenidoOds = "";
+	private static Sheet sheet;
+	// Obtengo el documento, a partir del ODS
+	private static String Dir = ".//ficheros//Prestamos.ods";
+	private static File archivo = new File(Dir);
+	
+	public String LecturadOds() {
+		int nColumnas;
+		int nFilas;
 		try {
 			// Empiezo por la hoja 0 para la manipulación | paso el nombre de la hoja como
 			// string
 			sheet = SpreadSheet.createFromFile(archivo).getSheet(0);
 
 			// El nº de cada fila y columna
-			int nColumnas = sheet.getColumnCount();
-			int nFilas = sheet.getRowCount();
+			nColumnas = sheet.getColumnCount();
+			nFilas = sheet.getRowCount();
 			contenidoOds += "Nº de FILAS y COLUMNAS" + "\n";
 			contenidoOds += "Filas : " + nFilas + "\n";
 			contenidoOds += "Columnas : " + nColumnas + "\n";

@@ -3,11 +3,11 @@ package modelo;
 import java.io.*;
 
 public class LeerTxt {
-
+	private static String contenido = "";
+	private static String ruta = ".//ficheros//Libros.txt";
+	
 	public static String leertxt() {
 
-		String contenido = "";
-		String ruta = ".\\ficheros\\Libros.txt";
 		try {
 			FileReader leerfic = new FileReader(ruta);
 			int valor = leerfic.read();

@@ -6,7 +6,7 @@ import modelo.ModeloUsers;
 
 public class ControladorUser {
 	
-	ModeloUsers modeloUsers;
+	private ModeloUsers modeloUsers;
 	
 	public boolean validarContrasena(String contrasena) {
 		modeloUsers = new ModeloUsers();

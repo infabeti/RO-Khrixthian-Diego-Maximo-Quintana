@@ -3,12 +3,13 @@ package modelo;
 import java.io.*;
 
 public class LeerHtml {
-
+	
+	private static String total = "";
+    private static String cadena;
+    private static String archivo;
+    private static FileReader f = null;
+    
 	public static String muestraContenido() {
-		String total = "";
-        String cadena;
-        String archivo;
-        FileReader f = null;
         
 		try {
 			archivo = "ficheros//Usuarios.html";

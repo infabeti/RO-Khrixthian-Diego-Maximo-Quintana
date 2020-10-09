@@ -16,24 +16,31 @@ import org.xml.sax.SAXException;
 public class LeerXml {
 
 	static DefaultListModel contenidotXml = new DefaultListModel();
-
+	private static String textoXml = "";
+	
 	// Lee el .xml y lo mete en peliculas
 	public static String LecturaXml() {
-		String textoXml = "";
+		DocumentBuilderFactory factory;
+		DocumentBuilder builder;
+		Document documento;
+		NodeList listaPelis;
+		Element archivo;
+		NodeList hijos;
+		
 		contenidotXml.clear();
 		try {
 			// Creo una instancia de DocumentBuilderFactory
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			factory = DocumentBuilderFactory.newInstance();
 			// Creo un documentBuilder
-			DocumentBuilder builder = factory.newDocumentBuilder();
+			builder = factory.newDocumentBuilder();
 
 			// Obtengo el documento, a partir del XML
-			Document documento = builder.parse(new File(".//ficheros//videoteca.xml"));
+			documento = builder.parse(new File(".//ficheros//videoteca.xml"));
 
 			// Cojo todas las etiquetas coche del documento
-			NodeList listaPelis = documento.getElementsByTagName("pelicula");
-			Element archivo = documento.getDocumentElement();
-			NodeList hijos = archivo.getChildNodes();
+			listaPelis = documento.getElementsByTagName("pelicula");
+			archivo = documento.getDocumentElement();
+			hijos = archivo.getChildNodes();
 			contenidotXml.addElement("Nodo raiz: " + archivo.getNodeName());
 			contenidotXml.addElement("Nodo hijo: " + hijos.item(1).getNodeName());
 			contenidotXml.addElement("");
