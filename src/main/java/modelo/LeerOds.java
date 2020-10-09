@@ -7,15 +7,13 @@ import org.jopendocument.dom.spreadsheet.MutableCell;
 import org.jopendocument.dom.spreadsheet.Sheet;
 import org.jopendocument.dom.spreadsheet.SpreadSheet;
 
-import controlador.ControladorGesHtml;
-
 public class LeerOds {
-	private static String contenidoOds = "";
-	private static Sheet sheet;
+	private String contenidoOds = "";
+	private Sheet sheet;
 	// Obtengo el documento, a partir del ODS
-	private static String Dir = ".//ficheros//Prestamos.ods";
-	private static File archivo = new File(Dir);
-	
+	private final String Dir = ".//ficheros//Prestamos.ods";
+	private final File archivo = new File(Dir);
+
 	public String LecturadOds() {
 		int nColumnas;
 		int nFilas;
@@ -27,7 +25,8 @@ public class LeerOds {
 			// El nº de cada fila y columna
 			nColumnas = sheet.getColumnCount();
 			nFilas = sheet.getRowCount();
-			contenidoOds += String.format("%s%s%s%d%s%s%d%s%s", "Nº de FILAS y COLUMNAS","\n","Filas : ",nFilas,"\n","Columnas : ",nColumnas,"\n","\n");
+			contenidoOds += String.format("%s%s%s%d%s%s%d%s%s", "Nº de FILAS y COLUMNAS", "\n", "Filas : ", nFilas,
+					"\n", "Columnas : ", nColumnas, "\n", "\n");
 
 			// Repitiendo por cada fila de la hoja seleccionada
 			MutableCell cell = null;

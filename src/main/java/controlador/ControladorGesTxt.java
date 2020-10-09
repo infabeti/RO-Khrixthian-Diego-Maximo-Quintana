@@ -3,9 +3,12 @@ package controlador;
 import modelo.LeerTxt;
 
 public class ControladorGesTxt {
+	private LeerTxt leerTxt;
 	
 	public String mostrarTxt() {
 
-		return LeerTxt.leertxt();
+		leerTxt = new LeerTxt();
+		
+		return leerTxt.leertxt();
 	}
 }

@@ -3,10 +3,11 @@ package controlador;
 import modelo.LeerHtml;
 
 public class ControladorGesHtml {
-	
+	private LeerHtml leerHtml;
+
 	public String mostrarHtml() {
-		
-		LeerHtml leerHtml = new LeerHtml();
+
+		leerHtml = new LeerHtml();
 
 		return leerHtml.muestraContenido();
 	}

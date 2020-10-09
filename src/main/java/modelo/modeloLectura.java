@@ -13,7 +13,7 @@ public class modeloLectura {
 	
 	public static String LecturaHtml() {
 	
-		String path = ".//ficheros//CDs.docx";
+		final String path = ".//ficheros//CDs.docx";
 		
 		try {
 			FileInputStream fps = new FileInputStream(path);

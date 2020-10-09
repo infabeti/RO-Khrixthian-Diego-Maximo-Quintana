@@ -16,9 +16,9 @@ import org.xml.sax.SAXException;
 public class LeerXml {
 
 	static DefaultListModel contenidotXml = new DefaultListModel();
-	private static String textoXml = "";
-	
+
 	// Lee el .xml y lo mete en peliculas
+	@SuppressWarnings("unchecked")
 	public static String LecturaXml() {
 		DocumentBuilderFactory factory;
 		DocumentBuilder builder;
@@ -27,7 +27,8 @@ public class LeerXml {
 		Element archivo;
 		NodeList hijos;
 		String elemento;
-		
+		String textoXml = "";
+
 		contenidotXml.clear();
 		try {
 			// Creo una instancia de DocumentBuilderFactory
@@ -42,7 +43,8 @@ public class LeerXml {
 			listaPelis = documento.getElementsByTagName("pelicula");
 			archivo = documento.getDocumentElement();
 			hijos = archivo.getChildNodes();
-			elemento = String.format("%s%s%s%s%s","Nodo raiz: ",archivo.getNodeName(),"Nodo hijo: ",hijos.item(1).getNodeName(),"");
+			elemento = String.format("%s%s%s%s%s", "Nodo raiz: ", archivo.getNodeName(), "Nodo hijo: ",
+					hijos.item(1).getNodeName(), "");
 			contenidotXml.addElement(elemento);
 
 			// Recorro las etiquetas
@@ -62,7 +64,7 @@ public class LeerXml {
 						// Compruebo si es un nodo
 						if (hijo.getNodeType() == Node.ELEMENT_NODE) {
 							// Muestro el contenido
-							contenidotXml.addElement(String.format("%s%s%s%s","Pelicula: ",hijo.getNodeName(),": ",hijo.getTextContent()));
+							contenidotXml.addElement(String.format("%s%s%s%s", "Pelicula: ", hijo.getNodeName(), ": ", hijo.getTextContent()));
 						}
 
 					}
@@ -70,11 +72,10 @@ public class LeerXml {
 				}
 
 			}
-			textoXml = "";
 			for (int i = 0; i < contenidotXml.size(); i++) {
 				textoXml += contenidotXml.get(i) + "\n";
 			}
-			
+
 		} catch (ParserConfigurationException | SAXException | IOException ex) {
 			System.out.println(ex.getMessage());
 		}
