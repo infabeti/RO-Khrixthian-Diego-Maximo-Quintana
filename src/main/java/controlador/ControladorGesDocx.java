@@ -3,11 +3,10 @@ package controlador;
 import modelo.LeerDocx;
 
 public class ControladorGesDocx {
-	private LeerDocx leerDocx;
-
+	
+	LeerDocx leerDocx = new LeerDocx();
+	
 	public String mostrarDocx() {
-
-		leerDocx = new LeerDocx();
 
 		return leerDocx.LecturaDocx();
 	}

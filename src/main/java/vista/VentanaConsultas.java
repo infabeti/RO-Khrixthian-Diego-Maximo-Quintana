@@ -8,42 +8,71 @@ import javax.swing.JButton;
 import javax.swing.JTextPane;
 
 import controlador.ControladorGesDocx;
+<<<<<<< HEAD:src/main/java/vista/VentanaConsultas.java
 import controlador.ControladorGesHtml;
 import controlador.ControladorGesOds;
 import controlador.ControladorGesOdt;
 import controlador.ControladorGesTxt;
 import controlador.ControladorGesXml;
+=======
+import controlador.GesEscHtml;
+import controlador.GesEscTxt;
+import controlador.GesHtml;
+import controlador.GesOds;
+import controlador.GesOdt;
+import controlador.GesTxt;
+import controlador.GesXml;
+import modelo.LeerHtml;
+>>>>>>> sprint2:Rreto1/src/main/java/vista/VentanaConsultas.java
 
 import javax.swing.JScrollPane;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+<<<<<<< HEAD:src/main/java/vista/VentanaConsultas.java
+=======
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.swing.Action;
+import javax.swing.DefaultListModel;
+>>>>>>> sprint2:Rreto1/src/main/java/vista/VentanaConsultas.java
 
 public class VentanaConsultas extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField campoLibros;
-	private JTextField campoCDs;
-	private JTextField campoPeliculas;
-	private JTextField campoUsuarios;
-	private JTextField campoTrabajadores;
-	private JTextField campoPrestamos;
+
 	private JLabel lblLibros;
 	private JLabel lblCDs;
 	private JLabel lblPeliculas;
 	private JLabel lblUsuarios;
 	private JLabel lblTrabajadores;
 	private JLabel lblPrestamos;
-	private JButton btnLibros;
-	private JButton btnCDs;
-	private JButton btnPelis;
-	private JButton btnUsuarios;
-	private JButton btnTrabajadores;
-	private JButton btnPrestamos;
+
+	private JButton btnLibrosLEER;
+	private JButton btnCDsLEER;
+	private JButton btnPelisLEER;
+	private JButton btnUsuariosLEER;
+	private JButton btnTrabajadoresLEER;
+	private JButton btnPrestamosLEER;
+
+	private JButton btnLibrosESCRIBIR;
+	private JButton btnCDsESCRIBIR;
+	private JButton btnPelisESCRIBIR;
+	private JButton btnUsuariosESCRIBIR;
+	private JButton btnTrabajadoresESCRIBIR;
+	private JButton btnPrestamosESCRIBIR;
+
 	private JScrollPane scrollPane;
 
+<<<<<<< HEAD:src/main/java/vista/VentanaConsultas.java
 	private JTextPane textPane = new JTextPane();
+=======
+	public static JTextPane textPane = new JTextPane();
+>>>>>>> sprint2:Rreto1/src/main/java/vista/VentanaConsultas.java
 
 	// Crea la ventana
 	public VentanaConsultas() {
@@ -60,110 +89,146 @@ public class VentanaConsultas extends JFrame {
 		lblLibros.setBounds(20, 48, 48, 14);
 		contentPane.add(lblLibros);
 
-		campoLibros = new JTextField();
-		campoLibros.setBounds(86, 45, 153, 20);
-		contentPane.add(campoLibros);
-		campoLibros.setColumns(10);
-
 		lblCDs = new JLabel("CDs");
 		lblCDs.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblCDs.setBounds(20, 98, 48, 14);
 		contentPane.add(lblCDs);
-
-		campoCDs = new JTextField();
-		campoCDs.setColumns(10);
-		campoCDs.setBounds(86, 95, 153, 20);
-		contentPane.add(campoCDs);
 
 		lblPeliculas = new JLabel("Peliculas");
 		lblPeliculas.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblPeliculas.setBounds(20, 148, 48, 14);
 		contentPane.add(lblPeliculas);
 
-		campoPeliculas = new JTextField();
-		campoPeliculas.setColumns(10);
-		campoPeliculas.setBounds(86, 145, 153, 20);
-		contentPane.add(campoPeliculas);
-
 		lblUsuarios = new JLabel("Usuarios");
 		lblUsuarios.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblUsuarios.setBounds(20, 198, 48, 14);
 		contentPane.add(lblUsuarios);
-
-		campoUsuarios = new JTextField();
-		campoUsuarios.setColumns(10);
-		campoUsuarios.setBounds(86, 195, 153, 20);
-		contentPane.add(campoUsuarios);
 
 		lblTrabajadores = new JLabel("Trabajadores");
 		lblTrabajadores.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblTrabajadores.setBounds(20, 248, 71, 14);
 		contentPane.add(lblTrabajadores);
 
-		campoTrabajadores = new JTextField();
-		campoTrabajadores.setColumns(10);
-		campoTrabajadores.setBounds(86, 245, 153, 20);
-		contentPane.add(campoTrabajadores);
-
 		lblPrestamos = new JLabel("Prestamos");
 		lblPrestamos.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblPrestamos.setBounds(20, 298, 68, 14);
 		contentPane.add(lblPrestamos);
 
-		campoPrestamos = new JTextField();
-		campoPrestamos.setColumns(10);
-		campoPrestamos.setBounds(86, 295, 153, 20);
-		contentPane.add(campoPrestamos);
+		// Botones LEER
+		btnLibrosLEER = new JButton("Leer");
+		btnLibrosLEER.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnLibrosLEER.setBounds(90, 44, 71, 25);
+		contentPane.add(btnLibrosLEER);
 
-		// Botones
-		btnLibros = new JButton("Acceder");
-		btnLibros.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnLibros.setBounds(260, 44, 71, 23);
-		contentPane.add(btnLibros);
+		btnCDsLEER = new JButton("Leer");
+		btnCDsLEER.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnCDsLEER.setBounds(90, 94, 71, 25);
+		contentPane.add(btnCDsLEER);
 
-		btnCDs = new JButton("Acceder");
-		btnCDs.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnCDs.setBounds(260, 94, 71, 23);
-		contentPane.add(btnCDs);
+		btnPelisLEER = new JButton("Leer");
+		btnPelisLEER.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnPelisLEER.setBounds(90, 144, 71, 25);
+		contentPane.add(btnPelisLEER);
 
-		btnPelis = new JButton("Acceder");
-		btnPelis.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnPelis.setBounds(260, 144, 71, 23);
-		contentPane.add(btnPelis);
+		btnUsuariosLEER = new JButton("Leer");
+		btnUsuariosLEER.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnUsuariosLEER.setBounds(90, 194, 71, 25);
+		contentPane.add(btnUsuariosLEER);
 
-		btnUsuarios = new JButton("Acceder");
-		btnUsuarios.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnUsuarios.setBounds(260, 194, 71, 23);
-		contentPane.add(btnUsuarios);
+		btnTrabajadoresLEER = new JButton("Leer");
+		btnTrabajadoresLEER.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnTrabajadoresLEER.setBounds(90, 244, 71, 25);
+		contentPane.add(btnTrabajadoresLEER);
 
-		btnTrabajadores = new JButton("Acceder");
-		btnTrabajadores.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnTrabajadores.setBounds(260, 244, 71, 23);
-		contentPane.add(btnTrabajadores);
+		btnPrestamosLEER = new JButton("Leer");
+		btnPrestamosLEER.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnPrestamosLEER.setBounds(90, 294, 71, 25);
+		contentPane.add(btnPrestamosLEER);
 
-		btnPrestamos = new JButton("Acceder");
-		btnPrestamos.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnPrestamos.setBounds(260, 294, 71, 23);
-		contentPane.add(btnPrestamos);
+		// ----------------------------------------
+		// Botones ESCRIBIR
+		btnLibrosESCRIBIR = new JButton("Escribir");
+		btnLibrosESCRIBIR.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnLibrosESCRIBIR.setBounds(171, 44, 71, 25);
+		contentPane.add(btnLibrosESCRIBIR);
+
+		btnCDsESCRIBIR = new JButton("Escribir");
+		btnCDsESCRIBIR.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnCDsESCRIBIR.setBounds(171, 94, 71, 25);
+		contentPane.add(btnCDsESCRIBIR);
+
+		btnPelisESCRIBIR = new JButton("Escribir");
+		btnPelisESCRIBIR.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnPelisESCRIBIR.setBounds(171, 144, 71, 25);
+		contentPane.add(btnPelisESCRIBIR);
+
+		btnUsuariosESCRIBIR = new JButton("Escribir");
+		btnUsuariosESCRIBIR.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnUsuariosESCRIBIR.setBounds(171, 194, 71, 25);
+		contentPane.add(btnUsuariosESCRIBIR);
+
+		btnTrabajadoresESCRIBIR = new JButton("Escribir");
+		btnTrabajadoresESCRIBIR.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnTrabajadoresESCRIBIR.setBounds(171, 244, 71, 25);
+		contentPane.add(btnTrabajadoresESCRIBIR);
+
+		btnPrestamosESCRIBIR = new JButton("Escribir");
+		btnPrestamosESCRIBIR.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnPrestamosESCRIBIR.setBounds(171, 294, 71, 25);
+		contentPane.add(btnPrestamosESCRIBIR);
 
 		// Area de texto
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(365, 45, 600, 810);
+		scrollPane.setBounds(300, 45, 650, 810);
 		contentPane.add(scrollPane);
 
 		scrollPane.setViewportView(textPane);
 		textPane.setContentType("text");
+		textPane.setEditable(true);
 
-		// Acciones de los botones
+		// Acciones de los botones LEER
 
 		// Botón Libros (.txt)
-		btnLibros.addActionListener(new ActionListener() {
+		btnLibrosLEER.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesTxt infoTxt = new ControladorGesTxt();
 
 				String textoTxt = infoTxt.mostrarTxt();
 				textPane.setText(textoTxt);
+			}
+
+		});
+		
+		
+		// Botón Cds (.docx)
+		btnCDsLEER.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ControladorGesDocx infoDocx = new ControladorGesDocx();
+
+				String textoDocx = infoDocx.mostrarDocx();
+				textPane.setText(textoDocx);
+			}
+
+		});
+
+		// Escribir Nuevos Libros
+		btnLibrosESCRIBIR.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GesEscTxt aux = new GesEscTxt();
+				String aux2 = aux.gesEscTxt();
+
+				try {
+					FileWriter fstream = new FileWriter(".\\ficheros\\Libros.txt");
+					BufferedWriter out = new BufferedWriter(fstream);
+
+					out.write(aux2);
+					out.close();
+				} catch (IOException ex) {
+					System.out.println("Error: " + ex.getMessage());
+				}
 			}
 
 		});
@@ -181,7 +246,7 @@ public class VentanaConsultas extends JFrame {
 		});
 
 		// Botón Peliculas (.xml)
-		btnPelis.addActionListener(new ActionListener() {
+		btnPelisLEER.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesXml infoXml = new ControladorGesXml();
@@ -193,7 +258,7 @@ public class VentanaConsultas extends JFrame {
 		});
 
 		// Botón Usuarios (.html)
-		btnUsuarios.addActionListener(new ActionListener() {
+		btnUsuariosLEER.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesHtml infoHtml = new ControladorGesHtml();
@@ -204,8 +269,28 @@ public class VentanaConsultas extends JFrame {
 
 		});
 
+		//Escribir nuevos usuarios
+		btnUsuariosESCRIBIR.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GesEscHtml aux = new GesEscHtml();
+				String aux2 = aux.gesEscHtml();				
+				
+			    try {
+			        FileWriter fstream = new FileWriter(".\\ficheros\\Usuarios.html");
+			        BufferedWriter out = new BufferedWriter(fstream);
+			        
+			        out.write( aux2);
+			        out.close();
+			    } catch (IOException ex) {
+			        System.out.println("Error: "+ex.getMessage());   
+			    }
+			} 
+
+		});
+
 		// Botón Trabajadores (.odt)
-		btnTrabajadores.addActionListener(new ActionListener() {
+		btnTrabajadoresLEER.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesOdt infoOdt = new ControladorGesOdt();
@@ -214,10 +299,10 @@ public class VentanaConsultas extends JFrame {
 				textPane.setText(contenidoOdt);
 			}
 
-		});
+		});		
 
 		// Botón Prestamos (.ods)
-		btnPrestamos.addActionListener(new ActionListener() {
+		btnPrestamosLEER.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesOds infoOds = new ControladorGesOds();
