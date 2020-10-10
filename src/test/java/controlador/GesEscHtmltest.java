@@ -21,7 +21,7 @@ public class GesEscHtmltest {
 		resultado = LeerHtml.muestraContenido();
 		resultadoesperado =GesEscHtml.gesEscHtml();
 		
-		assertEquals(resultado, resultadoesperado);
+		assertEquals(resultado, resultadoesperado); 
 		
 	} 
 }

@@ -10,9 +10,9 @@ public class LeerHtml {
 	private static FileReader f = null;
 
 	public static String muestraContenido() {
-
+		total ="";
 		try {
-			archivo = "ficheros//Usuarios.html";
+			archivo = ".//ficheros//Usuarios.html"; 
 			f = new FileReader(archivo);
 		} catch (FileNotFoundException e) {
 			System.out.println("No se ha podido encontrar el archivo. ERROR: " + e.toString());
@@ -33,7 +33,7 @@ public class LeerHtml {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+	
 		return total;
 	}
 
