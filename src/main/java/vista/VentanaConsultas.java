@@ -194,7 +194,7 @@ public class VentanaConsultas extends JFrame {
 				String aux2 = aux.gesEscTxt();
 
 				try {
-					FileWriter fstream = new FileWriter(".\\ficheros\\Libros.txt");
+					FileWriter fstream = new FileWriter(".//ficheros//Libros.txt");
 					BufferedWriter out = new BufferedWriter(fstream);
 
 					out.write(aux2);
@@ -250,7 +250,7 @@ public class VentanaConsultas extends JFrame {
 				String aux2 = aux.gesEscHtml();				
 				
 			    try {
-			        FileWriter fstream = new FileWriter(".\\ficheros\\Usuarios.html");
+			        FileWriter fstream = new FileWriter(".//ficheros//Usuarios.html");
 			        BufferedWriter out = new BufferedWriter(fstream);
 			        
 			        out.write( aux2);
