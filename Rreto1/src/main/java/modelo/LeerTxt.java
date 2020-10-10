@@ -6,7 +6,7 @@ public class LeerTxt {
 
 	public static String leertxt() {
 
-		String contenido = " ";
+		String contenido = "  ";
 		String ruta = ".\\ficheros\\Libros.txt";
 		try {
 			FileReader leerfic = new FileReader(ruta);
