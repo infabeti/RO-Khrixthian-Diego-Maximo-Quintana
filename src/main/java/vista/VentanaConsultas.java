@@ -8,30 +8,20 @@ import javax.swing.JButton;
 import javax.swing.JTextPane;
 
 import controlador.ControladorGesDocx;
-<<<<<<< HEAD:src/main/java/vista/VentanaConsultas.java
 import controlador.ControladorGesHtml;
 import controlador.ControladorGesOds;
 import controlador.ControladorGesOdt;
 import controlador.ControladorGesTxt;
 import controlador.ControladorGesXml;
-=======
 import controlador.GesEscHtml;
 import controlador.GesEscTxt;
-import controlador.GesHtml;
-import controlador.GesOds;
-import controlador.GesOdt;
-import controlador.GesTxt;
-import controlador.GesXml;
 import modelo.LeerHtml;
->>>>>>> sprint2:Rreto1/src/main/java/vista/VentanaConsultas.java
 
 import javax.swing.JScrollPane;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-<<<<<<< HEAD:src/main/java/vista/VentanaConsultas.java
-=======
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -39,7 +29,7 @@ import java.util.ArrayList;
 
 import javax.swing.Action;
 import javax.swing.DefaultListModel;
->>>>>>> sprint2:Rreto1/src/main/java/vista/VentanaConsultas.java
+
 
 public class VentanaConsultas extends JFrame {
 
@@ -68,11 +58,7 @@ public class VentanaConsultas extends JFrame {
 
 	private JScrollPane scrollPane;
 
-<<<<<<< HEAD:src/main/java/vista/VentanaConsultas.java
-	private JTextPane textPane = new JTextPane();
-=======
 	public static JTextPane textPane = new JTextPane();
->>>>>>> sprint2:Rreto1/src/main/java/vista/VentanaConsultas.java
 
 	// Crea la ventana
 	public VentanaConsultas() {
@@ -198,21 +184,8 @@ public class VentanaConsultas extends JFrame {
 				textPane.setText(textoTxt);
 			}
 
-		});
+		});		
 		
-		
-		// Botón Cds (.docx)
-		btnCDsLEER.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				ControladorGesDocx infoDocx = new ControladorGesDocx();
-
-				String textoDocx = infoDocx.mostrarDocx();
-				textPane.setText(textoDocx);
-			}
-
-		});
-
 		// Escribir Nuevos Libros
 		btnLibrosESCRIBIR.addActionListener(new ActionListener() {
 			@Override
@@ -234,7 +207,7 @@ public class VentanaConsultas extends JFrame {
 		});
 
 		// Botón CDs (.docx)
-		btnCDs.addActionListener(new ActionListener() {
+		btnCDsLEER.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesDocx infoDocx = new ControladorGesDocx();
@@ -262,7 +235,7 @@ public class VentanaConsultas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesHtml infoHtml = new ControladorGesHtml();
-
+				
 				String textoAMostrar = infoHtml.mostrarHtml();
 				textPane.setText(textoAMostrar);
 			}
