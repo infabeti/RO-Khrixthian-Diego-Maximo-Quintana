@@ -5,8 +5,8 @@ import modelo.LeerOdt;
 
 public class GesEscTxt {
 
-	public String gesEscTxt() {
+	public static String gesEscTxt() {
 
-		return AgregarAlTxt.agregar();
+		return AgregarAlTxt.agregar(); 
 	}
 }
