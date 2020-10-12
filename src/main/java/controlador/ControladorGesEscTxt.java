@@ -5,11 +5,12 @@ import vista.VentanaConsultas;
 
 public class ControladorGesEscTxt {
 	private AgregarAlTxt agregarTxt = new AgregarAlTxt();
-
+	private VentanaConsultas ventana = new VentanaConsultas();
+	private String testoTxt;
+	
 	public void gesEscTxt() {
 
-		AgregarAlTxt aux = new AgregarAlTxt();
-		String testoTxt = VentanaConsultas.textPane.getText();
-		aux.agregar(testoTxt);
+		testoTxt = ventana.textPane.getText();
+		agregarTxt.agregar(testoTxt);
 	}
 }

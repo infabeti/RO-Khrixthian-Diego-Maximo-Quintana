@@ -13,21 +13,14 @@ import controlador.ControladorGesOds;
 import controlador.ControladorGesOdt;
 import controlador.ControladorGesTxt;
 import controlador.ControladorGesXml;
-import controlador.ControladorGesEscHtml;
-import controlador.ControladorGesEscTxt;
-import modelo.AgregarAlDocx;
 import modelo.AgregarAlHtml;
 import modelo.AgregarAlTxt;
-import modelo.ControlExcepciones;
 
 import javax.swing.JScrollPane;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 
 
 public class VentanaConsultas extends JFrame {
@@ -57,7 +50,7 @@ public class VentanaConsultas extends JFrame {
 
 	private JScrollPane scrollPane;
 
-	public static JTextPane textPane = new JTextPane();
+	public JTextPane textPane = new JTextPane();
 
 	// Crea la ventana
 	public VentanaConsultas() {

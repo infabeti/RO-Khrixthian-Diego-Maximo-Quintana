@@ -4,11 +4,12 @@ import modelo.AgregarAlHtml;
 import vista.VentanaConsultas;
 
 public class ControladorGesEscHtml {
-
+	private AgregarAlHtml aux = new AgregarAlHtml();
+	private VentanaConsultas ventana = new VentanaConsultas();
+	private String textoHtml;
 	public void gesEscHtml() {
 
-		AgregarAlHtml aux = new AgregarAlHtml();
-		String textoHtml = VentanaConsultas.textPane.getText();
+		textoHtml = ventana.textPane.getText();
 		aux.agregar(textoHtml); 
 	}
 }
