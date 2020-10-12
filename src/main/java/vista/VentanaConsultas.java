@@ -17,6 +17,7 @@ import controlador.ControladorGesEscHtml;
 import controlador.ControladorGesEscTxt;
 import modelo.LeerHtml;
 import modelo.AgregarAlDocx;
+import modelo.ControlExcepciones;
 
 import javax.swing.JScrollPane;
 
@@ -201,7 +202,7 @@ public class VentanaConsultas extends JFrame {
 					out.write(aux2);
 					out.close();
 				} catch (IOException ex) {
-					System.out.println("Error: " + ex.getMessage());
+					new ControlExcepciones("Excepción de archivo no encontrado" + ex.getMessage());
 				}
 			}
 
@@ -270,7 +271,7 @@ public class VentanaConsultas extends JFrame {
 			        out.write( aux2);
 			        out.close();
 			    } catch (IOException ex) {
-			        System.out.println("Error: "+ex.getMessage());   
+					new ControlExcepciones("Excepción de archivo no encontrado" + ex.getMessage());
 			    }
 			} 
 
