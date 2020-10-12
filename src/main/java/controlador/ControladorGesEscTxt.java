@@ -10,7 +10,7 @@ public class ControladorGesEscTxt {
 	
 	public void gesEscTxt() {
 
-		testoTxt = ventana.textPane.getText();
-		agregarTxt.agregar(testoTxt);
+		testoTxt = ventana.textPane.getText(); 
+		agregarTxt.agregar(testoTxt); 
 	}
 }

@@ -16,7 +16,7 @@ public class LeerDocx {
 		String path = ".//ficheros//CDs.docx";
 		
 		try {
-			FileInputStream fps = new FileInputStream(path);
+			FileInputStream fps = new FileInputStream(path); 
 			XWPFDocument docu = new XWPFDocument(fps);
 			
 			List<XWPFParagraph> data = docu.getParagraphs();
