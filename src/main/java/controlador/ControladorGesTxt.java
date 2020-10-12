@@ -9,6 +9,6 @@ public class ControladorGesTxt {
 
 		leerTxt = new LeerTxt();
 		
-		return leerTxt.leertxt();
+		return leerTxt.leertxt(); 
 	}
 }

@@ -9,10 +9,10 @@ public class LeerHtml {
 	private static String archivo;
 	private static FileReader f = null;
 
-	public String muestraContenido() {
-
+	public static String muestraContenido() {
+		total ="";
 		try {
-			archivo = "ficheros//Usuarios.html";
+			archivo = ".//ficheros//Usuarios.html"; 
 			f = new FileReader(archivo);
 		} catch (FileNotFoundException e) {
 			new ControlExcepciones("Excepción de archivo no encontrado" + e.getMessage());
@@ -36,7 +36,7 @@ public class LeerHtml {
 			new ControlExcepciones("Excepción de Entrada/Salida" + e.getMessage());
 			System.out.println("Excepción de Entrada/Salida" + e.getMessage());
 		}
-
+	
 		return total;
 	}
 

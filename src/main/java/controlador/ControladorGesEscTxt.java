@@ -1,12 +1,12 @@
 package controlador;
 
 import modelo.AgregarAlTxt;
-import modelo.LeerOdt;
 
 public class ControladorGesEscTxt {
+	private AgregarAlTxt agregarTxt = new AgregarAlTxt();
 
 	public String gesEscTxt() {
 
-		return AgregarAlTxt.agregar();
+		return agregarTxt.agregar();
 	}
 }
