@@ -3,11 +3,10 @@ package modelo;
 import java.io.*;
 
 public class LeerTxt {
-	private String contenido = "";
+	private String contenido = "  ";
 	
-	public static String leertxt() {
+	public String leertxt() {
 
-		String contenido = "  ";
 		String ruta = ".\\ficheros\\Libros.txt";
 		try {
 			FileReader leerfic = new FileReader(ruta);
@@ -19,7 +18,8 @@ public class LeerTxt {
 			leerfic.close();
 
 		} catch (Exception e) {
-			System.out.println("Error E/S");  
+			new ControlExcepciones("Excepción de Entrada/Salida" + e.getMessage());
+			System.out.println("Excepción de Entrada/Salida" + e.getMessage());
 		}
 
 		return contenido;

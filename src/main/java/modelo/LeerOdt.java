@@ -17,7 +17,8 @@ public class LeerOdt {
 			// Cojo el contenido del documento
 			contenidoOdt = TextDocument.createFromFile(archivo).getCharacterContent(true);    
 		} catch (IOException e) {
-			e.printStackTrace();
+			new ControlExcepciones("Excepción de Entrada/Salida" + e.getMessage());
+			System.out.println("Excepción de Entrada/Salida" + e.getMessage());
 		}
 
 		return contenidoOdt;

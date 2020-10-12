@@ -45,7 +45,8 @@ public class LeerOds {
 			}
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			new ControlExcepciones("Excepción de Entrada/Salida" + e.getMessage());
+			System.out.println("Excepción de Entrada/Salida" + e.getMessage());
 		}
 
 		// Elimino espacios repetidos (ascii 32)

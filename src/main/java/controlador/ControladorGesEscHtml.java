@@ -2,7 +2,7 @@ package controlador;
 
 import modelo.AgregarAlHtml;
 
-public class GesEscHtml {
+public class ControladorGesEscHtml {
 
 	public static String gesEscHtml() {
 

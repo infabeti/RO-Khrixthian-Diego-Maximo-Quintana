@@ -8,7 +8,6 @@ import java.util.List;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
-
 public class LeerDocx {
 	
 	public String LecturaDocx() {
@@ -29,11 +28,13 @@ public class LeerDocx {
 			
 		}
 		catch(FileNotFoundException ex) {
+			new ControlExcepciones("Excepción de archivo no encontrado" + ex.getMessage());
 			System.out.print("Excepción de archivo no encontrado" + ex.getMessage());
 		}
 		
 		catch(IOException ex1) {
-			System.out.print("Excepción de archivo no encontrado" + ex1.getMessage());
+			new ControlExcepciones("Excepción de Entrada/Salida" + ex1.getMessage());
+			System.out.print("Excepción de Entrada/Salida" + ex1.getMessage());
 		}
 		
 		return textoHtml;

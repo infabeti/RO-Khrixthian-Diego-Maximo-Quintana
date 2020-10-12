@@ -3,7 +3,7 @@ package controlador;
 import modelo.AgregarAlTxt;
 import modelo.LeerOdt;
 
-public class GesEscTxt {
+public class ControladorGesEscTxt {
 
 	public String gesEscTxt() {
 

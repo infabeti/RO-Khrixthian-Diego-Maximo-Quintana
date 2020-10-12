@@ -13,8 +13,8 @@ import controlador.ControladorGesOds;
 import controlador.ControladorGesOdt;
 import controlador.ControladorGesTxt;
 import controlador.ControladorGesXml;
-import controlador.GesEscHtml;
-import controlador.GesEscTxt;
+import controlador.ControladorGesEscHtml;
+import controlador.ControladorGesEscTxt;
 import modelo.LeerHtml;
 
 import javax.swing.JScrollPane;
@@ -190,7 +190,7 @@ public class VentanaConsultas extends JFrame {
 		btnLibrosESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GesEscTxt aux = new GesEscTxt();
+				ControladorGesEscTxt aux = new ControladorGesEscTxt();
 				String aux2 = aux.gesEscTxt();
 
 				try {
@@ -246,7 +246,7 @@ public class VentanaConsultas extends JFrame {
 		btnUsuariosESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GesEscHtml aux = new GesEscHtml();
+				ControladorGesEscHtml aux = new ControladorGesEscHtml();
 				String aux2 = aux.gesEscHtml();				
 				
 			    try {

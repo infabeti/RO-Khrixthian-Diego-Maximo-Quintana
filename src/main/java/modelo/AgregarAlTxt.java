@@ -1,7 +1,5 @@
 package modelo;
 
-import java.io.*;
-
 import vista.VentanaConsultas;
 
 public class AgregarAlTxt {
