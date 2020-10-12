@@ -16,13 +16,12 @@ public class AgregarAlDocx {
 		String path = ".//ficheros//CDs.docx";
 		
 		try {
-			FileInputStream fps = new FileInputStream(path);
-			XWPFDocument docu = new XWPFDocument(fps);
+			XWPFDocument docu = new XWPFDocument();
 			
 			
 			XWPFParagraph paragraph = docu.createParagraph();
 			XWPFRun run = paragraph.createRun();
-
+			
 			run.setText(textoNuevo);
 			run.setSubscript(VerticalAlign.SUBSCRIPT);
 
@@ -34,13 +33,8 @@ public class AgregarAlDocx {
 			e.printStackTrace();
 			} catch (IOException e) {
 			e.printStackTrace();
-			}
+			} 
 			
-//			List<XWPFParagraph> data = docu.getParagraphs();
-//	
-//			for(XWPFParagraph p : data) {
-//				textoDoc += p.getText() + "\n";
-//			}
 			docu.close();
 			
 		}
