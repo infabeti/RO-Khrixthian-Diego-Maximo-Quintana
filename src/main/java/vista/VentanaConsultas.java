@@ -3,11 +3,11 @@ package vista;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
 
 import controlador.ControladorGesDocx;
+import controlador.ControladorGesEscDocx;
 import controlador.ControladorGesHtml;
 import controlador.ControladorGesOds;
 import controlador.ControladorGesOdt;
@@ -15,7 +15,6 @@ import controlador.ControladorGesTxt;
 import controlador.ControladorGesXml;
 import controlador.ControladorGesEscHtml;
 import controlador.ControladorGesEscTxt;
-import modelo.LeerHtml;
 import modelo.AgregarAlDocx;
 import modelo.ControlExcepciones;
 
@@ -27,10 +26,6 @@ import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.swing.Action;
-import javax.swing.DefaultListModel;
 
 
 public class VentanaConsultas extends JFrame {
@@ -220,18 +215,17 @@ public class VentanaConsultas extends JFrame {
 
 		});
 
-		//----------------------------------------------------------
 		// Botón CDs (.docx)
 				btnCDsESCRIBIR.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						AgregarAlDocx escritor = new AgregarAlDocx();
+						
+						ControladorGesEscDocx escritor = new ControladorGesEscDocx();
 						String textoDocx = textPane.getText();
-						escritor.EscribirDocx(textoDocx);
+						escritor.recogerDocx(textoDocx);
 					}
 
 				});
-		//----------------------------------------------------------
 
 		// Botón Peliculas (.xml)
 		btnPelisLEER.addActionListener(new ActionListener() {
