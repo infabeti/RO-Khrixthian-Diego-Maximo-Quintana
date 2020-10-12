@@ -2,16 +2,16 @@ package modelo;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.List;
 
+import org.apache.poi.xwpf.usermodel.VerticalAlign;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 
-public class LeerDocx {
-	
-	public String LecturaDocx() {
-	String textoDoc = "";
+public class AgregarAlDocx {
+	public void EscribirDocx(String textoNuevo) {
 	
 		String path = ".//ficheros//CDs.docx";
 		
@@ -19,11 +19,28 @@ public class LeerDocx {
 			FileInputStream fps = new FileInputStream(path);
 			XWPFDocument docu = new XWPFDocument(fps);
 			
-			List<XWPFParagraph> data = docu.getParagraphs();
-	
-			for(XWPFParagraph p : data) {
-				textoDoc += p.getText() + "\n";
+			
+			XWPFParagraph paragraph = docu.createParagraph();
+			XWPFRun run = paragraph.createRun();
+
+			run.setText(textoNuevo);
+			run.setSubscript(VerticalAlign.SUBSCRIPT);
+
+			try {
+			FileOutputStream fos = new FileOutputStream(".//ficheros//CDs.docx");
+			docu.write(fos);
+			fos.close();
+			} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			} catch (IOException e) {
+			e.printStackTrace();
 			}
+			
+//			List<XWPFParagraph> data = docu.getParagraphs();
+//	
+//			for(XWPFParagraph p : data) {
+//				textoDoc += p.getText() + "\n";
+//			}
 			docu.close();
 			
 		}
@@ -36,9 +53,6 @@ public class LeerDocx {
 			new ControlExcepciones("Excepción de Entrada/Salida" + ex1.getMessage());
 			System.out.print("Excepción de Entrada/Salida" + ex1.getMessage());
 		}
-		
-		return textoDoc;
 	
 	}
-
 }

@@ -16,6 +16,7 @@ import controlador.ControladorGesXml;
 import controlador.ControladorGesEscHtml;
 import controlador.ControladorGesEscTxt;
 import modelo.LeerHtml;
+import modelo.AgregarAlDocx;
 
 import javax.swing.JScrollPane;
 
@@ -217,6 +218,19 @@ public class VentanaConsultas extends JFrame {
 			}
 
 		});
+
+		//----------------------------------------------------------
+		// Botón CDs (.docx)
+				btnCDsESCRIBIR.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						AgregarAlDocx escritor = new AgregarAlDocx();
+						String textoDocx = textPane.getText();
+						escritor.EscribirDocx(textoDocx);
+					}
+
+				});
+		//----------------------------------------------------------
 
 		// Botón Peliculas (.xml)
 		btnPelisLEER.addActionListener(new ActionListener() {
