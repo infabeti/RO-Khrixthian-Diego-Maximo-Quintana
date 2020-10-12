@@ -16,6 +16,8 @@ import controlador.ControladorGesXml;
 import controlador.ControladorGesEscHtml;
 import controlador.ControladorGesEscTxt;
 import modelo.AgregarAlDocx;
+import modelo.AgregarAlHtml;
+import modelo.AgregarAlTxt;
 import modelo.ControlExcepciones;
 
 import javax.swing.JScrollPane;
@@ -187,18 +189,10 @@ public class VentanaConsultas extends JFrame {
 		btnLibrosESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ControladorGesEscTxt aux = new ControladorGesEscTxt();
-				String aux2 = aux.gesEscTxt();
 
-				try {
-					FileWriter fstream = new FileWriter(".//ficheros//Libros.txt");
-					BufferedWriter out = new BufferedWriter(fstream);
-
-					out.write(aux2);
-					out.close();
-				} catch (IOException ex) {
-					new ControlExcepciones("Excepción de archivo no encontrado" + ex.getMessage());
-				}
+				AgregarAlTxt auxTxt = new AgregarAlTxt();
+				String textoTxt = textPane.getText();
+				auxTxt.agregar(textoTxt);
 			}
 
 		});
@@ -255,18 +249,10 @@ public class VentanaConsultas extends JFrame {
 		btnUsuariosESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ControladorGesEscHtml aux = new ControladorGesEscHtml();
-				String aux2 = aux.gesEscHtml();				
 				
-			    try {
-			        FileWriter fstream = new FileWriter(".//ficheros//Usuarios.html");
-			        BufferedWriter out = new BufferedWriter(fstream);
-			        
-			        out.write( aux2);
-			        out.close();
-			    } catch (IOException ex) {
-					new ControlExcepciones("Excepción de archivo no encontrado" + ex.getMessage());
-			    }
+				AgregarAlHtml aux = new AgregarAlHtml();
+				String textoHtml = textPane.getText();
+				aux.agregar(textoHtml);				
 			} 
 
 		});

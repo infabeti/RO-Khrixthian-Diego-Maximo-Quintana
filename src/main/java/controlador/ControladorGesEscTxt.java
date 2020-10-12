@@ -1,12 +1,15 @@
 package controlador;
 
 import modelo.AgregarAlTxt;
+import vista.VentanaConsultas;
 
 public class ControladorGesEscTxt {
 	private AgregarAlTxt agregarTxt = new AgregarAlTxt();
 
-	public String gesEscTxt() {
+	public void gesEscTxt() {
 
-		return agregarTxt.agregar();
+		AgregarAlTxt aux = new AgregarAlTxt();
+		String testoTxt = VentanaConsultas.textPane.getText();
+		aux.agregar(testoTxt);
 	}
 }
