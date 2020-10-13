@@ -9,11 +9,11 @@ import modelo.AgregarAlTxt;
 import modelo.LeerHtml;
 import modelo.LeerTxt;
 
-public class GesEscHtmltest {
+public class ControladorGesEscHtmltest {
 
-	String resultado;
-	String resultadoesperado;
-	AgregarAlHtml testEschtml = new AgregarAlHtml();
+	private String resultado;
+	private String resultadoesperado;
+	private AgregarAlHtml testEschtml = new AgregarAlHtml();
 	
 	@Test
 	public void test() {

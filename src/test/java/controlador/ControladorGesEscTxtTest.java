@@ -7,7 +7,7 @@ import org.junit.Test;
 import modelo.AgregarAlTxt;
 import modelo.LeerTxt;
 
-public class GesEscTxtTest {
+public class ControladorGesEscTxtTest {
 
 	private String resultado;
 	private String resultadoesperado;
