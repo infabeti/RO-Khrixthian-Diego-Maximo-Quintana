@@ -13,7 +13,7 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
 public class AgregarAlDocx {
 	public void EscribirDocx(String textoNuevo) {
 	
-		String path = ".//ficheros//CDs.docx";
+		final String path = ".//ficheros//CDs.docx";
 		
 		try {
 			XWPFDocument docu = new XWPFDocument();
