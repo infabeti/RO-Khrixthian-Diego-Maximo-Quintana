@@ -8,6 +8,7 @@ import javax.swing.JTextPane;
 
 import controlador.ControladorGesDocx;
 import controlador.ControladorGesEscDocx;
+import controlador.ControladorGesEscTxt;
 import controlador.ControladorGesHtml;
 import controlador.ControladorGesOds;
 import controlador.ControladorGesOdt;
@@ -181,9 +182,10 @@ public class VentanaConsultas extends JFrame {
 		btnLibrosESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AgregarAlTxt auxTxt = new AgregarAlTxt();
-				String textoTxt = textPane.getText();
-				auxTxt.agregar(textoTxt);
+				String testoTxt;
+				ControladorGesEscTxt auxTxt = new ControladorGesEscTxt();
+				testoTxt = textPane.getText();
+				auxTxt.gesEscTxt(testoTxt);
 			}
 
 		});
@@ -258,6 +260,7 @@ public class VentanaConsultas extends JFrame {
 		btnTrabajadoresESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				AgregarAlOdt aux = new AgregarAlOdt();
 				String textoOdt = textPane.getText();
 				aux.EscribirOdt(textoOdt);

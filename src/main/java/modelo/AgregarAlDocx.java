@@ -40,7 +40,7 @@ public class AgregarAlDocx {
 		}
 		catch(FileNotFoundException ex) {
 			new ControlExcepciones("Excepción de archivo no encontrado" + ex.getMessage());
-			System.out.print("Excepción de archivo no encontrado" + ex.getMessage());
+			System.out.print("Excepción de archivo no encontrado" + ex.getMessage()); 
 		}
 		
 		catch(IOException ex1) {
