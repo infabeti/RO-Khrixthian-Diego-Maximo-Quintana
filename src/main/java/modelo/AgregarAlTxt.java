@@ -6,12 +6,14 @@ import java.io.IOException;
 
 public class AgregarAlTxt {
 	
+	private FileWriter fstream;
+	private BufferedWriter out;
+	
 	public void agregar(String x){
 		
 		try {
-			
-			FileWriter fstream = new FileWriter(".//ficheros//Libros.txt");
-			BufferedWriter out = new BufferedWriter(fstream);
+			fstream = new FileWriter(".//ficheros//Libros.txt");
+			out = new BufferedWriter(fstream);
 
 			out.write(x);
 			out.close();

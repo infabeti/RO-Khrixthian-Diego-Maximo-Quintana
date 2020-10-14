@@ -7,8 +7,8 @@ import org.jopendocument.dom.text.TextDocument;
 
 public class AgregarAlOdt {
 
-	private static String Dir = ".//ficheros//trabajadores.odt";
-	private static File archivo = new File(Dir);
+	private String Dir = ".//ficheros//trabajadores.odt";
+	private File archivo = new File(Dir);
 	private TextDocument contenidoOdt;
 	 
 	public void EscribirOdt(String textoNuevo) {

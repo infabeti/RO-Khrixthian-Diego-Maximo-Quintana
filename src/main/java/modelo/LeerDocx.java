@@ -11,9 +11,9 @@ import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 public class LeerDocx {
 	
 	public String LecturaDocx() {
-	String textoDoc = "";
+		String textoDoc = "";
 	
-		String path = ".//ficheros//CDs.docx";
+		final String path = ".//ficheros//CDs.docx";
 		
 		try {
 			FileInputStream fps = new FileInputStream(path); 

@@ -9,7 +9,7 @@ public class LeerHtml {
 	private static String archivo;
 	private static FileReader f = null;
 
-	public static String muestraContenido() {
+	public String muestraContenido() {
 		total ="";
 		try {
 			archivo = ".//ficheros//Usuarios.html"; 

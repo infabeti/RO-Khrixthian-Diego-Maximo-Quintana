@@ -7,6 +7,7 @@ public class AgregarAlHtmltest {
 
 	private String resultado;
 	private String resultadoesperado;
+	private LeerHtml leerHtml = new LeerHtml();
 	
 	@Test
 	public void test() {
@@ -33,7 +34,7 @@ public class AgregarAlHtmltest {
 				"</body>" + (char) 10 + (char) 10 +
 				"</html>" + (char) 10;;
 		
-		resultadoesperado = LeerHtml.muestraContenido();
+		resultadoesperado = leerHtml.muestraContenido();
 		
 		assertEquals(resultado, resultadoesperado);
 		

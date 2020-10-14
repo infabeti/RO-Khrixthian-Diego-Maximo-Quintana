@@ -11,11 +11,12 @@ public class ControladorGesEscHtmltest {
 
 	private String resultado;
 	private String resultadoesperado;
+	private LeerHtml leerHtml = new LeerHtml();
 	
 	@Test
 	public void test() {
 
-		resultado = LeerHtml.muestraContenido();
+		resultado = leerHtml.muestraContenido();
 		resultadoesperado = "<html>" + (char) 10 +
 				"	<head>" + (char) 10 +
 				"		<p>USUARIOS</p>" + (char) 10 +
