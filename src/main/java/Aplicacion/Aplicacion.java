@@ -6,6 +6,6 @@ import vista.VentanaUser;
 public class Aplicacion {
 	public static void main(String[] args) {
 		new VentanaBienvenida();
-		new VentanaUser().setVisible(true);	
+		new VentanaUser().setVisible(true); 
 	}
 }

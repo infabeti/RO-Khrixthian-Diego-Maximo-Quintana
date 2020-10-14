@@ -3,10 +3,13 @@ package controlador;
 import modelo.LeerXml;
 
 public class ControladorGesXml {
-
+	private LeerXml leerXml;
+	
 	public String mostrarXml() {
-
-		return LeerXml.LecturaXml();
+		
+		leerXml = new LeerXml();
+		
+		return leerXml.LecturaXml();
 	}
 
 }

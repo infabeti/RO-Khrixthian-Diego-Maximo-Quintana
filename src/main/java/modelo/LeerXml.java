@@ -15,11 +15,11 @@ import org.xml.sax.SAXException;
 
 public class LeerXml {
 
-	static DefaultListModel contenidotXml = new DefaultListModel();
+	private DefaultListModel contenidotXml = new DefaultListModel();
 
 	// Lee el .xml y lo mete en peliculas
 	@SuppressWarnings("unchecked")
-	public static String LecturaXml() {
+	public String LecturaXml() {
 		DocumentBuilderFactory factory;
 		DocumentBuilder builder;
 		Document documento;
@@ -76,8 +76,15 @@ public class LeerXml {
 				textoXml += contenidotXml.get(i) + "\n";
 			}
 
-		} catch (ParserConfigurationException | SAXException | IOException ex) {
-			System.out.println(ex.getMessage());
+		} catch (ParserConfigurationException ex) {
+			new ControlExcepciones("Excepción: " + ex.getMessage());
+			System.out.println("Excepción: " + ex.getMessage());
+		}catch (SAXException ex) {
+			new ControlExcepciones("Excepción: " + ex.getMessage());
+			System.out.println("Excepción: " + ex.getMessage());
+		}catch (IOException ex) {
+			new ControlExcepciones("Excepción de Entrada/Salida" + ex.getMessage());
+			System.out.println("Excepción: " + ex.getMessage());
 		}
 
 		return textoXml;

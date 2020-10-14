@@ -8,35 +8,36 @@ import java.util.List;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
-
 public class LeerDocx {
 	
 	public String LecturaDocx() {
-	String textoHtml = "";
+		String textoDoc = "";
 	
-		String path = ".//ficheros//CDs.docx";
+		final String path = ".//ficheros//CDs.docx";
 		
 		try {
-			FileInputStream fps = new FileInputStream(path);
+			FileInputStream fps = new FileInputStream(path); 
 			XWPFDocument docu = new XWPFDocument(fps);
 			
 			List<XWPFParagraph> data = docu.getParagraphs();
 	
 			for(XWPFParagraph p : data) {
-				textoHtml += p.getText() + "\n";
+				textoDoc += p.getText() + "\n";
 			}
 			docu.close();
 			
 		}
 		catch(FileNotFoundException ex) {
+			new ControlExcepciones("Excepción de archivo no encontrado" + ex.getMessage());
 			System.out.print("Excepción de archivo no encontrado" + ex.getMessage());
 		}
 		
 		catch(IOException ex1) {
-			System.out.print("Excepción de archivo no encontrado" + ex1.getMessage());
+			new ControlExcepciones("Excepción de Entrada/Salida" + ex1.getMessage());
+			System.out.print("Excepción de Entrada/Salida" + ex1.getMessage());
 		}
 		
-		return textoHtml;
+		return textoDoc;
 	
 	}
 

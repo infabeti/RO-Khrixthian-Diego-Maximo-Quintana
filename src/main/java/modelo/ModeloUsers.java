@@ -13,7 +13,7 @@ public class ModeloUsers {
 		
 		regla = "^[a-zA-Z0-9]+$";
 		
-		patron = Pattern.compile(regla);
+		patron = Pattern.compile(regla); 
 		matcher = patron.matcher(texto);
 		
 		validez = matcher.matches();

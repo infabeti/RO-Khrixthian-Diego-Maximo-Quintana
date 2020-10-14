@@ -10,11 +10,12 @@ public class LeerHtml {
 	private static FileReader f = null;
 
 	public String muestraContenido() {
-
+		total ="";
 		try {
-			archivo = "ficheros//Usuarios.html";
+			archivo = ".//ficheros//Usuarios.html"; 
 			f = new FileReader(archivo);
 		} catch (FileNotFoundException e) {
+			new ControlExcepciones("Excepción de archivo no encontrado" + e.getMessage());
 			System.out.println("No se ha podido encontrar el archivo. ERROR: " + e.toString());
 		}
 
@@ -25,15 +26,17 @@ public class LeerHtml {
 				total += cadena + "\n";
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			new ControlExcepciones("Excepción de Entrada/Salida" + e.getMessage());
+			System.out.println("Excepción de Entrada/Salida" + e.getMessage());
 		}
 
 		try {
 			b.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			new ControlExcepciones("Excepción de Entrada/Salida" + e.getMessage());
+			System.out.println("Excepción de Entrada/Salida" + e.getMessage());
 		}
-
+	
 		return total;
 	}
 
