@@ -27,5 +27,8 @@
 	<classpathentry kind="lib" path="librerias/poi-ooxml-4.1.2.jar"/>
 	<classpathentry kind="lib" path="librerias/poi-ooxml-schemas-4.1.2.jar"/>
 	<classpathentry kind="lib" path="librerias/xmlbeans-3.1.0.jar"/>
+	<classpathentry kind="lib" path="librerias/byte-buddy-1.10.17.jar"/>
+	<classpathentry kind="lib" path="librerias/mockito-core-3.2.4.jar"/>
+	<classpathentry kind="lib" path="librerias/objenesis-tck-3.1.jar"/>
 	<classpathentry kind="output" path="bin/default"/>
 </classpath>
