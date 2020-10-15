@@ -1,15 +1,15 @@
 package controlador;
 
+import modelo.AgregarAlDocx;
 import modelo.AgregarAlHtml;
 import vista.VentanaConsultas;
 
 public class ControladorGesEscHtml {
-	private AgregarAlHtml aux = new AgregarAlHtml();
-	private VentanaConsultas ventana = new VentanaConsultas();
-	private String textoHtml;
-	public void gesEscHtml() {
+	
+	public void gesEscHtml(String textoDocx) {
 
-		textoHtml = ventana.textPane.getText();
-		aux.agregar(textoHtml); 
+		AgregarAlHtml escritor = new AgregarAlHtml();
+
+		 escritor.agregar(textoDocx); 
 	}
 }
