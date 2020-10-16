@@ -1,5 +1,7 @@
 package vista;
 
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextPane;
 
 import controlador.ControladorGesDocx;
@@ -21,6 +24,7 @@ import controlador.ControladorGesOds;
 import controlador.ControladorGesOdt;
 import controlador.ControladorGesTxt;
 import controlador.ControladorGesXml;
+import modelo.VariablesEstaticas;
 
 public class VentanaConsultas extends JFrame {
 
@@ -50,6 +54,8 @@ public class VentanaConsultas extends JFrame {
 	private JScrollPane scrollPane;
 
 	public JTextPane textPane = new JTextPane();
+	
+	private JTable tabla;
 
 	// Crea la ventana
 	public VentanaConsultas() {
@@ -270,9 +276,22 @@ public class VentanaConsultas extends JFrame {
 		btnPrestamosLEER.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				VariablesEstaticas ve = new VariablesEstaticas();
 				ControladorGesOds infoOds = new ControladorGesOds();
 				String contenidoOds = infoOds.mostrarOds();
 				textPane.setText(contenidoOds);
+				
+				JFrame ventana = new JFrame("Tablas");
+				ventana.setLayout(new FlowLayout());
+				ventana.setSize(700, 200);
+				
+				tabla = new JTable(VariablesEstaticas.MatrizAuxiliarString, VariablesEstaticas.cabezeraMatrizAuxiliar);
+				JScrollPane JS = new JScrollPane(tabla);
+				JS.setPreferredSize(new Dimension(400, 150));
+				ventana.add(JS);
+				
+				ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				ventana.setVisible(true);
 			}
 
 		});
