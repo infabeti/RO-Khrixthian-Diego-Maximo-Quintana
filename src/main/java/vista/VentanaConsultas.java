@@ -1,28 +1,27 @@
 package vista;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
 import controlador.ControladorGesDocx;
 import controlador.ControladorGesEscDocx;
+import controlador.ControladorGesEscHtml;
+import controlador.ControladorGesEscOdt;
 import controlador.ControladorGesEscTxt;
 import controlador.ControladorGesHtml;
 import controlador.ControladorGesOds;
 import controlador.ControladorGesOdt;
 import controlador.ControladorGesTxt;
 import controlador.ControladorGesXml;
-import modelo.AgregarAlHtml;
-import modelo.AgregarAlOdt;
 import modelo.AgregarAlTxt;
-
-import javax.swing.JScrollPane;
-
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class VentanaConsultas extends JFrame {
 
@@ -50,7 +49,7 @@ public class VentanaConsultas extends JFrame {
 	private JButton btnPrestamosESCRIBIR;
 
 	private JScrollPane scrollPane;
-	
+
 	public JTextPane textPane = new JTextPane();
 
 	// Crea la ventana
@@ -182,10 +181,11 @@ public class VentanaConsultas extends JFrame {
 		btnLibrosESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				AgregarAlTxt agregarTxt = new AgregarAlTxt();
 				String testoTxt;
-				ControladorGesEscTxt auxTxt = new ControladorGesEscTxt();
+				ControladorGesEscTxt auxTxt = new ControladorGesEscTxt(agregarTxt);
 				testoTxt = textPane.getText();
-				auxTxt.gesEscTxt(testoTxt);
+				auxTxt.gesEscTxt(testoTxt); 
 			}
 
 		});
@@ -234,13 +234,13 @@ public class VentanaConsultas extends JFrame {
 
 		});
 
-		// Escribir nuevos usuarios
+		// Escribir nuevos usuarios (.html)
 		btnUsuariosESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AgregarAlHtml aux = new AgregarAlHtml();
+				ControladorGesEscHtml escritor = new ControladorGesEscHtml();
 				String textoHtml = textPane.getText();
-				aux.agregar(textoHtml);
+				escritor.gesEscHtml(textoHtml);
 			}
 
 		});
@@ -250,20 +250,20 @@ public class VentanaConsultas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesOdt infoOdt = new ControladorGesOdt();
-				String contenidoOdt = infoOdt.mostrarOdt();
-				textPane.setText(contenidoOdt);
+				String textoOdt = infoOdt.mostrarOdt();
+				textPane.setText(textoOdt);
 			}
 
 		});
 
-		// Escribir nuevos usuarios
+		// Escribir nuevos usuarios (.odt)
 		btnTrabajadoresESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				AgregarAlOdt aux = new AgregarAlOdt();
+				ControladorGesEscOdt escritor = new ControladorGesEscOdt();
 				String textoOdt = textPane.getText();
-				aux.EscribirOdt(textoOdt);
+				System.out.println(textoOdt);
+				escritor.recogerOdt(textoOdt);
 			}
 
 		});

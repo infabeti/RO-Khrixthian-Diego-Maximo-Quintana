@@ -4,9 +4,14 @@ import modelo.AgregarAlDocx;
 
 public class ControladorGesEscDocx {
 	
-	public void recogerDocx(String textoDocx) {
-		AgregarAlDocx escritor = new AgregarAlDocx();
-
-		 escritor.EscribirDocx(textoDocx);
+	private AgregarAlDocx agregarAlDocx;
+	
+	public ControladorGesEscDocx(AgregarAlDocx agregarAlDocx) {
+		this.agregarAlDocx = agregarAlDocx;	
 	}
+	
+	public void gesEscDocx(String x) { 
+
+		agregarAlDocx.EscribirDocx(x);
+	} 
 }
