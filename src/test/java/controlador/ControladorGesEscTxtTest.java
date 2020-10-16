@@ -8,12 +8,13 @@ public class ControladorGesEscTxtTest {
 	
 	@Test
 	public void name() {
-		
-		AgregarAlTxt AgregarAlTxtMock = mock(AgregarAlTxt.class);
+		ControladorGesHtml aaa = new ControladorGesHtml();
+		String aux = aaa.mostrarHtml();
+		AgregarAlTxt agregarAlTxtMock = mock(AgregarAlTxt.class);
 
-		ControladorGesEscTxt controladorGesEscTxt = new ControladorGesEscTxt(AgregarAlTxtMock);
-		controladorGesEscTxt.gesEscTxt("Hola");
+		ControladorGesEscTxt controladorGesEscTxt = new ControladorGesEscTxt(agregarAlTxtMock);
+		controladorGesEscTxt.gesEscTxt(aux);
 		
-		verify(AgregarAlTxtMock, times(1)).agregar("hola");
+		verify(agregarAlTxtMock, times(1)).agregar(aux);
 }
 }

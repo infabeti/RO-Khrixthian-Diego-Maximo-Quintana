@@ -26,7 +26,7 @@ public class AgregarAlDocx {
 			run.setSubscript(VerticalAlign.SUBSCRIPT);
 
 			try {
-			FileOutputStream fos = new FileOutputStream(".//ficheros//CDs.docx");
+			FileOutputStream fos = new FileOutputStream(".//ficheros//CDs.docx"); 
 			docu.write(fos);
 			fos.close();
 			} catch (FileNotFoundException e) {

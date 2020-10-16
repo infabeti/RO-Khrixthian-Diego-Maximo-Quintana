@@ -12,7 +12,7 @@ public class ControladorUser {
 
 		control = modeloUsers.validarSoloAlfanumerico(contrasena);
 
-		return control;
+		return control; 
 
 	}
 

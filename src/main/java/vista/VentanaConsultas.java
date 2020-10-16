@@ -24,7 +24,9 @@ import controlador.ControladorGesOds;
 import controlador.ControladorGesOdt;
 import controlador.ControladorGesTxt;
 import controlador.ControladorGesXml;
-
+import modelo.AgregarAlDocx;
+import modelo.AgregarAlHtml;
+import modelo.AgregarAlOdt;
 import modelo.AgregarAlTxt;
 
 import modelo.VariablesEstaticas;
@@ -56,7 +58,7 @@ public class VentanaConsultas extends JFrame {
 
 	private JScrollPane scrollPane;
 
-	public JTextPane textPane = new JTextPane();
+	public JTextPane textPane = new JTextPane(); 
 	
 	private JTable tabla;
 
@@ -213,7 +215,8 @@ public class VentanaConsultas extends JFrame {
 		btnCDsESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ControladorGesEscDocx escritor = new ControladorGesEscDocx(null);
+				AgregarAlDocx agregarAlDocx = new AgregarAlDocx();// kreamos una instancia del modelo para pasarsela al controlador
+				ControladorGesEscDocx escritor = new ControladorGesEscDocx(agregarAlDocx);
 				String textoDocx = textPane.getText();
 				escritor.gesEscDocx(textoDocx);
 			}
@@ -246,7 +249,8 @@ public class VentanaConsultas extends JFrame {
 		btnUsuariosESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ControladorGesEscHtml escritor = new ControladorGesEscHtml();
+				AgregarAlHtml agregarAlHtml = new AgregarAlHtml();
+				ControladorGesEscHtml escritor = new ControladorGesEscHtml(agregarAlHtml);
 				String textoHtml = textPane.getText();
 				escritor.gesEscHtml(textoHtml);
 			}
@@ -268,10 +272,10 @@ public class VentanaConsultas extends JFrame {
 		btnTrabajadoresESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ControladorGesEscOdt escritor = new ControladorGesEscOdt();
+				AgregarAlOdt agregarAlOdt = new AgregarAlOdt();
+				ControladorGesEscOdt escritor = new ControladorGesEscOdt(agregarAlOdt);
 				String textoOdt = textPane.getText();
-				System.out.println(textoOdt);
-				escritor.recogerOdt(textoOdt);
+				escritor.gesEscOdt(textoOdt);
 			}
 
 		});

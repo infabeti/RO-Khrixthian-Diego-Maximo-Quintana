@@ -22,7 +22,7 @@ public class ControladorUserTest {
 		resultadoEsperado = false;
 		resultado = controladorUser.validarContrasena("αινσϊ");
 		
-		assertEquals(resultado, resultadoEsperado);
+		assertEquals(resultado, resultadoEsperado); 
 	}
 
 }

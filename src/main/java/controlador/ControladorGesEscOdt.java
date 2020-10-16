@@ -3,10 +3,16 @@ package controlador;
 import modelo.AgregarAlOdt;
 
 public class ControladorGesEscOdt {
+	
+	private AgregarAlOdt agregarAlOdt;
 
-	public void recogerOdt(String textoOdt) {
-		AgregarAlOdt escritor = new AgregarAlOdt();
+	public ControladorGesEscOdt(AgregarAlOdt agregarAlOdt) {
 
-		escritor.EscribirOdt(textoOdt);
+		this.agregarAlOdt = agregarAlOdt;
+	}
+	
+	public void gesEscOdt(String x) {
+		
+		agregarAlOdt.EscribirOdt(x); 
 	}
 }

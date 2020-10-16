@@ -6,7 +6,7 @@ public class ControladorGesEscHtml {
 	
 	private AgregarAlHtml agregarAlHtml;
 	
-	public void gesEscHtml(AgregarAlHtml agregarAlHtml) {
+	public ControladorGesEscHtml(AgregarAlHtml agregarAlHtml) {
 
 		this.agregarAlHtml = agregarAlHtml;
 	}

@@ -8,12 +8,13 @@ public class ControladorGesEscDocxTest {
 
 	@Test
 	public void Testdocx() {
-		
+		ControladorGesDocx aaa = new ControladorGesDocx();
+		String aux = aaa.mostrarDocx();
 		AgregarAlDocx agregaraldocxmock = mock(AgregarAlDocx.class);
 		
 		ControladorGesEscDocx controladorGesEscDocx = new ControladorGesEscDocx(agregaraldocxmock);
-		controladorGesEscDocx.gesEscDocx("hola");
+		controladorGesEscDocx.gesEscDocx(aux);
 		
-		verify(agregaraldocxmock, times(1)).EscribirDocx("hola");
+		verify(agregaraldocxmock, times(1)).EscribirDocx(aux);
 	}
 }
