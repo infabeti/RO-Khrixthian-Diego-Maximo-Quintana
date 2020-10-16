@@ -12,6 +12,6 @@ public class ControladorGesEscDocx {
 	
 	public void gesEscDocx(String x) { 
 
-		agregarAlDocx.EscribirDocx(x);
+		agregarAlDocx.EscribirDocx(x); 
 	} 
 }
