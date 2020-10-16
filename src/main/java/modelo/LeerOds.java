@@ -13,7 +13,6 @@ public class LeerOds {
 	// Obtengo el documento, a partir del ODS
 	private final String Dir = ".//ficheros//Prestamos.ods";
 	private final File archivo = new File(Dir);
-
 	public String LecturadOds() {
 		int nColumnas;
 		int nFilas;
@@ -21,13 +20,13 @@ public class LeerOds {
 			// Empiezo por la hoja 0 para la manipulación | paso el nombre de la hoja como
 			// string
 			sheet = SpreadSheet.createFromFile(archivo).getSheet(0);
-
+			
 			// El nº de cada fila y columna
 			nColumnas = sheet.getColumnCount();
 			nFilas = sheet.getRowCount();
 			contenidoOds += String.format("%s%s%s%d%s%s%d%s%s", "Nº de FILAS y COLUMNAS", "\n", "Filas : ", nFilas,
 					"\n", "Columnas : ", nColumnas, "\n", "\n");
-
+			VariablesEstaticas.MatrizAuxiliarString = new String[nFilas][nColumnas];
 			// Repitiendo por cada fila de la hoja seleccionada
 			MutableCell cell = null;
 			for (int nRowIndex = 0; nRowIndex < nFilas; nRowIndex++) {
@@ -36,7 +35,6 @@ public class LeerOds {
 				for (int nColIndex = 0; nColIndex < nColumnas; nColIndex++) {
 					cell = sheet.getCellAt(nColIndex, nRowIndex);
 					contenidoOds += cell.getValue() + " ";
-
 					if (nColIndex == nColumnas--) {
 						cell = sheet.getCellAt(nColIndex++, nRowIndex);
 					}
@@ -44,6 +42,13 @@ public class LeerOds {
 				contenidoOds += "\n";
 			}
 
+			for(int i = 0; i < nFilas; i++) {
+				for(int j = 0; j < nColumnas; j++) {
+					cell = sheet.getCellAt(j, i);
+					VariablesEstaticas.MatrizAuxiliarString[i][j] = cell.getTextValue();
+				}
+			}
+			
 		} catch (IOException e) {
 			new ControlExcepciones("Excepción de Entrada/Salida" + e.getMessage());
 			System.out.println("Excepción de Entrada/Salida" + e.getMessage());
