@@ -185,17 +185,9 @@ public class VentanaConsultas extends JFrame {
 				ControladorGesTxt infoTxt = new ControladorGesTxt();
 				String textoTxt = infoTxt.mostrarTxt();
 				System.out.println(textoTxt);
-				String aux = null;
-				String sep = Pattern.quote(",");
-				
+				String aux = null;				
 				aux = textoTxt.replaceAll(",", "     ");
-				/*if(sep.equals(",")) {
-					aux = textoTxt.split("     " + sep);
-				}
-				for(int i=0; i<aux.length-1; i++) {
-					System.out.print(aux[i] + " ");
-				}*/
-				System.out.println(aux);
+				//System.out.printf(%s,aux);
 				textPane.setText(textoTxt);
 			}
 
