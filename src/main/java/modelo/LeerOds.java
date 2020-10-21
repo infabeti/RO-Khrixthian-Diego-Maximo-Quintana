@@ -26,7 +26,7 @@ public class LeerOds {
 			nFilas = sheet.getRowCount();
 			contenidoOds += String.format("%s%s%s%d%s%s%d%s%s", "Nº de FILAS y COLUMNAS", "\n", "Filas : ", nFilas,
 					"\n", "Columnas : ", nColumnas, "\n", "\n");
-			VariablesEstaticas.MatrizAuxiliarString = new String[nFilas][nColumnas];
+			VariablesEstaticas.MatrizAuxiliarString = new String[nFilas+6][nColumnas];
 			// Repitiendo por cada fila de la hoja seleccionada
 			MutableCell cell = null;
 			for (int nRowIndex = 0; nRowIndex < nFilas; nRowIndex++) {
@@ -42,6 +42,10 @@ public class LeerOds {
 				contenidoOds += "\n";
 			}
 
+			/*
+			 * CON EL SIGUIENTE BUCLE LLENAMOS LA TABLA CON LOS CONTENIDOS DE LA HOJA DE CALCULO,
+			 * RELLENANDO EL ARRAY ESTATICO MatrizAuxiliarString
+			 */
 			for(int i = 0; i < nFilas; i++) {
 				for(int j = 0; j < nColumnas; j++) {
 					cell = sheet.getCellAt(j, i);

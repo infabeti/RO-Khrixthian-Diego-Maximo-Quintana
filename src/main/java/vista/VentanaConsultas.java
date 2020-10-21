@@ -172,10 +172,6 @@ public class VentanaConsultas extends JFrame {
 		scrollPane.setBounds(300, 45, 650, 810);
 		contentPane.add(scrollPane);
 
-		scrollPane.setViewportView(textPane);
-		textPane.setContentType("text");
-		textPane.setEditable(true);
-
 		// Acciones de los botones LEER y ESCRIBIR
 
 		// Botón Libros (.txt)
@@ -184,11 +180,18 @@ public class VentanaConsultas extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesTxt infoTxt = new ControladorGesTxt();
 				String textoTxt = infoTxt.mostrarTxt();
+<<<<<<< HEAD
 				System.out.println(textoTxt);
 				String aux = null;				
 				aux = textoTxt.replaceAll(",", "     ");
 				//System.out.printf(%s,aux);
+=======
+				scrollPane.setViewportView(textPane);
+				textPane.setContentType("text");
+				textPane.setEditable(true);
+>>>>>>> 13fb85096a8b5f87af369a27e0ae45a9825350e8
 				textPane.setText(textoTxt);
+				
 			}
 
 		});
@@ -202,6 +205,7 @@ public class VentanaConsultas extends JFrame {
 				ControladorGesEscTxt auxTxt = new ControladorGesEscTxt(agregarTxt);
 				testoTxt = textPane.getText();
 				auxTxt.gesEscTxt(testoTxt); 
+				scrollPane.setViewportView(textPane);
 			}
 
 		});
@@ -212,6 +216,9 @@ public class VentanaConsultas extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesDocx infoDocx = new ControladorGesDocx();
 				String textoDocx = infoDocx.mostrarDocx();
+				scrollPane.setViewportView(textPane);
+				textPane.setContentType("text");
+				textPane.setEditable(true);
 				textPane.setText(textoDocx);
 			}
 
@@ -235,6 +242,9 @@ public class VentanaConsultas extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesXml infoXml = new ControladorGesXml();
 				String textoXml = infoXml.mostrarXml();
+				scrollPane.setViewportView(textPane);
+				textPane.setContentType("text");
+				textPane.setEditable(true);
 				textPane.setText(textoXml);
 			}
 
@@ -246,6 +256,9 @@ public class VentanaConsultas extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesHtml infoHtml = new ControladorGesHtml();
 				String textoAMostrar = infoHtml.mostrarHtml();
+				scrollPane.setViewportView(textPane);
+				textPane.setContentType("text");
+				textPane.setEditable(true);
 				textPane.setText(textoAMostrar);
 			}
 
@@ -269,6 +282,9 @@ public class VentanaConsultas extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesOdt infoOdt = new ControladorGesOdt();
 				String textoOdt = infoOdt.mostrarOdt();
+				scrollPane.setViewportView(textPane);
+				textPane.setContentType("text");
+				textPane.setEditable(true);
 				textPane.setText(textoOdt);
 			}
 
@@ -290,22 +306,10 @@ public class VentanaConsultas extends JFrame {
 		btnPrestamosLEER.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VariablesEstaticas ve = new VariablesEstaticas();
 				ControladorGesOds infoOds = new ControladorGesOds();
-				String contenidoOds = infoOds.mostrarOds();
-				textPane.setText(contenidoOds);
-				
-				JFrame ventana = new JFrame("Tablas");
-				ventana.setLayout(new FlowLayout());
-				ventana.setSize(700, 200);
-				
+				String contenidoOds = infoOds.mostrarOds();	
 				tabla = new JTable(VariablesEstaticas.MatrizAuxiliarString, VariablesEstaticas.cabezeraMatrizAuxiliar);
-				JScrollPane JS = new JScrollPane(tabla);
-				JS.setPreferredSize(new Dimension(400, 150));
-				ventana.add(JS);
-				
-				ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				ventana.setVisible(true);
+				scrollPane.setViewportView(tabla);
 			}
 
 		});
