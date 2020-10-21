@@ -5,11 +5,13 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu.Separator;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextPane;
@@ -182,6 +184,18 @@ public class VentanaConsultas extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesTxt infoTxt = new ControladorGesTxt();
 				String textoTxt = infoTxt.mostrarTxt();
+				System.out.println(textoTxt);
+				String aux = null;
+				String sep = Pattern.quote(",");
+				
+				aux = textoTxt.replaceAll(",", "     ");
+				/*if(sep.equals(",")) {
+					aux = textoTxt.split("     " + sep);
+				}
+				for(int i=0; i<aux.length-1; i++) {
+					System.out.print(aux[i] + " ");
+				}*/
+				System.out.println(aux);
 				textPane.setText(textoTxt);
 			}
 
