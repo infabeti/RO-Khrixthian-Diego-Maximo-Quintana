@@ -61,8 +61,6 @@ public class VentanaConsultas extends JFrame {
 	public JTextPane textPane = new JTextPane(); 
 	
 	private JTable tabla;
-	
-	private boolean pulsado = false;
 
 	// Crea la ventana
 	public VentanaConsultas() {
@@ -171,11 +169,6 @@ public class VentanaConsultas extends JFrame {
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(300, 45, 650, 810);
 		contentPane.add(scrollPane);
-
-		/*scrollPane.setViewportView(textPane);
-		textPane.setContentType("text");
-		textPane.setEditable(true);*/
-
 
 		// Acciones de los botones LEER y ESCRIBIR
 
