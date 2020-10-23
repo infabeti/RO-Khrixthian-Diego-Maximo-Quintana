@@ -1,25 +1,54 @@
 package modelo;
 
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class AgregarAlTxt {
-	
+
 	private FileWriter fstream;
 	private BufferedWriter out;
-	
-	public void agregar(String x){
-		
+	private FileReader aa;
+	private String aux, ruta, nuevoFormateado = " ", auxorigen;
+	LeerTxt aaa = new LeerTxt();
+
+	public void agregar(String x) {
+
 		try {
-			fstream = new FileWriter(".//ficheros//Libros.txt");
+
+			ruta = ".//ficheros//Libros.txt";
+			aa = new FileReader(ruta);
+			auxorigen = aaa.leertxt(aa);
+
+			String nuevo = x.substring(auxorigen.length());
+
+			for (int i = 0; i < nuevo.length(); i++) {
+
+				if (nuevo.charAt(i) == 13) {
+					nuevoFormateado += (char) 13;
+					nuevoFormateado += (char) 32;
+					System.out.println("entro en el if " + nuevoFormateado);
+
+				} else if (nuevo.charAt(i) == 65535) {
+					i += 1;
+
+				} else {
+					nuevoFormateado += nuevo.charAt(i);
+				}
+
+			}
+			aux = auxorigen + nuevoFormateado;
+
+			ruta = ".//ficheros//Libros.txt";
+			fstream = new FileWriter(ruta);
 			out = new BufferedWriter(fstream);
 
-			out.write(x);
+			out.write(aux);
 			out.close();
-			
+
 		} catch (IOException ex) {
-			new ControlExcepciones("Excepción de archivo no encontrado" + ex.getMessage());
+			new ControlExcepciones("Excepciï¿½n de archivo no encontrado" + ex.getMessage());
 		}
 	}
 }

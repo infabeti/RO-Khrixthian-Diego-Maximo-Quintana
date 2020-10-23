@@ -1,17 +1,13 @@
 package vista;
 
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu.Separator;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextPane;
@@ -30,7 +26,6 @@ import modelo.AgregarAlDocx;
 import modelo.AgregarAlHtml;
 import modelo.AgregarAlOdt;
 import modelo.AgregarAlTxt;
-
 import modelo.VariablesEstaticas;
 
 public class VentanaConsultas extends JFrame {
@@ -60,8 +55,8 @@ public class VentanaConsultas extends JFrame {
 
 	private JScrollPane scrollPane;
 
-	public JTextPane textPane = new JTextPane(); 
-	
+	public JTextPane textPane = new JTextPane();
+
 	private JTable tabla;
 
 	// Crea la ventana
@@ -181,17 +176,14 @@ public class VentanaConsultas extends JFrame {
 				ControladorGesTxt infoTxt = new ControladorGesTxt();
 				String textoTxt = infoTxt.mostrarTxt();
 
-				System.out.println(textoTxt);
-				String aux = null;				
+				String aux = null;
 				aux = textoTxt.replaceAll(",", "     ");
-				//System.out.printf(%s,aux);
 
 				scrollPane.setViewportView(textPane);
 				textPane.setContentType("text");
 				textPane.setEditable(true);
-
 				textPane.setText(textoTxt);
-				
+
 			}
 
 		});
@@ -204,7 +196,7 @@ public class VentanaConsultas extends JFrame {
 				String testoTxt;
 				ControladorGesEscTxt auxTxt = new ControladorGesEscTxt(agregarTxt);
 				testoTxt = textPane.getText();
-				auxTxt.gesEscTxt(testoTxt); 
+				auxTxt.gesEscTxt(testoTxt);
 				scrollPane.setViewportView(textPane);
 			}
 
@@ -228,7 +220,8 @@ public class VentanaConsultas extends JFrame {
 		btnCDsESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AgregarAlDocx agregarAlDocx = new AgregarAlDocx();// kreamos una instancia del modelo para pasarsela al controlador
+				AgregarAlDocx agregarAlDocx = new AgregarAlDocx();// kreamos una instancia del modelo para pasarsela al
+																	// controlador
 				ControladorGesEscDocx escritor = new ControladorGesEscDocx(agregarAlDocx);
 				String textoDocx = textPane.getText();
 				escritor.gesEscDocx(textoDocx);
@@ -307,7 +300,7 @@ public class VentanaConsultas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesOds infoOds = new ControladorGesOds();
-				String contenidoOds = infoOds.mostrarOds();	
+				String contenidoOds = infoOds.mostrarOds();
 				tabla = new JTable(VariablesEstaticas.MatrizAuxiliarString, VariablesEstaticas.cabezeraMatrizAuxiliar);
 				scrollPane.setViewportView(tabla);
 			}
