@@ -12,7 +12,12 @@ public class ControladorGesEscTxt {
 	
 	public void gesEscTxt(String x) { 
 
-		agregarTxt.agregar(x); 
+		try {
+			agregarTxt.agregar(x);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 	}
 	
 }

@@ -180,16 +180,16 @@ public class VentanaConsultas extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesTxt infoTxt = new ControladorGesTxt();
 				String textoTxt = infoTxt.mostrarTxt();
-<<<<<<< HEAD
+
 				System.out.println(textoTxt);
 				String aux = null;				
 				aux = textoTxt.replaceAll(",", "     ");
 				//System.out.printf(%s,aux);
-=======
+
 				scrollPane.setViewportView(textPane);
 				textPane.setContentType("text");
 				textPane.setEditable(true);
->>>>>>> 13fb85096a8b5f87af369a27e0ae45a9825350e8
+
 				textPane.setText(textoTxt);
 				
 			}

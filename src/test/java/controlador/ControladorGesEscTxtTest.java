@@ -15,6 +15,11 @@ public class ControladorGesEscTxtTest {
 		ControladorGesEscTxt controladorGesEscTxt = new ControladorGesEscTxt(agregarAlTxtMock);
 		controladorGesEscTxt.gesEscTxt(aux);
 		
-		verify(agregarAlTxtMock, times(1)).agregar(aux);
+		try {
+			verify(agregarAlTxtMock, times(1)).agregar(aux);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 }
 }
