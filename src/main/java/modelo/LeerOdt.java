@@ -9,8 +9,8 @@ public class LeerOdt {
 	private String contenidoOdt;
 	private String contenidoOdtConSaltosDeLinea;
 	// Obtengo el documento, a partir del Odt
-	private static String Dir = ".//ficheros//trabajadores.odt";
-	private static File archivo = new File(Dir);
+	private final String Dir = ".//ficheros//trabajadores.odt";
+	private File archivo = new File(Dir);
 
 	public String LecturadOdt() {
 		contenidoOdt = "";

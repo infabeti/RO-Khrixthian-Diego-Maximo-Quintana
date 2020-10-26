@@ -12,7 +12,7 @@ public class ControladorGesEscTxt {
 
 	public void gesEscTxt(String x) {
 
-		agregarTxt.agregar(x);
+		this.agregarTxt.agregar(x);
 	}
 
 }

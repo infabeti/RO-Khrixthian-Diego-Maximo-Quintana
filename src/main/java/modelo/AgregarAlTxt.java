@@ -9,17 +9,17 @@ public class AgregarAlTxt {
 
 	private FileWriter fstream;
 	private BufferedWriter out;
-	private FileReader aa;
-	private String aux, ruta, nuevoFormateado = " ", auxorigen;
-	LeerTxt aaa = new LeerTxt();
+	private FileReader fr;
+	private String aux, nuevoFormateado = " ", auxorigen;
+	private LeerTxt contenidoFichTxt = new LeerTxt();
+	private final String ruta = ".//ficheros//Libros.txt";
 
 	public void agregar(String x) {
 
 		try {
 
-			ruta = ".//ficheros//Libros.txt";
-			aa = new FileReader(ruta);
-			auxorigen = aaa.leertxt(aa);
+			fr = new FileReader(ruta);
+			auxorigen = contenidoFichTxt.leertxt(fr);
 
 			String nuevo = x.substring(auxorigen.length());
 
@@ -40,7 +40,6 @@ public class AgregarAlTxt {
 			}
 			aux = auxorigen + nuevoFormateado;
 
-			ruta = ".//ficheros//Libros.txt";
 			fstream = new FileWriter(ruta);
 			out = new BufferedWriter(fstream);
 

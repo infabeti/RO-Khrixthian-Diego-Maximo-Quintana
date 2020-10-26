@@ -4,15 +4,15 @@ import java.io.FileReader;
 
 public class LeerTxt {
 	private String contenido = " ";
+	final String ruta = ".//ficheros//Libros.txt";
 
-	public String leertxt(FileReader x) {
-		String ruta = ".//ficheros//Libros.txt";
+	public String leertxt(FileReader file) {
 
 		try {
-			x = new FileReader(ruta);
-			int valor = x.read();
+			file = new FileReader(ruta);
+			int valor = file.read();
 			while (valor != -1) {
-				valor = x.read();
+				valor = file.read();
 				if (valor == 10) {
 					valor = 32;
 					contenido += (char) valor;
@@ -20,7 +20,7 @@ public class LeerTxt {
 					contenido += (char) valor;
 			}
 			contenido = contenido.substring(0, contenido.length() - 1);
-			x.close();
+			file.close();
 		} catch (Exception e) {
 			new ControlExcepciones("Excepci�n de Entrada/Salida" + e.getMessage());
 			System.out.println("Excepci�n de Entrada/Salida" + e.getMessage());
