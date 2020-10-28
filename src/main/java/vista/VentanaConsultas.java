@@ -26,6 +26,7 @@ import modelo.AgregarAlDocx;
 import modelo.AgregarAlHtml;
 import modelo.AgregarAlOdt;
 import modelo.AgregarAlTxt;
+import modelo.LeerOds;
 import modelo.VariablesEstaticas;
 
 public class VentanaConsultas extends JFrame {
@@ -300,8 +301,7 @@ public class VentanaConsultas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesOds infoOds = new ControladorGesOds();
-				String contenidoOds = infoOds.mostrarOds();
-				tabla = new JTable(VariablesEstaticas.MatrizAuxiliarString, VariablesEstaticas.cabezeraMatrizAuxiliar);
+				tabla = new JTable(infoOds.mostrarOds(), VariablesEstaticas.cabezeraMatrizAuxiliar);
 				scrollPane.setViewportView(tabla);
 			}
 
