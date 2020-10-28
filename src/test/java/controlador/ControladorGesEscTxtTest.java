@@ -10,17 +10,17 @@ import modelo.AgregarAlTxt;
 
 public class ControladorGesEscTxtTest {
 
-	@Test
-	public void testControlEscTxt() {
-		ControladorGesHtml aaa = new ControladorGesHtml();
-		String aux = aaa.mostrarHtml();
-		AgregarAlTxt agregarAlTxtMock = mock(AgregarAlTxt.class);
+	private AgregarAlTxt agregarAlTxtMock = mock(AgregarAlTxt.class);
+	private ControladorGesEscTxt controladorGesEscTxt = new ControladorGesEscTxt(agregarAlTxtMock);
+	private String testString;
 
-		ControladorGesEscTxt controladorGesEscTxt = new ControladorGesEscTxt(agregarAlTxtMock);
-		controladorGesEscTxt.gesEscTxt(aux);
+	@Test
+	public void testgesEscTxt() {
+		testString = "prueba";
+		controladorGesEscTxt.gesEscTxt(testString);
 
 		try {
-			verify(agregarAlTxtMock, times(1)).agregar(aux);
+			verify(agregarAlTxtMock, times(1)).agregar(testString);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

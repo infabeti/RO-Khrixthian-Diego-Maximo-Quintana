@@ -10,15 +10,16 @@ import modelo.AgregarAlDocx;
 
 public class ControladorGesEscDocxTest {
 
+	private AgregarAlDocx agregaraldocxmock = mock(AgregarAlDocx.class);
+	private ControladorGesEscDocx controladorGesEscDocx = new ControladorGesEscDocx(agregaraldocxmock);
+	private String testString;
+
 	@Test
-	public void TestControlEscDocx() {
-		ControladorGesDocx contenidoFichDocx = new ControladorGesDocx();
-		String contFichDocx = "";
-		AgregarAlDocx agregaraldocxmock = mock(AgregarAlDocx.class);
+	public void testgesEscDocx() {
+		testString = "prueba";
 
-		ControladorGesEscDocx controladorGesEscDocx = new ControladorGesEscDocx(agregaraldocxmock);
-		controladorGesEscDocx.gesEscDocx(contFichDocx);
+		controladorGesEscDocx.gesEscDocx(testString);
 
-		verify(agregaraldocxmock, times(1)).EscribirDocx(contFichDocx);
+		verify(agregaraldocxmock, times(1)).EscribirDocx("prueba");
 	}
 }
