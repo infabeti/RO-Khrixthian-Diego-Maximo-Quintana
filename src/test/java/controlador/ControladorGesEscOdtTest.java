@@ -10,16 +10,16 @@ import modelo.AgregarAlOdt;
 
 public class ControladorGesEscOdtTest {
 
+	private AgregarAlOdt agregarAlOdtMock = mock(AgregarAlOdt.class);
+	private ControladorGesEscOdt controladorGesEscOdt = new ControladorGesEscOdt(agregarAlOdtMock);
+	private String testString;
+
 	@Test
-	public void testControlEscOdt() {
-		ControladorGesOdt aaa = new ControladorGesOdt();
-		String aux = aaa.mostrarOdt();
-		AgregarAlOdt agregarAlOdtMock = mock(AgregarAlOdt.class);
+	public void testgesEscOdt() {
+		testString = "prueba";
+		controladorGesEscOdt.gesEscOdt(testString);
 
-		ControladorGesEscOdt controladorGesEscOdt = new ControladorGesEscOdt(agregarAlOdtMock);
-		controladorGesEscOdt.gesEscOdt(aux);
-
-		verify(agregarAlOdtMock, times(1)).EscribirOdt(aux);
+		verify(agregarAlOdtMock, times(1)).EscribirOdt(testString);
 	}
 
 }
