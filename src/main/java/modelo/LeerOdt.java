@@ -24,8 +24,11 @@ public class LeerOdt {
 			new ControlExcepciones("Excepción de Entrada/Salida" + e.getMessage());
 			System.out.println("Excepción de Entrada/Salida" + e.getMessage());
 		}
+		String contenidoLimpio = formatFich();
+		return contenidoLimpio;
+	}
 
-		// Recorro el String, para aplicar salto de linea después del "."
+	public String formatFich() {
 		for (int x = 0; x < contenidoOdt.length(); x++) {
 			if ((int) contenidoOdt.charAt(x) == 46) {
 				contenidoOdtConSaltosDeLinea += contenidoOdt.charAt(x);
@@ -35,8 +38,9 @@ public class LeerOdt {
 				contenidoOdtConSaltosDeLinea += contenidoOdt.charAt(x);
 			}
 		}
-
+		System.out.println(contenidoOdtConSaltosDeLinea);
 		return contenidoOdtConSaltosDeLinea;
+
 	}
 
 }
