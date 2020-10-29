@@ -300,8 +300,9 @@ public class VentanaConsultas extends JFrame {
 		btnPrestamosLEER.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				LeerOds lectorOds = new LeerOds();
 				ControladorGesOds infoOds = new ControladorGesOds();
-				tabla = new JTable(infoOds.mostrarOds(), VariablesEstaticas.cabezeraMatrizAuxiliar);
+				tabla = new JTable(infoOds.mostrarOds(lectorOds), VariablesEstaticas.cabezeraMatrizAuxiliar);
 				scrollPane.setViewportView(tabla);
 			}
 
