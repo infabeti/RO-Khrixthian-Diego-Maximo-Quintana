@@ -3,12 +3,9 @@ package controlador;
 import modelo.LeerOds;
 
 public class ControladorGesOds {
-	private LeerOds leerOds;
 
-	public String mostrarOds() {
+	public String mostrarOds(LeerOds x) {
 
-		leerOds = new LeerOds();
-
-		return leerOds.LecturadOds();
+		return x.LecturadOds();
 	}
 }
