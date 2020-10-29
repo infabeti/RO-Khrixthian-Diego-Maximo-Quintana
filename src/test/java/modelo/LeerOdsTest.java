@@ -6,8 +6,8 @@ import org.junit.Test;
 
 public class LeerOdsTest {
 
-	private String resultado;
-	private String resultadoesperado;
+	private String[][] resultado;
+	private String[][] resultadoesperado;
 	private LeerOds testods = new LeerOds();
 
 	@Test
@@ -15,13 +15,13 @@ public class LeerOdsTest {
 
 		resultado = testods.LecturadOds();
 
-		resultadoesperado = "Nº de FILAS y COLUMNAS" + "\n" + "Filas : 4" + "\n" + "Columnas : 1024" + "\n" + "\n"
-				+ "Usuario CodUser libro fecha entrega " + "\n"
-				+ "Ibai 1234 el señor de los anillos 5-10-2020 20-10-2020 " + "\n"
-				+ "khrixthian 1235 el enemigo conoce el sistema 5-10-2020 20-10-2020 " + "\n"
-				+ "Maximo 1236 la columna de la muerte 5-10-2020 20-10-2020 ";
+		String[][] resEsp = {{"Usuario", "CodUser", "libro", "fecha", "entrega"}, 
+						{"Ibai", "1234", "el señor de los anillos", "5-10-2020", "20-10-2020"},
+						{"khrixthian", "1235", "el enemigo conoce el sistema", "5-10-2020", "20-10-2020"},
+						{"Maximo", "1236", "la columna de la muerte", "5-10-2020", "20-10-2020"},
+						{"Diego", "1237", "watchmen", "5-10-2021", "30-10-2021"}};
 
-		assertEquals(resultado, resultadoesperado);
+		assertArrayEquals(resultado, resEsp);
 
 	}
 

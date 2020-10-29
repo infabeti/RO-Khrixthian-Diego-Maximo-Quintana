@@ -4,8 +4,11 @@ import modelo.LeerOds;
 
 public class ControladorGesOds {
 
-	public String mostrarOds(LeerOds x) {
+	public String[][] mostrarOds(LeerOds leerOds) {
 
-		return x.LecturadOds();
+		leerOds = new LeerOds();
+
+		return leerOds.LecturadOds();
+
 	}
 }

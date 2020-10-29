@@ -19,11 +19,6 @@ public class ControladorGesEscTxtTest {
 		testString = "prueba";
 		controladorGesEscTxt.gesEscTxt(testString);
 
-		try {
-			verify(agregarAlTxtMock, times(1)).agregar(testString);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		verify(agregarAlTxtMock, times(1)).agregar(testString);
 	}
 }

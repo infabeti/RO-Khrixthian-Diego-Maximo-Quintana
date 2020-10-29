@@ -60,6 +60,8 @@ public class VentanaConsultas extends JFrame {
 
 	private JTable tabla;
 
+	private String textoFichero;
+
 	// Crea la ventana
 	public VentanaConsultas() {
 		setSize(1000, 950);
@@ -175,15 +177,15 @@ public class VentanaConsultas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesTxt infoTxt = new ControladorGesTxt();
-				String textoTxt = infoTxt.mostrarTxt();
+				textoFichero = infoTxt.mostrarTxt();
 
 				String aux = null;
-				aux = textoTxt.replaceAll(",", "     ");
+				aux = textoFichero.replaceAll(",", "     ");
 
 				scrollPane.setViewportView(textPane);
 				textPane.setContentType("text");
 				textPane.setEditable(true);
-				textPane.setText(textoTxt);
+				textPane.setText(textoFichero);
 
 			}
 
@@ -194,10 +196,9 @@ public class VentanaConsultas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				AgregarAlTxt agregarTxt = new AgregarAlTxt();
-				String testoTxt;
 				ControladorGesEscTxt auxTxt = new ControladorGesEscTxt(agregarTxt);
-				testoTxt = textPane.getText();
-				auxTxt.gesEscTxt(testoTxt);
+				textoFichero = textPane.getText();
+				auxTxt.gesEscTxt(textoFichero);
 				scrollPane.setViewportView(textPane);
 			}
 
@@ -208,11 +209,11 @@ public class VentanaConsultas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesDocx infoDocx = new ControladorGesDocx();
-				String textoDocx = infoDocx.mostrarDocx();
+				textoFichero = infoDocx.mostrarDocx();
 				scrollPane.setViewportView(textPane);
 				textPane.setContentType("text");
 				textPane.setEditable(true);
-				textPane.setText(textoDocx);
+				textPane.setText(textoFichero);
 			}
 
 		});
@@ -223,9 +224,9 @@ public class VentanaConsultas extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				AgregarAlDocx agregarAlDocx = new AgregarAlDocx();// kreamos una instancia del modelo para pasarsela al
 																	// controlador
-				ControladorGesEscDocx escritor = new ControladorGesEscDocx(agregarAlDocx);
-				String textoDocx = textPane.getText();
-				escritor.gesEscDocx(textoDocx);
+				ControladorGesEscDocx controladorGesEscDocx = new ControladorGesEscDocx(agregarAlDocx);
+				textoFichero = textPane.getText();
+				controladorGesEscDocx.gesEscDocx(textoFichero);
 			}
 
 		});
@@ -235,11 +236,11 @@ public class VentanaConsultas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesXml infoXml = new ControladorGesXml();
-				String textoXml = infoXml.mostrarXml();
+				textoFichero = infoXml.mostrarXml();
 				scrollPane.setViewportView(textPane);
 				textPane.setContentType("text");
 				textPane.setEditable(true);
-				textPane.setText(textoXml);
+				textPane.setText(textoFichero);
 			}
 
 		});
@@ -249,11 +250,11 @@ public class VentanaConsultas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesHtml infoHtml = new ControladorGesHtml();
-				String textoAMostrar = infoHtml.mostrarHtml();
+				textoFichero = infoHtml.mostrarHtml();
 				scrollPane.setViewportView(textPane);
 				textPane.setContentType("text");
 				textPane.setEditable(true);
-				textPane.setText(textoAMostrar);
+				textPane.setText(textoFichero);
 			}
 
 		});
@@ -263,9 +264,9 @@ public class VentanaConsultas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				AgregarAlHtml agregarAlHtml = new AgregarAlHtml();
-				ControladorGesEscHtml escritor = new ControladorGesEscHtml(agregarAlHtml);
-				String textoHtml = textPane.getText();
-				escritor.gesEscHtml(textoHtml);
+				ControladorGesEscHtml controladorGesEscHtml = new ControladorGesEscHtml(agregarAlHtml);
+				textoFichero = textPane.getText();
+				controladorGesEscHtml.gesEscHtml(textoFichero);
 			}
 
 		});
@@ -275,11 +276,11 @@ public class VentanaConsultas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesOdt infoOdt = new ControladorGesOdt();
-				String textoOdt = infoOdt.mostrarOdt();
+				textoFichero = infoOdt.mostrarOdt();
 				scrollPane.setViewportView(textPane);
 				textPane.setContentType("text");
 				textPane.setEditable(true);
-				textPane.setText(textoOdt);
+				textPane.setText(textoFichero);
 			}
 
 		});
@@ -289,9 +290,9 @@ public class VentanaConsultas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				AgregarAlOdt agregarAlOdt = new AgregarAlOdt();
-				ControladorGesEscOdt escritor = new ControladorGesEscOdt(agregarAlOdt);
-				String textoOdt = textPane.getText();
-				escritor.gesEscOdt(textoOdt);
+				ControladorGesEscOdt controladorGesEscOdt = new ControladorGesEscOdt(agregarAlOdt);
+				textoFichero = textPane.getText();
+				controladorGesEscOdt.gesEscOdt(textoFichero);
 			}
 
 		});
@@ -300,10 +301,11 @@ public class VentanaConsultas extends JFrame {
 		btnPrestamosLEER.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				LeerOds lectorOds = new LeerOds();
 				ControladorGesOds infoOds = new ControladorGesOds();
-				LeerOds xapasar = new LeerOds();
-				String contenidoOds = infoOds.mostrarOds(xapasar);
-				tabla = new JTable(VariablesEstaticas.MatrizAuxiliarString, VariablesEstaticas.cabezeraMatrizAuxiliar);
+
+				tabla = new JTable(infoOds.mostrarOds(lectorOds), VariablesEstaticas.cabezeraMatrizAuxiliar);
+
 				scrollPane.setViewportView(tabla);
 			}
 

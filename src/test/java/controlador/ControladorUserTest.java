@@ -1,28 +1,21 @@
 package controlador;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 
 import org.junit.Test;
+import org.mockito.Mockito;
+
+import modelo.ModeloUsers;
 
 public class ControladorUserTest {
 	private boolean resultadoEsperado;
-	private boolean resultado;
-	private ControladorUser controladorUser = new ControladorUser();
 
 	@Test
-	public void testControladorUserTrue() {
+	public void testgesEscTxt() {
+		ModeloUsers modeloUsersMock = mock(ModeloUsers.class);
 		resultadoEsperado = true;
-		resultado = controladorUser.validarContrasena("letra1");
-		
-		assertEquals(resultado, resultadoEsperado);
+		Mockito.when(modeloUsersMock.validarSoloAlfanumerico("prueba")).thenReturn(true);
+		assertEquals(modeloUsersMock.validarSoloAlfanumerico("prueba"), resultadoEsperado);
 	}
-	
-	@Test
-	public void testControladorUserFalse() {
-		resultadoEsperado = false;
-		resultado = controladorUser.validarContrasena("αινσϊ");
-		
-		assertEquals(resultado, resultadoEsperado); 
-	}
-
 }
