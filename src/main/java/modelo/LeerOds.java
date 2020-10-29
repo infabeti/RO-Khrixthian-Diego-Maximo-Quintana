@@ -18,11 +18,12 @@ public class LeerOds {
 	public String[][] LecturadOds() {
 		int nColumnas;
 		int nFilas;
+		String[][] matriz = null;
 		try {
 			sheet = SpreadSheet.createFromFile(archivo).getSheet(0);
 			nColumnas = sheet.getColumnCount();
 			nFilas = sheet.getRowCount();
-			ve.MatrizAuxiliarString = new String[nFilas][nColumnas];
+			matriz = new String[nFilas][nColumnas];
 			MutableCell cell = null;
 			for (int nRowIndex = 0; nRowIndex < nFilas; nRowIndex++) {
 				for (int nColIndex = 0; nColIndex < nColumnas; nColIndex++) {
@@ -32,14 +33,14 @@ public class LeerOds {
 					}
 				}
 			}
-			cargarTabla(nFilas, nColumnas, cell, ve.MatrizAuxiliarString);
+			cargarTabla(nFilas, nColumnas, cell, matriz);
 
 		} catch (IOException e) {
 			new ControlExcepciones("Excepción de Entrada/Salida" + e.getMessage());
 			System.out.println("Excepción de Entrada/Salida" + e.getMessage());
 		}
 
-		return ve.MatrizAuxiliarString;
+		return matriz;
 	}
 
 	public String[][] cargarTabla(int nFilas, int nColumnas, MutableCell cell, String[][] tabla) {
