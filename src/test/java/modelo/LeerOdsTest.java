@@ -19,7 +19,7 @@ public class LeerOdsTest {
 						{"Ibai", "1234", "el señor de los anillos", "5-10-2020", "20-10-2020"},
 						{"khrixthian", "1235", "el enemigo conoce el sistema", "5-10-2020", "20-10-2020"},
 						{"Maximo", "1236", "la columna de la muerte", "5-10-2020", "20-10-2020"},
-						{"Diego", "1237", "watchmen", "5-10-2021", "30-10-2021"}};
+						{"Diego", "1237", "watchmen", "5-10-2021", "20-10-2021"}};
 
 		assertArrayEquals(resultado, resEsp);
 
