@@ -1,27 +1,34 @@
 package modelo;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 import org.junit.Test;
 
 public class LeerTxtTest {
-	
+
 	private String resultado;
 	private String resultadoesperado;
 	private LeerTxt testtxt = new LeerTxt();
-	
+
 	@Test
-	public void test() {
-				
-		resultado = testtxt.leertxt();
-		
-		resultadoesperado ="  9999, El señor de los anillos, J.R. Tolkien, novela fantástica." + (char) 13 + (char) 10
-				+ "8888, La columna de la muerte, Francisco Espinosa, ensayo histórico." + (char) 13 + (char) 10 
-				+ "7777, El enemigo conoce el sistema, Marta Peirano, ensayo sobre la aplicación capitalista de la informática." + (char) 13 + (char) 10
-				+ "6666, El segundo sexo, Simone de Beauvoir, ensayo sobre la opresión de la mujer." + (char) -1;
-		
+	public void test() throws FileNotFoundException {
+		String ruta = ".//ficheros//Libros.txt";
+		FileReader x = new FileReader(ruta);
+
+		resultado = testtxt.leertxt(x);
+
+		resultadoesperado = " 9999, El seï¿½or de los anillos, J.R. Tolkien, novela fantï¿½stica." + (char) 13 + (char) 10
+				+ " 8888, La columna de la muerte, Francisco Espinosa, ensayo histï¿½rico." + (char) 13 + (char) 10
+				+ " 7777, El enemigo conoce el sistema, Marta Peirano, ensayo sobre la aplicaciï¿½n capitalista de la informï¿½tica."
+				+ (char) 13 + (char) 10
+				+ " 6666, El segundo sexo, Simone de Beauvoir, ensayo sobre la opresiï¿½n de la mujer." + (char) 13
+				+ (char) 10 + " 5555, Patria, Fernando Aramburu." + (char) -1;
+
 		assertEquals(resultado, resultadoesperado);
-		
+
 	}
 
 }

@@ -37,7 +37,7 @@ public class LeerHtml {
 			System.out.println("Excepción de Entrada/Salida" + e.getMessage());
 		}
 	
-		return total;
+		return total; 
 	}
 
 }

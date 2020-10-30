@@ -1,15 +1,18 @@
 package controlador;
 
 import modelo.AgregarAlHtml;
-import vista.VentanaConsultas;
 
 public class ControladorGesEscHtml {
-	private AgregarAlHtml aux = new AgregarAlHtml();
-	private VentanaConsultas ventana = new VentanaConsultas();
-	private String textoHtml;
-	public void gesEscHtml() {
 
-		textoHtml = ventana.textPane.getText();
-		aux.agregar(textoHtml); 
+	private AgregarAlHtml agregarAlHtml;
+
+	public ControladorGesEscHtml(AgregarAlHtml agregarAlHtml) {
+
+		this.agregarAlHtml = agregarAlHtml;
+	}
+
+	public void gesEscHtml(String x) {
+
+		this.agregarAlHtml.agregar(x);
 	}
 }

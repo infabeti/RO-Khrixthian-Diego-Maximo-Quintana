@@ -1,29 +1,24 @@
 package controlador;
 
-import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 import org.junit.Test;
 
 import modelo.AgregarAlTxt;
-import modelo.LeerTxt;
 
 public class ControladorGesEscTxtTest {
 
-	private String resultado;
-	private String resultadoesperado;
-	private LeerTxt leerTxt = new LeerTxt();
-	
+	private AgregarAlTxt agregarAlTxtMock = mock(AgregarAlTxt.class);
+	private ControladorGesEscTxt controladorGesEscTxt = new ControladorGesEscTxt(agregarAlTxtMock);
+	private String testString;
+
 	@Test
-	public void test() {
+	public void testgesEscTxt() {
+		testString = "prueba";
+		controladorGesEscTxt.gesEscTxt(testString);
 
-		resultado = leerTxt.leertxt();
-		resultadoesperado = "  9999, El señor de los anillos, J.R. Tolkien, novela fantástica." + (char) 13 + (char) 10
-				+ "8888, La columna de la muerte, Francisco Espinosa, ensayo histórico." + (char) 13 + (char) 10
-				+ "7777, El enemigo conoce el sistema, Marta Peirano, ensayo sobre la aplicación capitalista de la informática." + (char) 13 + (char) 10
-				+ "6666, El segundo sexo, Simone de Beauvoir, ensayo sobre la opresión de la mujer." + (char) -1;
-		
-		assertEquals(resultado, resultadoesperado); 
-		
+		verify(agregarAlTxtMock, times(1)).agregar(testString);
 	}
-
 }

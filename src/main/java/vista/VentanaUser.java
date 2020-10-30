@@ -1,28 +1,27 @@
 package vista;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-
-import controlador.ControladorUser;
-
-import javax.swing.JButton;
 import java.awt.Font;
-import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Action;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+import controlador.ControladorUser;
+import modelo.ModeloUsers;
 
 @SuppressWarnings("serial")
 public class VentanaUser extends JFrame {
-	public ControladorUser controladorUser = new ControladorUser();
+	private ModeloUsers modeloUsers = new ModeloUsers();
+	public ControladorUser controladorUser = new ControladorUser(modeloUsers);
 	final VentanaConsultas consultas = new VentanaConsultas();// declaramos la ventana de consultas
 	private JPanel contentPane;
-	
+
 	private JTextField fieldUser;
 	private JPasswordField fieldPassword;
 	private JLabel lblCabecera;
@@ -67,22 +66,21 @@ public class VentanaUser extends JFrame {
 		botonAcceder = new JButton("Acceder");
 		botonAcceder.setBounds(165, 166, 89, 23);
 		contentPane.add(botonAcceder);
-		
-		//ActionListeners
+
+		// ActionListeners
 		botonAcceder.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				boolean control = controladorUser.validarContrasena(fieldPassword.getText());
-				
-				if(control == false) {
-					JOptionPane.showMessageDialog(
-							null, "La contraseña solo puede tener carácteres alfanuméricos, no símbolos.", 
-							"ERROR AL INTRODUCIR LA CONTRASEÑA", 
-							JOptionPane.ERROR_MESSAGE);
+
+				if (control == false) {
+					JOptionPane.showMessageDialog(null,
+							"La contraseña solo puede tener carácteres alfanuméricos, no símbolos.",
+							"ERROR AL INTRODUCIR LA CONTRASEÑA", JOptionPane.ERROR_MESSAGE);
 				}
-				
-				if(control == true) {
-					consultas.setVisible(true); //apertura de la ventana de consultas
+
+				if (control == true) {
+					consultas.setVisible(true); // apertura de la ventana de consultas
 					dispose();
 				}
 			}

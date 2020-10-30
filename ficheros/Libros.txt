@@ -1,4 +1,1 @@
-9999, El SeÃ±or de los anillos, J.R. Tolkien, novela fantÃ¡stica.
-8888, La columna de la muerte, Francisco Espinosa, ensayo histÃ³rico.
-7777, El enemigo conoce el sistema, Marta Peirano, ensayo sobre la aplicaciÃ³n capitalista de la informÃ¡tica.
-6666, El segundo sexo, Simone de Beauvoir, ensayo sobre la opresiÃ³n de la mujer.
+ 999, El Se�or de los anillos, J.R. Tolkien, novela fant�stica. 8888, La columna de la muerte, Francisco Espinosa, ensayo hist�rico. 7777, El enemigo conoce el sistema, Marta Peirano, ensayo sobre la aplicaci�n capitalista de la inform�tica. 6666, El segundo sexo, Simone de Beauvoir, ensayo sobre la opresi�n de la mujer. 5555, Patria, Fernando Aramburu.  888

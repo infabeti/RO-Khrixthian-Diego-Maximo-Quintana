@@ -1,28 +1,33 @@
 package vista;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextPane;
 
 import controlador.ControladorGesDocx;
 import controlador.ControladorGesEscDocx;
+import controlador.ControladorGesEscHtml;
+import controlador.ControladorGesEscOdt;
 import controlador.ControladorGesEscTxt;
 import controlador.ControladorGesHtml;
 import controlador.ControladorGesOds;
 import controlador.ControladorGesOdt;
 import controlador.ControladorGesTxt;
 import controlador.ControladorGesXml;
+import modelo.AgregarAlDocx;
 import modelo.AgregarAlHtml;
 import modelo.AgregarAlOdt;
 import modelo.AgregarAlTxt;
-
-import javax.swing.JScrollPane;
-
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import modelo.LeerOds;
+import modelo.VariablesEstaticas;
 
 public class VentanaConsultas extends JFrame {
 
@@ -50,8 +55,12 @@ public class VentanaConsultas extends JFrame {
 	private JButton btnPrestamosESCRIBIR;
 
 	private JScrollPane scrollPane;
-	
+
 	public JTextPane textPane = new JTextPane();
+
+	private JTable tabla;
+
+	private String textoFichero;
 
 	// Crea la ventana
 	public VentanaConsultas() {
@@ -161,10 +170,6 @@ public class VentanaConsultas extends JFrame {
 		scrollPane.setBounds(300, 45, 650, 810);
 		contentPane.add(scrollPane);
 
-		scrollPane.setViewportView(textPane);
-		textPane.setContentType("text");
-		textPane.setEditable(true);
-
 		// Acciones de los botones LEER y ESCRIBIR
 
 		// Botón Libros (.txt)
@@ -172,8 +177,16 @@ public class VentanaConsultas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesTxt infoTxt = new ControladorGesTxt();
-				String textoTxt = infoTxt.mostrarTxt();
-				textPane.setText(textoTxt);
+				textoFichero = infoTxt.mostrarTxt();
+
+				String aux = null;
+				aux = textoFichero.replaceAll(",", "     ");
+
+				scrollPane.setViewportView(textPane);
+				textPane.setContentType("text");
+				textPane.setEditable(true);
+				textPane.setText(textoFichero);
+
 			}
 
 		});
@@ -182,10 +195,11 @@ public class VentanaConsultas extends JFrame {
 		btnLibrosESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String testoTxt;
-				ControladorGesEscTxt auxTxt = new ControladorGesEscTxt();
-				testoTxt = textPane.getText();
-				auxTxt.gesEscTxt(testoTxt);
+				AgregarAlTxt agregarTxt = new AgregarAlTxt();
+				ControladorGesEscTxt auxTxt = new ControladorGesEscTxt(agregarTxt);
+				textoFichero = textPane.getText();
+				auxTxt.gesEscTxt(textoFichero);
+				scrollPane.setViewportView(textPane);
 			}
 
 		});
@@ -195,8 +209,11 @@ public class VentanaConsultas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesDocx infoDocx = new ControladorGesDocx();
-				String textoDocx = infoDocx.mostrarDocx();
-				textPane.setText(textoDocx);
+				textoFichero = infoDocx.mostrarDocx();
+				scrollPane.setViewportView(textPane);
+				textPane.setContentType("text");
+				textPane.setEditable(true);
+				textPane.setText(textoFichero);
 			}
 
 		});
@@ -205,9 +222,11 @@ public class VentanaConsultas extends JFrame {
 		btnCDsESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ControladorGesEscDocx escritor = new ControladorGesEscDocx();
-				String textoDocx = textPane.getText();
-				escritor.recogerDocx(textoDocx);
+				AgregarAlDocx agregarAlDocx = new AgregarAlDocx();// kreamos una instancia del modelo para pasarsela al
+																	// controlador
+				ControladorGesEscDocx controladorGesEscDocx = new ControladorGesEscDocx(agregarAlDocx);
+				textoFichero = textPane.getText();
+				controladorGesEscDocx.gesEscDocx(textoFichero);
 			}
 
 		});
@@ -217,8 +236,11 @@ public class VentanaConsultas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesXml infoXml = new ControladorGesXml();
-				String textoXml = infoXml.mostrarXml();
-				textPane.setText(textoXml);
+				textoFichero = infoXml.mostrarXml();
+				scrollPane.setViewportView(textPane);
+				textPane.setContentType("text");
+				textPane.setEditable(true);
+				textPane.setText(textoFichero);
 			}
 
 		});
@@ -228,19 +250,23 @@ public class VentanaConsultas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesHtml infoHtml = new ControladorGesHtml();
-				String textoAMostrar = infoHtml.mostrarHtml();
-				textPane.setText(textoAMostrar);
+				textoFichero = infoHtml.mostrarHtml();
+				scrollPane.setViewportView(textPane);
+				textPane.setContentType("text");
+				textPane.setEditable(true);
+				textPane.setText(textoFichero);
 			}
 
 		});
 
-		// Escribir nuevos usuarios
+		// Escribir nuevos usuarios (.html)
 		btnUsuariosESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AgregarAlHtml aux = new AgregarAlHtml();
-				String textoHtml = textPane.getText();
-				aux.agregar(textoHtml);
+				AgregarAlHtml agregarAlHtml = new AgregarAlHtml();
+				ControladorGesEscHtml controladorGesEscHtml = new ControladorGesEscHtml(agregarAlHtml);
+				textoFichero = textPane.getText();
+				controladorGesEscHtml.gesEscHtml(textoFichero);
 			}
 
 		});
@@ -250,20 +276,23 @@ public class VentanaConsultas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ControladorGesOdt infoOdt = new ControladorGesOdt();
-				String contenidoOdt = infoOdt.mostrarOdt();
-				textPane.setText(contenidoOdt);
+				textoFichero = infoOdt.mostrarOdt();
+				scrollPane.setViewportView(textPane);
+				textPane.setContentType("text");
+				textPane.setEditable(true);
+				textPane.setText(textoFichero);
 			}
 
 		});
 
-		// Escribir nuevos usuarios
+		// Escribir nuevos usuarios (.odt)
 		btnTrabajadoresESCRIBIR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				AgregarAlOdt aux = new AgregarAlOdt();
-				String textoOdt = textPane.getText();
-				aux.EscribirOdt(textoOdt);
+				AgregarAlOdt agregarAlOdt = new AgregarAlOdt();
+				ControladorGesEscOdt controladorGesEscOdt = new ControladorGesEscOdt(agregarAlOdt);
+				textoFichero = textPane.getText();
+				controladorGesEscOdt.gesEscOdt(textoFichero);
 			}
 
 		});
@@ -272,9 +301,12 @@ public class VentanaConsultas extends JFrame {
 		btnPrestamosLEER.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				LeerOds lectorOds = new LeerOds();
 				ControladorGesOds infoOds = new ControladorGesOds();
-				String contenidoOds = infoOds.mostrarOds();
-				textPane.setText(contenidoOds);
+
+				tabla = new JTable(infoOds.mostrarOds(lectorOds), VariablesEstaticas.cabezeraMatrizAuxiliar);
+
+				scrollPane.setViewportView(tabla);
 			}
 
 		});

@@ -7,6 +7,6 @@ public class ControladorGesHtml {
 	
 	public String mostrarHtml() {
 		
-		return leerHtml.muestraContenido();
-	}
+		return leerHtml.muestraContenido(); 
+	} 
 }

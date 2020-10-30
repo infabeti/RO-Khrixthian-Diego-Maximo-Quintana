@@ -1,25 +1,29 @@
 package controlador;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertArrayEquals;
+import static org.mockito.Mockito.mock;
+import org.jopendocument.dom.spreadsheet.MutableCell;
 import org.junit.Test;
+import org.mockito.Mockito;
+
+import modelo.LeerOds;
 
 public class ControladorGesOdsTest {
-	private String resultado;
-	private String resultadoesperado;
-	private ControladorGesOds testGesOds = new ControladorGesOds();
 	
+	private MutableCell cell = null;
+	private String[][] matriz = {{"Hola", "Mundo"},{"Hola","Mundo"}};
+	private String[][] matrizTRUE = {{"Hola", "Mundo"},{"Hola","Mundo"}};
+		
 	@Test
-	public void test() {
-		resultado = testGesOds.mostrarOds();
-		resultadoesperado ="Nº de FILAS y COLUMNAS" + "\n" +
-				"Filas : 4" + "\n" +
-				"Columnas : 1024"+ "\n" + "\n" +
-				"Usuario CodUser libro fecha entrega " + "\n" +  
-				"Ibai 1234 el señor de los anillos 5-10-2020 20-10-2020 " + "\n" +				
-				"khrixthian 1235 el enemigo conoce el sistema 5-10-2020 20-10-2020 " + "\n" +
-				"Maximo 1236 la columna de la muerte 5-10-2020 20-10-2020 ";
-		assertEquals(resultado, resultadoesperado);
+	public void ControladorGesOdsTest() {
+		
+		String[][] resultadoEsperado = matrizTRUE;
+	
+		LeerOds leerOds = mock(LeerOds.class);
+		Mockito.when(leerOds.cargarTabla(2, 2, cell, matriz)).thenReturn(matrizTRUE);
+		assertArrayEquals(leerOds.cargarTabla(2, 2, cell, matriz), resultadoEsperado);
+			
 	}
-
 }
+
+

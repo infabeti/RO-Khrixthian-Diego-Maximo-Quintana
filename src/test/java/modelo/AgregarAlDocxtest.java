@@ -17,10 +17,10 @@ public class AgregarAlDocxtest {
 		resultadoesperado ="Deltoya, Extremoduro, Rock Transgresivo." + (char) 13 + (char) 10
 				+ "One, Metallica, Rock." + (char) 13 + (char) 10
 				+ "Fear of the dark, Iron Maiden, Rock." + (char) 13 + (char) 10
-				+ "Don't Give Me Names, Guano Apes, Grunge." + (char) -1
+				+ "Don't Give Me Names, Guano Apes, Grunge." + (char) 13 + (char) 10
 				+ "Devil come to me, Dover, Grunge." + (char) 13 + (char) 10
-				+ "A night al the opera, Queen, Rock" + (char) 13 + (char) 10
-				+ "A pelo, Platero y tu, rock" + (char) -1;;
+				+ "A night al the opera, Queen, Rock." + (char) 13 + (char) 10
+				+ "A pelo, Platero y tu, rock." + (char) -1;;
 		
 		assertEquals(resultado, resultadoesperado);
 	}
