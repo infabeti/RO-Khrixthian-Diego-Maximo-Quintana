@@ -25,7 +25,6 @@ public class LeerOds {
 			nColumnas -= 1019; //RESTA NECESARIA PARA LIMITAR LA TABLA AL NUMERO DE COLUMNAS UTILIZADAS EN EL ODS
 			nFilas = sheet.getRowCount();
 			matriz = new String[nFilas][nColumnas];
-			System.out.println(nFilas + ", " + nColumnas);
 			MutableCell cell = null;
 			cargarTabla(nFilas, nColumnas, cell, matriz);
 		} catch (IOException e) {
