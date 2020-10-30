@@ -31,12 +31,8 @@ public class ControladorGesOdsTest {
 		testString = "prueba";
 		controladorGesOds.mostrarOds(testString);
 
-		try {
-			verify(leerOdsMock, times(1)).mostrarOds(testString);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		verify(leerOdsMock, times(1)).mostrarOds(testString);
+
 	}
 
 }
