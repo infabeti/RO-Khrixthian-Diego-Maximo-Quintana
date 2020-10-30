@@ -22,19 +22,12 @@ public class LeerOds {
 		try {
 			sheet = SpreadSheet.createFromFile(archivo).getSheet(0);
 			nColumnas = sheet.getColumnCount();
+			nColumnas -= 1019; //RESTA NECESARIA PARA LIMITAR LA TABLA AL NUMERO DE COLUMNAS UTILIZADAS EN EL ODS
 			nFilas = sheet.getRowCount();
 			matriz = new String[nFilas][nColumnas];
+			System.out.println(nFilas + ", " + nColumnas);
 			MutableCell cell = null;
-			for (int nRowIndex = 0; nRowIndex < nFilas; nRowIndex++) {
-				for (int nColIndex = 0; nColIndex < nColumnas; nColIndex++) {
-					cell = sheet.getCellAt(nColIndex, nRowIndex);
-					if (nColIndex == nColumnas--) {
-						cell = sheet.getCellAt(nColIndex++, nRowIndex);
-					}
-				}
-			}
 			cargarTabla(nFilas, nColumnas, cell, matriz);
-
 		} catch (IOException e) {
 			new ControlExcepciones("Excepción de Entrada/Salida" + e.getMessage());
 			System.out.println("Excepción de Entrada/Salida" + e.getMessage());
