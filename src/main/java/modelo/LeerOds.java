@@ -22,7 +22,7 @@ public class LeerOds {
 		try {
 			sheet = SpreadSheet.createFromFile(archivo).getSheet(0);
 			nColumnas = sheet.getColumnCount();
-			nColumnas -= 1019;
+			nColumnas -= 1019; //RESTA NECESARIA PARA LIMITAR LA TABLA AL NUMERO DE COLUMNAS UTILIZADAS EN EL ODS
 			nFilas = sheet.getRowCount();
 			matriz = new String[nFilas][nColumnas];
 			System.out.println(nFilas + ", " + nColumnas);
