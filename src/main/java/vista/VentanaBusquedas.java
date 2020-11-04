@@ -41,8 +41,8 @@ public class VentanaBusquedas extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaConsultas.textPane.getText();
-
+				cogerTexto = VentanaConsultas.devTexto();
+				System.out.println(cogerTexto);
 			}
 
 		});
