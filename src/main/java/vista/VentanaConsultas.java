@@ -55,7 +55,7 @@ public class VentanaConsultas extends JFrame {
 
 	private JScrollPane scrollPane;
 
-	public JTextPane textPane = new JTextPane();
+	public static JTextPane textPane = new JTextPane();
 
 	private JTable tabla;
 
@@ -306,6 +306,11 @@ public class VentanaConsultas extends JFrame {
 			}
 
 		});
+	}
+
+	public static String devTexto() {
+
+		return textPane.getText();
 	}
 
 }
