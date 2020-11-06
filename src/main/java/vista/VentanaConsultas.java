@@ -1,5 +1,6 @@
 package vista;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +12,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextPane;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
 
 import controlador.ControladorGesDocx;
 import controlador.ControladorGesEscDocx;
@@ -55,6 +60,7 @@ public class VentanaConsultas extends JFrame {
 
 	private JButton btnBuscar;
 	private VentanaBusquedas ventBuscar;
+	private boolean cambio = false;
 
 	private JScrollPane scrollPane;
 
@@ -321,6 +327,10 @@ public class VentanaConsultas extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ventBuscar = new VentanaBusquedas();
 				ventBuscar.setVisible(true);
+				cambio = true;
+				if (cambio = true) {
+					pintarCambios();
+				}
 			}
 
 		});
@@ -330,4 +340,39 @@ public class VentanaConsultas extends JFrame {
 
 		return textPane.getText();
 	}
+
+	public void pintarCambios() {
+		String[] aux = ventBuscar.devolArray();
+		String palabra = ventBuscar.devolPalabra();
+		Color c = Color.red;
+		String msg = null;
+		StyleContext sc = StyleContext.getDefaultStyleContext();
+		AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, c);
+		aset = sc.addAttribute(aset, StyleConstants.FontFamily, "Lucida Console");
+		aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
+
+		for (int i = 0; i < aux.length - 1; i++) {
+			if (aux[i].equals(palabra)) {
+				int len = textPane.getDocument().getLength();
+				textPane.setCaretPosition(len);
+				textPane.setCharacterAttributes(aset, false);
+				textPane.replaceSelection(msg);
+			} else {
+				textPane.replaceSelection(aux[i]);
+			}
+		}
+	}
+
+//	private void appendToPane(JTextPane tp, String msg, Color c) {
+//		StyleContext sc = StyleContext.getDefaultStyleContext();
+//		AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, c);
+//
+//		aset = sc.addAttribute(aset, StyleConstants.FontFamily, "Lucida Console");
+//		aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
+//
+//		int len = tp.getDocument().getLength();
+//		tp.setCaretPosition(len);
+//		tp.setCharacterAttributes(aset, false);
+//		tp.replaceSelection(msg);
+//	}
 }

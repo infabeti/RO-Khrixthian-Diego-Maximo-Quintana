@@ -14,6 +14,7 @@ public class VentanaBusquedas extends JFrame {
 	private JTextField tfinput;
 	private JButton btnNewButton;
 	private String palabraBuscar;
+	private String[] aux2;
 
 	public VentanaBusquedas() {
 		setSize(300, 150);
@@ -51,13 +52,23 @@ public class VentanaBusquedas extends JFrame {
 
 	public void marcarPalabra(String x, String y) {
 		String palabra = null;
-		String[] aux2 = x.split(" ");
+		aux2 = x.split(" ");
+		char c = (char) 244;
 		for (int i = 0; i < aux2.length; i++) {
 			if (aux2[i].equals(y)) {
 				palabra = aux2[i];
+				palabra = c + palabra;
+				aux2[i] = palabra;
 			}
 		}
 		System.out.println(palabra);
+	}
 
+	public String[] devolArray() {
+		return aux2;
+	}
+
+	public String devolPalabra() {
+		return palabraBuscar;
 	}
 }
