@@ -13,7 +13,7 @@ public class VentanaBusquedas extends JFrame {
 	private JPanel contentPane;
 	private JTextField tfinput;
 	private JButton btnNewButton;
-	private String cogerTexto;
+	private String palabraBuscar;
 
 	public VentanaBusquedas() {
 		setSize(300, 150);
@@ -33,7 +33,6 @@ public class VentanaBusquedas extends JFrame {
 		btnNewButton = new JButton("BUSCAR");
 		btnNewButton.setBounds(158, 56, 89, 23);
 		contentPane.add(btnNewButton);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Acción al cerrar la ventana
 		setResizable(false); // No resizable
 		setLocationRelativeTo(null); // Ubica la ventana en el cento
 		setTitle("Busquedas");
@@ -41,10 +40,24 @@ public class VentanaBusquedas extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				cogerTexto = VentanaConsultas.devTexto();
-				System.out.println(cogerTexto);
+				VentanaConsultas aux = new VentanaConsultas();
+				String cogerTexto = aux.devTexto();
+				palabraBuscar = tfinput.getText();
+				marcarPalabra(cogerTexto, palabraBuscar);
 			}
 
 		});
+	}
+
+	public void marcarPalabra(String x, String y) {
+		String palabra = null;
+		String[] aux2 = x.split(" ");
+		for (int i = 0; i < aux2.length; i++) {
+			if (aux2[i].equals(y)) {
+				palabra = aux2[i];
+			}
+		}
+		System.out.println(palabra);
+
 	}
 }

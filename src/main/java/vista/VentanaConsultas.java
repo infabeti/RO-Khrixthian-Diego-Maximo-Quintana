@@ -326,7 +326,7 @@ public class VentanaConsultas extends JFrame {
 		});
 	}
 
-	public static String devTexto() {
+	public String devTexto() {
 
 		return textPane.getText();
 	}
