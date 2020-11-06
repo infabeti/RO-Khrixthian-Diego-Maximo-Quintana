@@ -53,9 +53,12 @@ public class VentanaConsultas extends JFrame {
 	private JButton btnTrabajadoresESCRIBIR;
 	private JButton btnPrestamosESCRIBIR;
 
+	private JButton btnBuscar;
+	private VentanaBusquedas ventBuscar;
+
 	private JScrollPane scrollPane;
 
-	public JTextPane textPane = new JTextPane();
+	public static JTextPane textPane = new JTextPane();
 
 	private JTable tabla;
 
@@ -161,6 +164,11 @@ public class VentanaConsultas extends JFrame {
 		btnPrestamosESCRIBIR.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnPrestamosESCRIBIR.setBounds(171, 294, 71, 25);
 		contentPane.add(btnPrestamosESCRIBIR);
+
+		btnBuscar = new JButton("BUSCAR");
+		btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnBuscar.setBounds(153, 423, 89, 23);
+		contentPane.add(btnBuscar);
 
 		// Area de texto
 		scrollPane = new JScrollPane();
@@ -306,6 +314,20 @@ public class VentanaConsultas extends JFrame {
 			}
 
 		});
+
+		// Botón Buscar
+		btnBuscar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ventBuscar = new VentanaBusquedas();
+				ventBuscar.setVisible(true);
+			}
+
+		});
 	}
 
+	public String devTexto() {
+
+		return textPane.getText();
+	}
 }
