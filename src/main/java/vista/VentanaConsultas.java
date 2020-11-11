@@ -61,6 +61,7 @@ public class VentanaConsultas extends JFrame {
 	private JButton btnBuscar;
 	private VentanaBusquedas ventBuscar;
 	private boolean cambio = false;
+	private String[] aux2;
 
 	private JScrollPane scrollPane;
 
@@ -190,8 +191,7 @@ public class VentanaConsultas extends JFrame {
 				ControladorGesTxt infoTxt = new ControladorGesTxt();
 				String textoTxt = infoTxt.mostrarTxt();
 
-				String aux = null;
-				aux = textoTxt.replaceAll(",", "     ");
+				aux2 = textoTxt.split(" ");
 
 				scrollPane.setViewportView(textPane);
 				textPane.setContentType("text");
@@ -328,9 +328,10 @@ public class VentanaConsultas extends JFrame {
 				ventBuscar = new VentanaBusquedas();
 				ventBuscar.setVisible(true);
 				cambio = true;
-				if (cambio = true) {
-					pintarCambios();
-				}
+				// textPane.setText("estoy hasta la poya");
+//				if (cambio = true) {
+//					pintarCambios();
+//				}
 			}
 
 		});
