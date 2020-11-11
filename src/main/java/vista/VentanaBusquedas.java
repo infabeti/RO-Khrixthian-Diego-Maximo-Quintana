@@ -1,5 +1,6 @@
 package vista;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,12 +9,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
 
 public class VentanaBusquedas extends JFrame {
 	private JPanel contentPane;
 	private JTextField tfinput;
 	private JButton btnNewButton;
 	private String palabraBuscar;
+	private String[] aux2;
+	String coloreadoTxt = "";
 
 	public VentanaBusquedas() {
 		setSize(300, 150);
@@ -44,6 +51,8 @@ public class VentanaBusquedas extends JFrame {
 				String cogerTexto = aux.devTexto();
 				palabraBuscar = tfinput.getText();
 				marcarPalabra(cogerTexto, palabraBuscar);
+				aux.textPane.setText("");
+				pintarCambios();
 			}
 
 		});
@@ -51,13 +60,38 @@ public class VentanaBusquedas extends JFrame {
 
 	public void marcarPalabra(String x, String y) {
 		String palabra = null;
-		String[] aux2 = x.split(" ");
-		for (int i = 0; i < aux2.length; i++) {
+		aux2 = x.split(" ");
+		char c = (char) 244;
+		for (int i = 0; i < aux2.length - 1; i++) {
+			// System.out.print(aux2[i]);
 			if (aux2[i].equals(y)) {
 				palabra = aux2[i];
+				// palabra = c + palabra;
+				// aux2[i] = palabra;
 			}
 		}
-		System.out.println(palabra);
+		for (int i = 0; i < aux2.length - 1; i++) {
+			coloreadoTxt += aux2[i] + " ";
+		}
+	}
 
+	public void pintarCambios() {
+		Color c = Color.red;
+		String msg = null;
+		StyleContext sc = StyleContext.getDefaultStyleContext();
+		AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, c);
+		aset = sc.addAttribute(aset, StyleConstants.FontFamily, "Lucida Console");
+		aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
+
+		for (int i = 0; i < aux2.length - 1; i++) {
+			if (aux2[i].equals(palabraBuscar)) {
+				int len = VentanaConsultas.textPane.getDocument().getLength();
+				VentanaConsultas.textPane.setCaretPosition(len);
+				VentanaConsultas.textPane.setCharacterAttributes(aset, false);
+				VentanaConsultas.textPane.replaceSelection(msg);
+			} else {
+				VentanaConsultas.textPane.replaceSelection(aux2[i]);
+			}
+		}
 	}
 }
