@@ -168,7 +168,6 @@ public class ExpresionRegular {
 			System.out.println("NINGUNA coincidencia encontrada");
 	}
 
-//--------------------------------------------------------------------------------------------------------------------------------------
 	public static void asteriscoEnMedio(String expresion, int pos, String texto) {
 		int numCoincidencias = 0;
 		int numPalabras;
@@ -184,8 +183,8 @@ public class ExpresionRegular {
 		numPalabras = token.countTokens();
 
 		expresion1 = expresion.substring(0, pos);
-		expresion2 = expresion.substring(pos, expresion.length() - 1);
-		System.out.println(expresion1 + "" + expresion2);
+		expresion2 = expresion.substring(pos + 1, expresion.length());
+		System.out.println("Expresion 1 --> " + expresion1 + " - Expresion 2 --> " + expresion2);
 
 		while (token.hasMoreTokens()) { // Recorro cada palabra del texto
 			palabra = token.nextToken();
@@ -198,15 +197,16 @@ public class ExpresionRegular {
 					else
 						encontrada = false;
 				}
-			}
-			if (expresion1 == "")
-				numCoincidencias = numPalabras;
-			else if (palabra.contains(expresion2)) {// Busco la expresión en la palabra
-				for (int x = 0; x < expresion2.length(); x++) { // Me aseguro que la expresión esté al final
-					if (palabra.charAt(palabra.length() - 1 - x) == expresion2.charAt(expresion.length() - 1 - x))
-						encontrada = true;
-					else
-						encontrada = false;
+				if (expresion2 == "")
+					numCoincidencias = numPalabras;
+				else if (palabra.contains(expresion2) && encontrada) {// Busco la expresión en la palabra
+					for (int x = 0; x < expresion2.length(); x++) { // Me aseguro que la expresión esté al final
+
+						if (palabra.charAt(palabra.length() - 1 - x) == expresion2.charAt(expresion2.length() - 1 - x))
+							encontrada = true;
+						else
+							encontrada = false;
+					}
 				}
 			}
 
@@ -215,16 +215,17 @@ public class ExpresionRegular {
 				System.out.println("Palabra: " + palabra + " posicion --> " + posicion + " Contador coincidencias: "
 						+ numCoincidencias); // Para visualizar algoritmo
 			}
+			encontrada = false;
 		}
 		if (numCoincidencias == 0)
 			System.out.println("NINGUNA coincidencia encontrada");
+
 	}
-//----------------------------------------------------------------------------------------------------------------------------------------------
 
 	public static void main(String[] args) {
 		// Busca el primer string cuantas veces aparece en el segundo
 
-		buscar("b*a", "kajhhkjs aba bfkdbaskhfab nmh ab");
+		buscar("bb*ba", "kajhhkjs aba bbjhgjhfdgabba bbfkdbaskhfa nmh ab");
 
 	}
 }
