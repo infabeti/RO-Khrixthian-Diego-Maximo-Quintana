@@ -61,13 +61,10 @@ public class VentanaBusquedas extends JFrame {
 	public void marcarPalabra(String x, String y) {
 		String palabra = null;
 		aux2 = x.split(" ");
-		char c = (char) 244;
 		for (int i = 0; i < aux2.length - 1; i++) {
 			// System.out.print(aux2[i]);
 			if (aux2[i].equals(y)) {
-				palabra = aux2[i];
-				// palabra = c + palabra;
-				// aux2[i] = palabra;
+				// pintarCambios(aux2[i]);
 			}
 		}
 		for (int i = 0; i < aux2.length - 1; i++) {
@@ -80,17 +77,15 @@ public class VentanaBusquedas extends JFrame {
 		String msg = null;
 		StyleContext sc = StyleContext.getDefaultStyleContext();
 		AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, c);
-		aset = sc.addAttribute(aset, StyleConstants.FontFamily, "Lucida Console");
-		aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
 
 		for (int i = 0; i < aux2.length - 1; i++) {
 			if (aux2[i].equals(palabraBuscar)) {
 				int len = VentanaConsultas.textPane.getDocument().getLength();
 				VentanaConsultas.textPane.setCaretPosition(len);
 				VentanaConsultas.textPane.setCharacterAttributes(aset, false);
-				VentanaConsultas.textPane.replaceSelection(msg);
+				VentanaConsultas.textPane.replaceSelection(aux2[i] + " ");
 			} else {
-				VentanaConsultas.textPane.replaceSelection(aux2[i]);
+				VentanaConsultas.textPane.replaceSelection(aux2[i].formatted(Color.black) + " ");
 			}
 		}
 	}

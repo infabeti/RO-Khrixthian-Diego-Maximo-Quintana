@@ -30,7 +30,7 @@ import modelo.VariablesEstaticas;
 
 public class VentanaConsultas extends JFrame {
 
-	private JPanel contentPane;
+	public static JPanel contentPane;
 
 	private JLabel lblLibros;
 	private JLabel lblCDs;
