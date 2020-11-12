@@ -1,5 +1,6 @@
 package vista;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
 
 import controlador.ControladorGesDocx;
 import controlador.ControladorGesEscDocx;
@@ -26,6 +32,7 @@ import modelo.AgregarAlDocx;
 import modelo.AgregarAlHtml;
 import modelo.AgregarAlOdt;
 import modelo.AgregarAlTxt;
+import modelo.ExpresionRegular;
 import modelo.VariablesEstaticas;
 
 public class VentanaConsultas extends JFrame {
@@ -54,8 +61,6 @@ public class VentanaConsultas extends JFrame {
 	private JButton btnPrestamosESCRIBIR;
 
 	private JButton btnBuscar;
-	private VentanaBusquedas ventBuscar;
-	private boolean cambio = false;
 	private String[] aux2;
 
 	private JScrollPane scrollPane;
@@ -63,6 +68,7 @@ public class VentanaConsultas extends JFrame {
 	public static JTextPane textPane = new JTextPane();
 
 	private JTable tabla;
+	private JTextField tfBuscar;
 
 	// Crea la ventana
 	public VentanaConsultas() {
@@ -176,6 +182,15 @@ public class VentanaConsultas extends JFrame {
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(300, 45, 650, 810);
 		contentPane.add(scrollPane);
+
+		JLabel lblbusqueda = new JLabel("Busqueda:");
+		lblbusqueda.setBounds(20, 372, 83, 25);
+		contentPane.add(lblbusqueda);
+
+		tfBuscar = new JTextField();
+		tfBuscar.setBounds(118, 374, 124, 25);
+		contentPane.add(tfBuscar);
+		tfBuscar.setColumns(10);
 
 		// Acciones de los botones LEER y ESCRIBIR
 
@@ -320,55 +335,26 @@ public class VentanaConsultas extends JFrame {
 		btnBuscar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ventBuscar = new VentanaBusquedas();
-				ventBuscar.setVisible(true);
-				cambio = true;
-				// textPane.setText("estoy hasta la poya");
-//				if (cambio = true) {
-//					pintarCambios();
-//				}
+				ExpresionRegular.buscar(tfBuscar.getText().toString(), textPane.getText());
+				// ventBuscar.pintarCambios(textPane, "Stack", Color.DARK_GRAY);
+				pintarCambios(textPane, tfBuscar.getText().toString(), Color.MAGENTA);
+				// ventBuscar.pintarCambios(textPane, "flow", Color.DARK_GRAY);
+
 			}
 
 		});
 	}
 
-	public String devTexto() {
+	public void pintarCambios(JTextPane tp, String msg, Color c) {
+		StyleContext sc = StyleContext.getDefaultStyleContext();
+		AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, c);
 
-		return textPane.getText();
+		aset = sc.addAttribute(aset, StyleConstants.FontFamily, "Lucida Console");
+		aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
+
+		int len = tp.getDocument().getLength();
+		tp.setCaretPosition(len);
+		tp.setCharacterAttributes(aset, false);
+		tp.replaceSelection(msg);
 	}
-
-//	public void pintarCambios() {
-//		String[] aux = ventBuscar.devolArray();
-//		String palabra = ventBuscar.devolPalabra();
-//		Color c = Color.red;
-//		String msg = null;
-//		StyleContext sc = StyleContext.getDefaultStyleContext();
-//		AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, c);
-//		aset = sc.addAttribute(aset, StyleConstants.FontFamily, "Lucida Console");
-//		aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
-//
-//		for (int i = 0; i < aux.length - 1; i++) {
-//			if (aux[i].equals(palabra)) {
-//				int len = textPane.getDocument().getLength();
-//				textPane.setCaretPosition(len);
-//				textPane.setCharacterAttributes(aset, false);
-//				textPane.replaceSelection(msg);
-//			} else {
-//				textPane.replaceSelection(aux[i]);
-//			}
-//		}
-//	}
-
-//	private void appendToPane(JTextPane tp, String msg, Color c) {
-//		StyleContext sc = StyleContext.getDefaultStyleContext();
-//		AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, c);
-//
-//		aset = sc.addAttribute(aset, StyleConstants.FontFamily, "Lucida Console");
-//		aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
-//
-//		int len = tp.getDocument().getLength();
-//		tp.setCaretPosition(len);
-//		tp.setCharacterAttributes(aset, false);
-//		tp.replaceSelection(msg);
-//	}
 }
