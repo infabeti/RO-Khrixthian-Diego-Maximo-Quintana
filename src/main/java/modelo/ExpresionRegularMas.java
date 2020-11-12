@@ -1,13 +1,15 @@
 package modelo;
 
+import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
-public class PruebasExpresionRegularMas {
+public class ExpresionRegularMas {
 
-	private static String alfabeto[] = { "a", "b", "j", "k", "*", "+"};
+		private static String alfabeto[] = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", 
+											"m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "*", "+"};
 
-	 private static void buscar(String expresion, String texto) {
+	 	public static void buscar(String expresion, String texto) {
 	    	
 	    if (!aceptarExpresion(expresion))
 	    	System.out.println("\nExpresión NO aceptada. Algún carácter fuera del alfabeto");
@@ -17,7 +19,7 @@ public class PruebasExpresionRegularMas {
 	    	
 	 }
 
-	 private static boolean aceptarExpresion(String expresion) { 
+	 	public static boolean aceptarExpresion(String expresion) { 
 	    boolean encontrada, aceptada;
 
 	    aceptada = true;
@@ -42,7 +44,7 @@ public class PruebasExpresionRegularMas {
 	    	
 	    }
 
-	 private static void evaluarExpresion(String expresion, String texto) {
+	 	public static void evaluarExpresion(String expresion, String texto) {
 	    boolean encontradoAsterisco = false;
 	    	
 	    for (int x = 0; x < expresion.length(); x++) { // Recorre los caracteres de la expresión
@@ -58,29 +60,22 @@ public class PruebasExpresionRegularMas {
 	    	
 	 }
 
-	 private static void palabraSinRegex(String expresion, String texto) {
-	    int numCoincidencias = 0;
-	    int numPalabras;
-	    int posicion = 1;
+	 	public static void palabraSinRegex(String expresion, String texto) {
 	    StringTokenizer token;
 	    String palabra;
 
 	    token = new StringTokenizer(texto);
-	    numPalabras = token.countTokens();
 	    	
 	    while (token.hasMoreTokens()) {
 	    	palabra = token.nextToken();
 	    	if (palabra.contentEquals(expresion)) {
-	    		numCoincidencias += 1;
-	    		System.out.println("Palabra: " + palabra + " posicion --> " + posicion + " Contador coincidencias: " + numCoincidencias); 
+	    		System.out.println("Palabra: " + palabra + " encontrada"); 
 	    	}
 	    }
-	    	
-	    System.out.println("\n" + numCoincidencias + " coincidencias encontradas en " + numPalabras + " palabras.");
 	    
 	 }
 
-	    private static void encontrarSimbMas(String expresion, String texto) {
+	    public static void encontrarSimbMas(String expresion, String texto) {
 	    	    	
 	    	if(Character.toString(expresion.charAt(0)).contentEquals("+")) {
 	    		simboloMasAlPrincipio(expresion, texto);
@@ -92,10 +87,8 @@ public class PruebasExpresionRegularMas {
 	    	
 	    }
 	    
-	    private static void simboloMasAlFinal(String expresion, String texto) {
-	    	int numCoincidencias = 0;
+	    public static void simboloMasAlFinal(String expresion, String texto) {
 	    	int numPalabras;
-	    	int posicion = 1;
 	    	StringTokenizer token;
 	    	String[] palabras;
 	    	String caracteres = "";
@@ -117,33 +110,26 @@ public class PruebasExpresionRegularMas {
 	    	
 	    	for(int i = 0; i < palabras.length-1; i++) {
 	    		palabras[i] = token.nextToken();
-	    		if (caracteres == "") {
-	    			numCoincidencias = numPalabras;
-	    		}else if (palabras[i].contains(caracteres)) { // Busco la expresión en la palabra
+	    		if (palabras[i].contains(caracteres)) { // Busco la expresión en la palabra
 	    			for(int j = 0; j < caracteres.length(); j++) {
 	    				if((palabras[i].charAt(0) == caracteres.charAt(0))) {
 	    					if(palabras[i].equals(caracteres)){
 	    						palabras[i] = " ";
 	    					}
-	    					posicion = i + 1;
 	    					estaAlPrincipio = true;
 	    				}else {
 	    					estaAlPrincipio = false;
-	    					posicion = 23;
 	    				}
 	    			}
 	    			if(estaAlPrincipio == true) {
-	    				numCoincidencias += 1;
-	    				System.out.println("Palabra: " + palabras[i] + " posicion --> " + posicion + " Contador coincidencias: " + numCoincidencias);
+	    				System.out.println("Palabra: " + palabras[i] + " encontrada");
 	    			}
 	    		}
 	    	}
 	    }
 	    
-	    private static void simboloMasAlPrincipio(String expresion, String texto) {
-	    	int numCoincidencias = 0;
+	    public static void simboloMasAlPrincipio(String expresion, String texto) {
 	    	int numPalabras;
-	    	int posicion = 1;
 	    	StringTokenizer token;
 	    	String[] palabras;
 	    	String caracteres = "";
@@ -167,33 +153,26 @@ public class PruebasExpresionRegularMas {
 	    		
 	    	for(int i = 0; i < palabras.length-1; i++) {
 	    		palabras[i] = token.nextToken();
-	    		if (expresion == "") {
-	    			numCoincidencias = numPalabras;
-	    		}else if (palabras[i].contains(expresion)) { // Busco la expresión en la palabra
+	    		if (palabras[i].contains(expresion)) { // Busco la expresión en la palabra
 	    			for(int j = 0; j < expresion.length(); j++) {
 	    				if((palabras[i].charAt(palabras[i].length() -1) == expresion.charAt(expresion.length() -1))) {
 	    					if(palabras[i].equals(caracteres)){
 	    						palabras[i] = " ";
 	    					}
-	    					posicion = i + 1;
 	    					estaAlFinal = true;
 	    				}else {
 	    					estaAlFinal = false;
-	    					posicion = 23;
 	    				}
 	    			}
 	    			if(estaAlFinal == true) {
-	    				numCoincidencias += 1;
-	    				System.out.println("Palabra: " + palabras[i] + " posicion --> " + posicion + " Contador coincidencias: " + numCoincidencias);
+	    				System.out.println("Palabra: " + palabras[i] + " encontrada");
 	    			}
 	    		}
 	    	}
 	    }
 	    
 	    public static void simboloMasEnMedio(String expresion, String texto) {
-	    	int numCoincidencias = 0;
 	    	int numPalabras;
-	    	int posicion = 1;
 	    	StringTokenizer token;
 	    	String[] palabras;
 	    	String expre1 = "", expre2 = "", caracteres = "";
@@ -214,12 +193,10 @@ public class PruebasExpresionRegularMas {
 	    	token = new StringTokenizer(texto);
 	    	numPalabras = token.countTokens();
 	    	palabras = new String[numPalabras];
-	    		
+	    	
 	    	for(int i = 0; i < palabras.length-1; i++) {
 	    		palabras[i] = token.nextToken();
-	    		if (expre1 == "") {
-	    			numCoincidencias = numPalabras;
-	    		}else if (palabras[i].contains(expre1)) {
+	    		if (palabras[i].contains(expre1)) {
 	    			for(int j = 0; j < expre1.length(); j++) {
 	    				if((palabras[i].charAt(0) == expre1.charAt(0))) {
 	    					if(palabras[i].equals(expre1)){
@@ -229,6 +206,7 @@ public class PruebasExpresionRegularMas {
 	    				}else {
 	    					estaEnMedio = false;
 	    				}
+	    				
 	    			}
 	    			
 	    			if(palabras[i].contains(expre2) && estaEnMedio == true) {
@@ -236,29 +214,34 @@ public class PruebasExpresionRegularMas {
 		    				if((palabras[i].charAt(palabras[i].length() -1) == expre2.charAt(expre2.length() -1))) {
 		    					if(palabras[i].equals(expre2)){
 		    						palabras[i] = " ";
+		    					} else if(palabras[i].equals(expre1 + expre2)) {
+		    						palabras[i] = " ";
 		    					}
-		    					posicion = i + 1;
 		    					estaEnMedio = true;
 		    				}else {
 		    					estaEnMedio = false;
 		    				}
+		    				
 		    			}
-	    			}
-	    			if(estaEnMedio == true) {
-	    				numCoincidencias += 1;
-	    				System.out.println("Palabra: " + palabras[i] + " posicion --> " + posicion + " Contador coincidencias: " + numCoincidencias);
+	    				
+	    				if(estaEnMedio == true) {
+		    				System.out.println("Palabra: " + palabras[i] + " encontrada");
+		    			}
 	    			}
 	    		}
 	    	}
 	    }
 
 	    public static void main(String[] args) {
-
-	    	buscar("ba+ab", "bahfhdsj hfhdfsjb badhfbahifab hikba ghfdhba ba ba ab");
-	    	System.out.println("----------------------------------------------------------------------");
-	    	String dniRegexp = "[a-z]+";
-	    	System.out.println(Pattern.matches(dniRegexp, "79143299T"));
-	    	System.out.println(Pattern.matches(dniRegexp, "h"));
+	    	String texto = "bahfhdsj hfhdfsjb badhfbahifab hjb abhfdhbab abababba abba hikba ghfdhba ba ba ab";
+	    	String expresionRegular = "";
+	    	Scanner sc = new Scanner(System.in);
+	    	System.out.println("Introduce la expresion regular para encontrar una palabra en el texto: \n" + texto);
+	    	System.out.print("Expresion regular: ");
+	    	expresionRegular = sc.nextLine();
+	    	System.out.println("_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-|");
+	    	buscar(expresionRegular, texto);
+	    	System.out.println("_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-|");
 
 	    }
 	

@@ -9,7 +9,7 @@ public class ExpresionRegular {
 			"1", "2", "3", "4", "4", "5", "6", "7", "8", "9", "<", ">", ",", "*", "+" };
 	// private static String operadores[] = { "*" };
 
-	private static void buscar(String expresion, String texto) {
+	public static void buscar(String expresion, String texto) {
 		if (!aceptarExpresion(expresion))
 			System.out.println("\nExpresión NO aceptada. Algún carácter fuera del alfabeto");
 		else {
