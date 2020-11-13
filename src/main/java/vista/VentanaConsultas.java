@@ -204,8 +204,8 @@ public class VentanaConsultas extends JFrame {
 		contentPane.add(lblUserActual);
 		lblUserActual.setText(VentanaUser.nomUsu);
 
-		btnAdministrar = new JButton("Administrar");
-		btnAdministrar.setBounds(153, 524, 89, 23);
+		btnAdministrar = new JButton("ADMINISTRAR");
+		btnAdministrar.setBounds(118, 524, 143, 23);
 		contentPane.add(btnAdministrar);
 
 		// Acciones de los botones LEER y ESCRIBIR
