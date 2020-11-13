@@ -1,5 +1,9 @@
 package vista;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -10,6 +14,15 @@ import javax.swing.JTextField;
 public class VentanaTratarFicheros extends JFrame {
 	private JTextField txtRenameFich;
 	private JTextField txtPropietario;
+	private JComboBox cbFicheros;
+	private JButton btnGuardarCambios;
+	private JLabel lblNomFicheroEntrada;
+	private JLabel lblNewName;
+	private JLabel lblPropietario;
+	private JCheckBox cbSoloLectura;
+	private JCheckBox cbLectEscrit;
+	private JCheckBox cbTodos;
+	private String[] listado;
 
 	public VentanaTratarFicheros() {
 		getContentPane().setLayout(null);
@@ -18,27 +31,29 @@ public class VentanaTratarFicheros extends JFrame {
 		setTitle("Ventana Administrador");
 		setResizable(false);
 		setLocationRelativeTo(null);
-		JLabel lblNomFicheroEntrada = new JLabel("Nombre del fichero a tratar:");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		lblNomFicheroEntrada = new JLabel("Nombre del fichero a tratar:");
 		lblNomFicheroEntrada.setBounds(23, 48, 167, 14);
 		getContentPane().add(lblNomFicheroEntrada);
 
-		JLabel lblNewName = new JLabel("Renombra el fichero:");
+		lblNewName = new JLabel("Renombra el fichero:");
 		lblNewName.setBounds(23, 91, 133, 14);
 		getContentPane().add(lblNewName);
 
-		JLabel lblPropietario = new JLabel("Propietario:");
+		lblPropietario = new JLabel("Propietario:");
 		lblPropietario.setBounds(23, 145, 101, 14);
 		getContentPane().add(lblPropietario);
 
-		JCheckBox cbSoloLectura = new JCheckBox("Solo lectura");
+		cbSoloLectura = new JCheckBox("Solo lectura");
 		cbSoloLectura.setBounds(23, 191, 97, 23);
 		getContentPane().add(cbSoloLectura);
 
-		JCheckBox cbLectEscrit = new JCheckBox("Lectura y escritura");
+		cbLectEscrit = new JCheckBox("Lectura y escritura");
 		cbLectEscrit.setBounds(152, 191, 152, 23);
 		getContentPane().add(cbLectEscrit);
 
-		JCheckBox cbTodos = new JCheckBox("Todos los permisos");
+		cbTodos = new JCheckBox("Todos los permisos");
 		cbTodos.setBounds(306, 191, 166, 23);
 		getContentPane().add(cbTodos);
 
@@ -52,12 +67,61 @@ public class VentanaTratarFicheros extends JFrame {
 		getContentPane().add(txtPropietario);
 		txtPropietario.setColumns(10);
 
-		JButton btnGuardarCambios = new JButton("GUARDAR");
+		btnGuardarCambios = new JButton("GUARDAR");
 		btnGuardarCambios.setBounds(175, 247, 118, 23);
 		getContentPane().add(btnGuardarCambios);
 
-		JComboBox cbFicheros = new JComboBox();
+		cbFicheros = new JComboBox();
 		cbFicheros.setBounds(239, 44, 204, 22);
 		getContentPane().add(cbFicheros);
+
+		cargarComboBox();
+
+		btnGuardarCambios.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				renombrarFichero();
+			}
+
+		});
+	}
+
+	public void cargarComboBox() {
+		// https://www.campusmvp.es/recursos/post/java-como-listar-filtrar-y-obtener-informacion-de-carpetas-y-archivos.aspx
+		String ruta = ".//ficheros";
+		File carpeta = new File(ruta);
+		listado = carpeta.list();
+		if (listado == null || listado.length == 0) {
+			System.out.println("No hay elementos dentro de la carpeta actual");
+			return;
+		} else {
+			for (int i = 0; i < listado.length; i++) {
+				cbFicheros.addItem(listado[i].toString());
+			}
+		}
+	}
+
+	public void renombrarFichero() {
+		String ruta = ".//ficheros";
+		String fichSelec = cbFicheros.getSelectedItem().toString();
+		// System.out.println(fichSelec);
+		String newName = txtRenameFich.getText();
+		// System.out.println(newName);
+		try {
+			File oldfile = new File(ruta + fichSelec);
+			File newfile = new File(ruta + newName);
+			boolean estatus = oldfile.renameTo(newfile);
+			if (!estatus) {
+				System.out.println("error");
+			} else {
+				System.out.println("archivo renombrado");
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+//	public static void main(String[] args) {
+//		cargarComboBox();
+//	}
 	}
 }
