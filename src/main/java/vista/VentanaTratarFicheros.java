@@ -102,7 +102,7 @@ public class VentanaTratarFicheros extends JFrame {
 	}
 
 	public void renombrarFichero() {
-		String ruta = ".//ficheros";
+		String ruta = ".//ficheros//";
 		String fichSelec = cbFicheros.getSelectedItem().toString();
 		// System.out.println(fichSelec);
 		String newName = txtRenameFich.getText();

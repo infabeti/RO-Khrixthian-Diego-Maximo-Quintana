@@ -69,7 +69,7 @@ public class VentanaConsultas extends JFrame {
 
 	private JTable tabla;
 	private JTextField tfBuscar;
-	private JButton btnVentAdmin;
+	private JButton btnAdministrar;
 	private JLabel lblUserActivo;
 	private JLabel lblUserActual;
 
@@ -194,7 +194,7 @@ public class VentanaConsultas extends JFrame {
 		tfBuscar.setBounds(118, 374, 124, 25);
 		contentPane.add(tfBuscar);
 		tfBuscar.setColumns(10);
-		
+
 		lblUserActivo = new JLabel("Usuario Activo:");
 		lblUserActivo.setBounds(372, 11, 130, 14);
 		contentPane.add(lblUserActivo);
@@ -203,6 +203,10 @@ public class VentanaConsultas extends JFrame {
 		lblUserActual.setBounds(512, 11, 99, 14);
 		contentPane.add(lblUserActual);
 		lblUserActual.setText(VentanaUser.nomUsu);
+
+		btnAdministrar = new JButton("Administrar");
+		btnAdministrar.setBounds(153, 524, 89, 23);
+		contentPane.add(btnAdministrar);
 
 		// Acciones de los botones LEER y ESCRIBIR
 
@@ -352,6 +356,16 @@ public class VentanaConsultas extends JFrame {
 				pintarCambios(textPane, tfBuscar.getText().toString(), Color.MAGENTA);
 				// ventBuscar.pintarCambios(textPane, "flow", Color.DARK_GRAY);
 
+			}
+
+		});
+
+		// Botón ventana administrador
+		btnAdministrar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaTratarFicheros ventana = new VentanaTratarFicheros();
+				ventana.setVisible(true);
 			}
 
 		});
