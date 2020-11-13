@@ -11,69 +11,52 @@ public class ExpresionRegularMas {
 
 	 	public static void buscar(String expresion, String texto) {
 	    	
-	    if (!aceptarExpresion(expresion))
-	    	System.out.println("\nExpresión NO aceptada. Algún carácter fuera del alfabeto");
-	    else {
-	    	evaluarExpresion(expresion, texto);
-	    }
-	    	
-	 }
+	 		if (!aceptarExpresion(expresion))
+	 			System.out.println("\nExpresión NO aceptada. Algún carácter fuera del alfabeto");
+	 		else {
+	 			evaluarExpresion(expresion, texto);
+	 		} 	
+	 	}
 
 	 	public static boolean aceptarExpresion(String expresion) { 
-	    boolean encontrada, aceptada;
+	 		boolean encontrada, aceptada;
 
-	    aceptada = true;
+	 		aceptada = true;
 	    	
-	    for (int x = 0; x < expresion.length() && aceptada; x++) {
-	    	encontrada = false;
+	 		for (int x = 0; x < expresion.length() && aceptada; x++) {
+	 			encontrada = false;
 	    		
-	    	for (int y = 0; y < alfabeto.length && !encontrada; y++) {
-	    		if (Character.toString(expresion.charAt(x)).contentEquals(alfabeto[y])) {
-	    			encontrada = true;
-	    		}
-	    	}
+	 			for (int y = 0; y < alfabeto.length && !encontrada; y++) {
+	 				if (Character.toString(expresion.charAt(x)).contentEquals(alfabeto[y])) {
+	 					encontrada = true;
+	 				}
+	 			}
 	    		
-	    	if (!encontrada) {
-	    		aceptada = false;
-	    	}else {
-	    		aceptada = true;
-	    	}
-	    }
+	 			if (!encontrada) {
+	 				aceptada = false;
+	 			}else {
+	 				aceptada = true;
+	 			}
+	 		}
 	    
-	    return aceptada;
-	    	
+	 		return aceptada;	
 	    }
 
 	 	public static void evaluarExpresion(String expresion, String texto) {
-	    boolean encontradoAsterisco = false;
+	 		boolean encontradoSimbMas = false;
 	    	
-	    for (int x = 0; x < expresion.length(); x++) { // Recorre los caracteres de la expresión
-	    	if (Character.toString(expresion.charAt(x)).contentEquals("+"))
-	    		encontradoAsterisco = true;
-	    }
+	 		for (int x = 0; x < expresion.length(); x++) { // Recorre los caracteres de la expresión
+	 			if (Character.toString(expresion.charAt(x)).contentEquals("+"))
+	 				encontradoSimbMas = true;
+	 		}
 	    	
-	    if (encontradoAsterisco) {
-	    	encontrarSimbMas(expresion, texto);
-	    } else {
-	    	palabraSinRegex(expresion, texto);
-	    }
+	 		if (encontradoSimbMas == true) {
+	 			encontrarSimbMas(expresion, texto);
+	 		} else {
+	 			System.out.println("NO SE HA ENCONTRADO EL CARACTER COMODIN.");
+	 		}
 	    	
-	 }
-
-	 	public static void palabraSinRegex(String expresion, String texto) {
-	    StringTokenizer token;
-	    String palabra;
-
-	    token = new StringTokenizer(texto);
-	    	
-	    while (token.hasMoreTokens()) {
-	    	palabra = token.nextToken();
-	    	if (palabra.contentEquals(expresion)) {
-	    		System.out.println("Palabra: " + palabra + " encontrada"); 
-	    	}
-	    }
-	    
-	 }
+	 	}
 
 	    public static void encontrarSimbMas(String expresion, String texto) {
 	    	    	
