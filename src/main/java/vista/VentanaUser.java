@@ -20,9 +20,10 @@ import javax.swing.Action;
 @SuppressWarnings("serial")
 public class VentanaUser extends JFrame {
 	public ControladorUser controladorUser = new ControladorUser();
-	final VentanaConsultas consultas = new VentanaConsultas();// declaramos la ventana de consultas
+	private VentanaConsultas consultas;// declaramos la ventana de consultas
 	private JPanel contentPane;
-	
+	static boolean ES_ADMINISTRADOR;
+	static String nomUsu;
 	private JTextField fieldUser;
 	private JPasswordField fieldPassword;
 	private JLabel lblCabecera;
@@ -80,8 +81,17 @@ public class VentanaUser extends JFrame {
 							"ERROR AL INTRODUCIR LA CONTRASEÑA", 
 							JOptionPane.ERROR_MESSAGE);
 				}
-				
+
 				if(control == true) {
+					nomUsu = fieldUser.getText();
+					if(fieldUser.getText().equals("admin") && !fieldPassword.getText().equals("admin1")) {
+						JOptionPane.showMessageDialog(null,  "La contraseña de admin no es correcta. Se accedera como usuario normal.", "ADMINISTRADOR NO VALIDO", JOptionPane.OK_OPTION);
+					}else if(fieldUser.getText().equals("admin") && fieldPassword.getText().equals("admin1")) {
+						ES_ADMINISTRADOR = true;
+						JOptionPane.showMessageDialog(null,  "Iniciando Ventana de Administrador", "ADMINISTRADOR VALIDADO", JOptionPane.ERROR_MESSAGE);
+					}
+					System.out.println(ES_ADMINISTRADOR);
+					consultas = new VentanaConsultas();
 					consultas.setVisible(true); //apertura de la ventana de consultas
 					dispose();
 				}
