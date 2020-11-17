@@ -1,18 +1,37 @@
 package modelo;
 
+import java.awt.Color;
 import java.util.StringTokenizer;
 
+import vista.VentanaConsultas;
+
 public class ExpresionRegular {
+//	private static boolean colorear=true;
+
 	private static String alfabeto[] = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "ñ", "o",
 			"p", "q", "r", "s", "t", "u", "v", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
 			"L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Y", "Z", "á", "é", "í", "ó", "ú", "0",
 			"1", "2", "3", "4", "4", "5", "6", "7", "8", "9", "<", ">", ",", "*", "+" };
 	// private static String operadores[] = { "*" };
-
+	
 	public static void buscar(String expresion, String texto) {
-		if (!aceptarExpresion(expresion))
+//		VentanaConsultas v = new VentanaConsultas();
+//		String textoPintado = "";
+//		StringTokenizer cadaPalabra = new StringTokenizer(texto);
+//		v.textPane.setText("");
+//		while (cadaPalabra.hasMoreTokens()) { // Recorro cada palabra del texto
+//
+//			if (colorear) {
+//				v.pintarCambios(VentanaConsultas.textPane, cadaPalabra.toString(), Color.MAGENTA);
+//				textoPintado += cadaPalabra.toString() + " ";
+//			} else
+//				textoPintado += cadaPalabra + " ";
+//			VentanaConsultas.textPane.setText(textoPintado);
+//		}
+		
+		if (!aceptarExpresion(expresion)) {
 			System.out.println("\nExpresión NO aceptada. Algún carácter fuera del alfabeto");
-		else {
+		} else {
 			evaluarExpresion(expresion, texto);
 		}
 
@@ -145,6 +164,8 @@ public class ExpresionRegular {
 		StringTokenizer token;
 		String palabra;
 		boolean encontrada = false;
+		VentanaConsultas v = new VentanaConsultas();
+		v.textPane.setText("");
 
 		System.out.println("\nbuscando ...\n");
 		token = new StringTokenizer(texto);
@@ -161,6 +182,12 @@ public class ExpresionRegular {
 						encontrada = false;
 				}
 				if (encontrada) {
+//					colorear = true;
+					// -------------------------------------------------------------------------------------------
+
+					v.pintarCambios(VentanaConsultas.textPane, palabra, Color.MAGENTA);
+
+					// --------------------------------------------------------------------------------------------
 					numCoincidencias += 1;
 					System.out.println("Palabra ENCONTRADA: " + palabra + " posicion --> " + posicion
 							+ " Contador coincidencias: " + numCoincidencias); // Para visualizar algoritmo
@@ -178,8 +205,10 @@ public class ExpresionRegular {
 		StringTokenizer token;
 		String expresion1 = "";
 		String expresion2 = "";
-		String palabra;
+		String palabra = "";
 		boolean encontrada = false;
+		VentanaConsultas v = new VentanaConsultas();
+		v.textPane.setText("");
 
 		System.out.println("\nbuscando ...\n");
 		token = new StringTokenizer(texto);
@@ -193,41 +222,53 @@ public class ExpresionRegular {
 			palabra = token.nextToken();
 			if (palabra.contains(expresion1)) {// Busco la expresión en la palabra
 				for (int x = 0; x < expresion1.length(); x++) { // Me aseguro que la expresión esté al principio
-					if (palabra.charAt(x) == expresion1.charAt(x))
-						encontrada = true;
-					else
+					if (palabra.charAt(x) == expresion1.charAt(x)) {
+//						encontrada = true;
+
+						if (palabra.contains(expresion2)) {// Busco la expresión en la palabra
+							if (palabra.charAt(palabra.length() - 1) == ',') {
+								palabra = palabra.substring(0, palabra.length() - 1);
+							}
+							for (int y = 0; y < expresion2.length(); y++) { // Me aseguro que la expresión esté al final
+								if (palabra.charAt(palabra.length() - 1 - y) == expresion2
+										.charAt(expresion2.length() - 1 - y)) {
+									encontrada = true;
+									numCoincidencias += 1;
+
+								} else
+									encontrada = false;
+
+							}
+						}
+					} else {
 						encontrada = false;
+						v.pintarCambios(VentanaConsultas.textPane, palabra, Color.DARK_GRAY);
+					}
 				}
 
-			}
+			} else
+				encontrada = false;
 
 			if (encontrada) {
-				if (palabra.contains(expresion2) && encontrada) {// Busco la expresión en la palabra
-					for (int x = 0; x < expresion2.length() - 1; x++) { // Me aseguro que la expresión esté al final
-						if (palabra.charAt(palabra.length() - 1 - x) == expresion2.charAt(expresion2.length() - 1 - x))
-							encontrada = true;
-						else
-							encontrada = false;
-					}
-					if (encontrada) {
-						numCoincidencias += 1;
-						System.out.println("Palabra: " + palabra + " posicion --> " + posicion
-								+ " Contador coincidencias: " + numCoincidencias); // Para visualizar algoritmo
-					}
-				}
+//				colorear = true;
+				// -------------------------------------------------------------------------------------------
+
+				v.pintarCambios(VentanaConsultas.textPane, palabra, Color.MAGENTA);
+
+				// --------------------------------------------------------------------------------------------
+				System.out.println("Palabra: " + palabra + " posicion --> " + posicion + " Contador coincidencias: "
+						+ numCoincidencias); // Para visualizar algoritmo
+			} else {
+				encontrada = false;
+				v.pintarCambios(VentanaConsultas.textPane, palabra + " ", Color.DARK_GRAY);
 			}
 
-			encontrada = false;
 		}
-		if (numCoincidencias == 0)
+
+		if (numCoincidencias == 0) {
 			System.out.println("NINGUNA coincidencia encontrada");
-
+		}
+		encontrada = false;
 	}
 
-	public static void main(String[] args) {
-		// Busca el primer string cuantas veces aparece en el segundo
-
-		buscar("bar*to", "kajhhkjs aba bbjhgjhfdgabba bbfkdbaskhfa barco bareto baritona nmh ab");
-
-	}
 }

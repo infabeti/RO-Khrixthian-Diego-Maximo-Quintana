@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileReader;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,6 +33,7 @@ import modelo.AgregarAlDocx;
 import modelo.AgregarAlHtml;
 import modelo.AgregarAlOdt;
 import modelo.AgregarAlTxt;
+import modelo.ControlExcepciones;
 import modelo.ExpresionRegular;
 import modelo.VariablesEstaticas;
 
@@ -335,9 +337,24 @@ public class VentanaConsultas extends JFrame {
 		btnBuscar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ExpresionRegular.buscar(tfBuscar.getText().toString(), textPane.getText());
+				ExpresionRegular asterisco = new ExpresionRegular();
+//-------------------------------------------------------------------------------------------En ello
+				String contenido = textPane.getText();
+				String palabra = "";
+for(int x=0; x<contenido.length()-1;x++) {
+	if(contenido.charAt(x) != 32) {
+		palabra += contenido.charAt(x);
+	}
+	Elseif (contenido.charAt(x) == 32) {}
+	
+	
+	
+	
+}
+//-------------------------------------------------------------------------------------------En ello				
+				asterisco.buscar(tfBuscar.getText().toString(), textPane.getText());
 				// ventBuscar.pintarCambios(textPane, "Stack", Color.DARK_GRAY);
-				pintarCambios(textPane, tfBuscar.getText().toString(), Color.MAGENTA);
+				//pintarCambios(textPane, tfBuscar.getText().toString(), Color.MAGENTA);
 				// ventBuscar.pintarCambios(textPane, "flow", Color.DARK_GRAY);
 
 			}
@@ -349,8 +366,8 @@ public class VentanaConsultas extends JFrame {
 		StyleContext sc = StyleContext.getDefaultStyleContext();
 		AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, c);
 
-		aset = sc.addAttribute(aset, StyleConstants.FontFamily, "Lucida Console");
-		aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
+//		aset = sc.addAttribute(aset, StyleConstants.FontFamily, "Lucida Console");
+//		aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
 
 		int len = tp.getDocument().getLength();
 		tp.setCaretPosition(len);
