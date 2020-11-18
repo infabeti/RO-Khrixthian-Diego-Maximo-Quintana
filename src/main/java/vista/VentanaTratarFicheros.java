@@ -139,7 +139,7 @@ public class VentanaTratarFicheros extends JFrame {
 	public void cambiarPermisosWindows() {
 		Process theProcess = null;
 		String pathname = cbFicheros.getSelectedItem().toString();
-		String ruta = ".//ficheros//";
+		String ruta = ".//ficheros2//";
 		File fichero = new File(ruta + pathname);
 		if (rbTodos.isSelected()) {
 			fichero.setExecutable(true);
@@ -158,7 +158,9 @@ public class VentanaTratarFicheros extends JFrame {
 	// esto solo sirve para linux kreo
 	public void cambiarPermisosLinux() {
 		Process theProcess = null;
+		String ruta = ".//ficheros2//";
 		String pathname = cbFicheros.getSelectedItem().toString();
+		pathname = ruta + pathname;
 		if (rbTodos.isSelected()) {
 			try {
 				theProcess = Runtime.getRuntime().exec("chmod 777" + pathname);
