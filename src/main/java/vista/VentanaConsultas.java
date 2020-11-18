@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -28,6 +29,7 @@ import modelo.AgregarAlOdt;
 import modelo.AgregarAlTxt;
 import modelo.LeerOds;
 import modelo.VariablesEstaticas;
+import java.awt.Color;
 
 public class VentanaConsultas extends JFrame {
 
@@ -39,6 +41,8 @@ public class VentanaConsultas extends JFrame {
 	private JLabel lblUsuarios;
 	private JLabel lblTrabajadores;
 	private JLabel lblPrestamos;
+	private JLabel lblUsuarioActual;
+	private JLabel lblNombreUsuario;
 
 	private JButton btnLibrosLEER;
 	private JButton btnCDsLEER;
@@ -62,6 +66,7 @@ public class VentanaConsultas extends JFrame {
 	private JTable tabla;
 
 	private String textoFichero;
+	private JButton btnCerrarSesion;
 
 	// Crea la ventana
 	public VentanaConsultas() {
@@ -171,10 +176,31 @@ public class VentanaConsultas extends JFrame {
 		btnAdministrador.setBounds(90, 367, 152, 23);
 		contentPane.add(btnAdministrador);
 		
+		if(!VentanaUser.ES_ADMINISTRADOR) { //Controla que no muestre el boton a un usuario normal
+			btnAdministrador.setVisible(false);
+		}
+		
 		// Area de texto
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(300, 45, 650, 810);
 		contentPane.add(scrollPane);
+		
+		lblUsuarioActual = new JLabel("Usuario actual:");
+		lblUsuarioActual.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblUsuarioActual.setBounds(300, 11, 131, 14);
+		contentPane.add(lblUsuarioActual);
+		
+		lblNombreUsuario = new JLabel("");
+		lblNombreUsuario.setForeground(new Color(128, 0, 128));
+		lblNombreUsuario.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNombreUsuario.setBounds(441, 11, 188, 23);
+		contentPane.add(lblNombreUsuario);
+		lblNombreUsuario.setText(VentanaUser.nomUsu);
+		
+		btnCerrarSesion = new JButton("Cerrar Sesion");
+		btnCerrarSesion.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnCerrarSesion.setBounds(717, 9, 144, 23);
+		contentPane.add(btnCerrarSesion);
 
 		// Acciones de los botones LEER y ESCRIBIR
 
@@ -317,6 +343,23 @@ public class VentanaConsultas extends JFrame {
 
 		});
 		
+		// Boton Cerrar Sesion
+		btnCerrarSesion.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				if(VentanaUser.ES_ADMINISTRADOR) {
+					VentanaUser.ES_ADMINISTRADOR = false;
+				}
+				JOptionPane.showMessageDialog(null,  "La sesion de '" + VentanaUser.nomUsu + "' se ha cerrado correctamente", "CERRAR SESION", JOptionPane.INFORMATION_MESSAGE);
+				VentanaUser vu = new VentanaUser();
+				vu.setVisible(true);
+				dispose();
+			}
+			
+		});
+		
 		// Boton Administrador (Gestion de ficheros)
 		btnAdministrador.addActionListener(new ActionListener() {
 
@@ -325,7 +368,6 @@ public class VentanaConsultas extends JFrame {
 				// TODO Auto-generated method stub
 				VentanaTratarFicheros vtf = new VentanaTratarFicheros();
 				vtf.setVisible(true);
-				dispose();
 			}
 			
 		});

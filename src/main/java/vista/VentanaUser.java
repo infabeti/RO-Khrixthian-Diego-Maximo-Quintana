@@ -84,10 +84,10 @@ public class VentanaUser extends JFrame {
 				if(control == true) {
 					nomUsu = fieldUser.getText();
 					if(fieldUser.getText().equals("admin") && !fieldPassword.getText().equals("admin1")) {
-						JOptionPane.showMessageDialog(null,  "La contraseña de admin no es correcta. Se accedera como usuario normal.", "ADMINISTRADOR NO VALIDO", JOptionPane.OK_OPTION);
+						JOptionPane.showMessageDialog(null,  "La contraseña de admin no es correcta. Se accedera como usuario normal.", "ADMINISTRADOR NO VALIDO", JOptionPane.WARNING_MESSAGE);
 					}else if(fieldUser.getText().equals("admin") && fieldPassword.getText().equals("admin1")) {
 						ES_ADMINISTRADOR = true;
-						JOptionPane.showMessageDialog(null,  "Iniciando Ventana de Administrador", "ADMINISTRADOR VALIDADO", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null,  "Iniciando Ventana de Administrador", "ADMINISTRADOR VALIDADO", JOptionPane.INFORMATION_MESSAGE);
 					}
 					consultas = new VentanaConsultas();
 					consultas.setVisible(true); //apertura de la ventana de consultas

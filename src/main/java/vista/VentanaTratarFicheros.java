@@ -45,7 +45,6 @@ public class VentanaTratarFicheros extends JFrame{
 		setTitle("Ventana Administrador");
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		lblNomFicheroEntrada = new JLabel("Nombre del fichero a tratar:");
 		lblNomFicheroEntrada.setBounds(23, 48, 167, 14);
