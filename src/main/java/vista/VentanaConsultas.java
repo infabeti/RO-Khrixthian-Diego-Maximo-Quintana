@@ -53,6 +53,7 @@ public class VentanaConsultas extends JFrame {
 	private JButton btnUsuariosESCRIBIR;
 	private JButton btnTrabajadoresESCRIBIR;
 	private JButton btnPrestamosESCRIBIR;
+	private JButton btnAdministrador;
 
 	private JScrollPane scrollPane;
 
@@ -165,6 +166,11 @@ public class VentanaConsultas extends JFrame {
 		btnPrestamosESCRIBIR.setBounds(171, 294, 71, 25);
 		contentPane.add(btnPrestamosESCRIBIR);
 
+		btnAdministrador = new JButton("Administracion");
+		btnAdministrador.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnAdministrador.setBounds(90, 367, 152, 23);
+		contentPane.add(btnAdministrador);
+		
 		// Area de texto
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(300, 45, 650, 810);
@@ -310,6 +316,18 @@ public class VentanaConsultas extends JFrame {
 			}
 
 		});
-	}
+		
+		// Boton Administrador (Gestion de ficheros)
+		btnAdministrador.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				VentanaTratarFicheros vtf = new VentanaTratarFicheros();
+				vtf.setVisible(true);
+				dispose();
+			}
+			
+		});
+	}
 }
