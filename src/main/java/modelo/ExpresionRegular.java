@@ -6,7 +6,8 @@ import java.util.StringTokenizer;
 import vista.VentanaConsultas;
 
 public class ExpresionRegular {
-//	private static boolean colorear=true;
+ //	private static boolean colorear=true;
+	static boolean coincidencia = false;
 
 	private static String alfabeto[] = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "ñ", "o",
 			"p", "q", "r", "s", "t", "u", "v", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
@@ -14,7 +15,7 @@ public class ExpresionRegular {
 			"1", "2", "3", "4", "4", "5", "6", "7", "8", "9", "<", ">", ",", "*", "+" };
 	// private static String operadores[] = { "*" };
 	
-	public static void buscar(String expresion, String texto) {
+	public static boolean buscar(String expresion, String texto) {
 //		VentanaConsultas v = new VentanaConsultas();
 //		String textoPintado = "";
 //		StringTokenizer cadaPalabra = new StringTokenizer(texto);
@@ -34,6 +35,7 @@ public class ExpresionRegular {
 		} else {
 			evaluarExpresion(expresion, texto);
 		}
+		return coincidencia;
 
 	}
 
@@ -150,6 +152,7 @@ public class ExpresionRegular {
 					numCoincidencias += 1;
 					System.out.println("Palabra: " + palabra + " posicion --> " + posicion + " Contador coincidencias: "
 							+ numCoincidencias); // Para visualizar algoritmo
+					coincidencia = true;
 				}
 			}
 		}
@@ -191,6 +194,7 @@ public class ExpresionRegular {
 					numCoincidencias += 1;
 					System.out.println("Palabra ENCONTRADA: " + palabra + " posicion --> " + posicion
 							+ " Contador coincidencias: " + numCoincidencias); // Para visualizar algoritmo
+					coincidencia = true;
 				}
 			}
 		}
@@ -217,6 +221,8 @@ public class ExpresionRegular {
 		expresion1 = expresion.substring(0, pos);
 		expresion2 = expresion.substring(pos + 1, expresion.length());
 		System.out.println("Expresion 1 --> " + expresion1 + " - Expresion 2 --> " + expresion2);
+		System.out.println(texto);
+		System.out.println(coincidencia);
 
 		while (token.hasMoreTokens()) { // Recorro cada palabra del texto
 			palabra = token.nextToken();
@@ -258,6 +264,7 @@ public class ExpresionRegular {
 				// --------------------------------------------------------------------------------------------
 				System.out.println("Palabra: " + palabra + " posicion --> " + posicion + " Contador coincidencias: "
 						+ numCoincidencias); // Para visualizar algoritmo
+				coincidencia = true;
 			} else {
 				encontrada = false;
 				v.pintarCambios(VentanaConsultas.textPane, palabra + " ", Color.DARK_GRAY);

@@ -337,24 +337,49 @@ public class VentanaConsultas extends JFrame {
 		btnBuscar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ExpresionRegular asterisco = new ExpresionRegular();
 //-------------------------------------------------------------------------------------------En ello
+				ExpresionRegular asterisco = new ExpresionRegular();
 				String contenido = textPane.getText();
-				String palabra = "";
-for(int x=0; x<contenido.length()-1;x++) {
-	if(contenido.charAt(x) != 32) {
-		palabra += contenido.charAt(x);
-	}
-	Elseif (contenido.charAt(x) == 32) {}
-	
-	
-	
-	
-}
+				String palabra = "", textoCambiado = "";
+				for (int x = 0; x < contenido.length(); x++) {
+					if (contenido.charAt(x) == 32) {
+						textPane.setText(textoCambiado);
+						if (asterisco.buscar(tfBuscar.getText().toString(), palabra)) { //si buscar devuelve true, la pinta de rojo
+							StyleContext sc = StyleContext.getDefaultStyleContext();
+							AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground,
+									Color.RED);
+
+							aset = sc.addAttribute(aset, StyleConstants.FontFamily, "arial");
+							aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
+							int len = textPane.getDocument().getLength();
+							textPane.setCaretPosition(len);
+							textPane.setCharacterAttributes(aset, false);
+							textPane.replaceSelection(palabra);
+						} else { //si buscar devuelve false, la pinta de gris
+							StyleContext sc = StyleContext.getDefaultStyleContext();
+							textPane.setText(textoCambiado);
+							AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground,
+									Color.DARK_GRAY);
+							
+							aset = sc.addAttribute(aset, StyleConstants.FontFamily, "arial");
+							aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
+							int len = textPane.getDocument().getLength();
+							textPane.setCaretPosition(len);
+							textPane.setCharacterAttributes(aset, false);
+							textPane.replaceSelection(palabra);							
+						}
+
+						palabra = "";
+						textoCambiado += palabra;
+					} else if (contenido.charAt(x) != 32) {
+						palabra += contenido.charAt(x);
+					}
+
+				}
 //-------------------------------------------------------------------------------------------En ello				
-				asterisco.buscar(tfBuscar.getText().toString(), textPane.getText());
+
 				// ventBuscar.pintarCambios(textPane, "Stack", Color.DARK_GRAY);
-				//pintarCambios(textPane, tfBuscar.getText().toString(), Color.MAGENTA);
+				// pintarCambios(textPane, tfBuscar.getText().toString(), Color.MAGENTA);
 				// ventBuscar.pintarCambios(textPane, "flow", Color.DARK_GRAY);
 
 			}
@@ -366,8 +391,8 @@ for(int x=0; x<contenido.length()-1;x++) {
 		StyleContext sc = StyleContext.getDefaultStyleContext();
 		AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, c);
 
-//		aset = sc.addAttribute(aset, StyleConstants.FontFamily, "Lucida Console");
-//		aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
+		aset = sc.addAttribute(aset, StyleConstants.FontFamily, "Lucida Console");
+		aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
 
 		int len = tp.getDocument().getLength();
 		tp.setCaretPosition(len);
@@ -375,3 +400,34 @@ for(int x=0; x<contenido.length()-1;x++) {
 		tp.replaceSelection(msg);
 	}
 }
+
+/*
+ * import java.awt.*; import java.awt.event.*; import javax.swing.*; import
+ * javax.swing.border.*; import javax.swing.text.AttributeSet; import
+ * javax.swing.text.SimpleAttributeSet; import javax.swing.text.StyleConstants;
+ * import javax.swing.text.StyleContext; public class TextPaneTest extends
+ * JFrame { private JPanel topPanel; private JTextPane tPane; public
+ * TextPaneTest() { topPanel = new JPanel();
+ * setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); setLocationRelativeTo(null);
+ * EmptyBorder eb = new EmptyBorder(new Insets(10, 10, 10, 10)); tPane = new
+ * JTextPane(); tPane.setBorder(eb);
+ * //tPane.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+ * tPane.setMargin(new Insets(5, 5, 5, 5)); topPanel.add(tPane);
+ * appendToPane(tPane, "My Name is Too Good.\n", Color.RED); appendToPane(tPane,
+ * "I wish I could be ONE of THE BEST on ", Color.BLUE); appendToPane(tPane,
+ * "Stack", Color.DARK_GRAY); appendToPane(tPane, "Over", Color.MAGENTA);
+ * appendToPane(tPane, "flow", Color.ORANGE); getContentPane().add(topPanel);
+ * pack(); setVisible(true); }
+ * 
+ * private void appendToPane(JTextPane tp, String msg, Color c) { StyleContext
+ * sc = StyleContext.getDefaultStyleContext(); AttributeSet aset =
+ * sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, c); aset
+ * = sc.addAttribute(aset, StyleConstants.FontFamily, "Lucida Console"); aset =
+ * sc.addAttribute(aset, StyleConstants.Alignment,
+ * StyleConstants.ALIGN_JUSTIFIED); int len = tp.getDocument().getLength();
+ * tp.setCaretPosition(len); tp.setCharacterAttributes(aset, false);
+ * tp.replaceSelection(msg); }
+ * 
+ * public static void main(String... args) { SwingUtilities.invokeLater(new
+ * Runnable() { public void run() { new TextPaneTest(); } }); } }
+ */
