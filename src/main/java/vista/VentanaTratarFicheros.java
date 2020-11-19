@@ -59,6 +59,7 @@ public class VentanaTratarFicheros extends JFrame {
 		getContentPane().add(lblPropietario);
 
 		txtRenameFich = new JTextField();
+		txtRenameFich.setToolTipText("");
 		txtRenameFich.setBounds(239, 88, 204, 20);
 		getContentPane().add(txtRenameFich);
 		txtRenameFich.setColumns(10);
@@ -69,7 +70,7 @@ public class VentanaTratarFicheros extends JFrame {
 		txtPropietario.setColumns(10);
 
 		btnGuardarCambios = new JButton("GUARDAR");
-		btnGuardarCambios.setBounds(23, 248, 101, 23);
+		btnGuardarCambios.setBounds(150, 248, 101, 23);
 		getContentPane().add(btnGuardarCambios);
 
 		cbFicheros = new JComboBox();
@@ -77,7 +78,7 @@ public class VentanaTratarFicheros extends JFrame {
 		getContentPane().add(cbFicheros);
 
 		btnMoverFichero = new JButton("MOVER");
-		btnMoverFichero.setBounds(162, 248, 89, 23);
+		btnMoverFichero.setBounds(35, 248, 89, 23);
 		getContentPane().add(btnMoverFichero);
 
 		rbLectura = new JRadioButton("Solo Lectura");
@@ -161,26 +162,19 @@ public class VentanaTratarFicheros extends JFrame {
 		String pathname = cbFicheros.getSelectedItem().toString();
 		String ruta = ".//ficheros2//";
 		pathname = ruta + pathname;
+		File auxFich = new File(pathname);
 
 		if (rbTodos.isSelected()) {
-			try {
-				theProcess = Runtime.getRuntime().exec("chmod 777" + pathname);
-			} catch (IOException e) {
-				System.out.println("Error en el método exec()");
-			}
+			auxFich.setExecutable(true);
+			auxFich.setReadable(true);
+			auxFich.setWritable(true);
 
 		} else if (rbLectEscr.isSelected()) {
-			try {
-				theProcess = Runtime.getRuntime().exec("chmod 666" + pathname);
-			} catch (IOException e) {
-				System.out.println("Error en el método exec()");
-			}
+			auxFich.setReadable(true);
+			auxFich.setWritable(true);
+
 		} else if (rbLectura.isSelected()) {
-			try {
-				theProcess = Runtime.getRuntime().exec("chmod 444" + pathname);
-			} catch (IOException e) {
-				System.out.println("Error en el método exec()");
-			}
+			auxFich.setReadable(true);
 		}
 	}
 
