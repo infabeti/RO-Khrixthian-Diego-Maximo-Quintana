@@ -77,6 +77,7 @@ public class VentanaConsultas extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Acción al cerrar la ventana
 		setResizable(false); // No resizable
 		setLocationRelativeTo(null); // Ubica la ventana en el cento
+		setUndecorated(true);	
 
 		lblLibros = new JLabel("Libros");
 		lblLibros.setFont(new Font("Tahoma", Font.PLAIN, 10));
@@ -368,6 +369,7 @@ public class VentanaConsultas extends JFrame {
 				// TODO Auto-generated method stub
 				VentanaTratarFicheros vtf = new VentanaTratarFicheros();
 				vtf.setVisible(true);
+				dispose();
 			}
 			
 		});

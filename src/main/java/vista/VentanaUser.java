@@ -19,7 +19,7 @@ import modelo.ModeloUsers;
 public class VentanaUser extends JFrame {
 	private ModeloUsers modeloUsers = new ModeloUsers();
 	public ControladorUser controladorUser = new ControladorUser(modeloUsers);
-	private VentanaConsultas consultas;// declaramos la ventana de consultas
+	static VentanaConsultas consultas;// declaramos la ventana de consultas
 	private JPanel contentPane;
 	static boolean ES_ADMINISTRADOR;
 	static String nomUsu;
