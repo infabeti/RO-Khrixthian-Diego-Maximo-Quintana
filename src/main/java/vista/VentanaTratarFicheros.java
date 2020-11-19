@@ -19,7 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-public class VentanaTratarFicheros extends JFrame{
+public class VentanaTratarFicheros extends JFrame {
 
 	private JTextField txtRenameFich;
 	private JTextField txtPropietario;
@@ -106,8 +106,8 @@ public class VentanaTratarFicheros extends JFrame{
 		btnGuardarPermisos.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// cambiarPermisosLinux();
-				cambiarPermisosWindows();
+				cambiarPermisosLinux();
+				// cambiarPermisosWindows();
 			}
 		});
 
@@ -155,10 +155,13 @@ public class VentanaTratarFicheros extends JFrame{
 		}
 	}
 
-	// esto solo sirve para linux kreo
+	// esto solo sirve para linux
 	public void cambiarPermisosLinux() {
 		Process theProcess = null;
 		String pathname = cbFicheros.getSelectedItem().toString();
+		String ruta = ".//ficheros2//";
+		pathname = ruta + pathname;
+
 		if (rbTodos.isSelected()) {
 			try {
 				theProcess = Runtime.getRuntime().exec("chmod 777" + pathname);
