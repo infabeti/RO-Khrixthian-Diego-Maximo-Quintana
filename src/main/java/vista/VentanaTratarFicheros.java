@@ -16,8 +16,10 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import java.awt.Font;
 
 public class VentanaTratarFicheros extends JFrame {
 
@@ -37,6 +39,7 @@ public class VentanaTratarFicheros extends JFrame {
 	private JRadioButton rbTodos;
 	private ButtonGroup bg;
 	private JButton btnGuardarPermisos;
+	private JButton btnVolver;
 
 	public VentanaTratarFicheros() {
 		getContentPane().setLayout(null);
@@ -45,6 +48,8 @@ public class VentanaTratarFicheros extends JFrame {
 		setTitle("Ventana Administrador");
 		setResizable(false);
 		setLocationRelativeTo(null);
+		setUndecorated(true);
+		
 
 		lblNomFicheroEntrada = new JLabel("Nombre del fichero a tratar:");
 		lblNomFicheroEntrada.setBounds(23, 48, 167, 14);
@@ -101,6 +106,11 @@ public class VentanaTratarFicheros extends JFrame {
 		btnGuardarPermisos = new JButton("CAMBIAR PERMISOS");
 		btnGuardarPermisos.setBounds(281, 248, 162, 23);
 		getContentPane().add(btnGuardarPermisos);
+		
+		btnVolver = new JButton("VOLVER AL MENU PRINCIPAL");
+		btnVolver.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnVolver.setBounds(23, 300, 420, 20);
+		getContentPane().add(btnVolver);
 
 		cargarComboBox();
 
@@ -116,6 +126,7 @@ public class VentanaTratarFicheros extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				renombrarFichero();
+				cargarComboBox();
 			}
 
 		});
@@ -128,11 +139,23 @@ public class VentanaTratarFicheros extends JFrame {
 				String ruta2 = ".//ficheros2//" + fichSelec;
 				try {
 					moverFichero(ruta1, ruta2);
+					JOptionPane.showMessageDialog(null, "Se ha movido el fichero '" + fichSelec + "' correctamente.", "MOVER FICHERO", JOptionPane.INFORMATION_MESSAGE);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
 			}
 
+		});
+		
+		btnVolver.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				VentanaUser.consultas.setVisible(true);
+				dispose();
+			}
+			
 		});
 
 	}
@@ -193,17 +216,34 @@ public class VentanaTratarFicheros extends JFrame {
 	}
 
 	public void renombrarFichero() {
+		boolean estatus = false;
 		String ruta = ".//ficheros//";
 		String fichSelec = cbFicheros.getSelectedItem().toString();
 		String newName = txtRenameFich.getText();
 		try {
 			File oldfile = new File(ruta + fichSelec);
 			File newfile = new File(ruta + newName);
-			boolean estatus = oldfile.renameTo(newfile);
+			if(fichSelec.endsWith(".docx") && newName.endsWith(".docx")) {
+				estatus = oldfile.renameTo(newfile);
+			}else if(fichSelec.endsWith(".log") && newName.endsWith(".log")) {
+				estatus = oldfile.renameTo(newfile);
+			}else if(fichSelec.endsWith(".txt") && newName.endsWith(".txt")) {
+				estatus = oldfile.renameTo(newfile);
+			}else if(fichSelec.endsWith(".ods") && newName.endsWith(".ods")) {
+				estatus = oldfile.renameTo(newfile);
+			}else if(fichSelec.endsWith(".odt") && newName.endsWith(".odt")) {
+				estatus = oldfile.renameTo(newfile);
+			}else if(fichSelec.endsWith(".html") && newName.endsWith(".html")) {
+				estatus = oldfile.renameTo(newfile);
+			}else if(fichSelec.endsWith(".xml") && newName.endsWith(".xml")) {
+				estatus = oldfile.renameTo(newfile);
+			}
+			
 			if (!estatus) {
-				System.out.println("error");
+				JOptionPane.showMessageDialog(null, "No puedes renombrar el fichero '" + fichSelec + "' a una extension diferente", "RENOMBRAR FICHERO", JOptionPane.ERROR_MESSAGE);
 			} else {
-				System.out.println("archivo renombrado");
+				JOptionPane.showMessageDialog(null, "Se ha renombrado el fichero de '" + fichSelec + "' a '" + newName + "' correctamente.", "RENOMBRAR FICHERO", JOptionPane.INFORMATION_MESSAGE);
+				cbFicheros.removeAllItems();
 			}
 		} catch (Exception e) {
 			System.out.println(e);
