@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileReader;
 import java.util.StringTokenizer;
 
 import javax.swing.JButton;
@@ -34,7 +33,6 @@ import modelo.AgregarAlDocx;
 import modelo.AgregarAlHtml;
 import modelo.AgregarAlOdt;
 import modelo.AgregarAlTxt;
-import modelo.ControlExcepciones;
 import modelo.ExpresionRegular;
 import modelo.VariablesEstaticas;
 
@@ -64,7 +62,7 @@ public class VentanaConsultas extends JFrame {
     private JButton btnPrestamosESCRIBIR;
 
     private JButton btnBuscar;
-    private String[] aux2;
+	private String[] aux2;
 
     private JScrollPane scrollPane;
 
@@ -389,18 +387,16 @@ public class VentanaConsultas extends JFrame {
 
 		textPane.setText("");
 
-		// Recorrido para completar la segunda dimensión de la matriz con el valor true
-		// o false,
+		// Recorrido para completar leer el valor true o false,
 		// en función que responda a la expresión regular, y colorearlo
 
 		for (x = 0; x < palabras.length; x++) {
 		    if (asterisco.buscar(tfBuscar.getText().toString(), palabras[x].toString())) {
-			pintarPalabra(textPane, palabras[x], Color.RED);
+		    	pintarPalabra(textPane, palabras[x], Color.RED);
 		    }
 		    if (!asterisco.buscar(tfBuscar.getText().toString(), palabras[x].toString())) {
-			pintarPalabra(textPane, palabras[x], Color.DARK_GRAY);
+		    	pintarPalabra(textPane, palabras[x], Color.DARK_GRAY);
 		    }
-
 		}
 
 	    }

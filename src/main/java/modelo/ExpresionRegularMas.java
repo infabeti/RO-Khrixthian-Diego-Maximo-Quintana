@@ -5,9 +5,11 @@ import java.util.StringTokenizer;
 
 public class ExpresionRegularMas {
 
-		private static String alfabeto[] = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", 
-											"m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "*", "+"};
-
+		private static String alfabeto[] = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "ñ", "o",
+				"p", "q", "r", "s", "t", "u", "v", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
+				"L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Y", "Z", "á", "é", "í", "ó", "ú", "0",
+				"1", "2", "3", "4", "4", "5", "6", "7", "8", "9", "<", ">", ",", "*", "+" };
+		
 	 	public static void buscar(String expresion, String texto) {
 	    	
 	 		if (!aceptarExpresion(expresion))
@@ -93,6 +95,12 @@ public class ExpresionRegularMas {
 	    	for(int i = 0; i < palabras.length-1; i++) {
 	    		palabras[i] = token.nextToken();
 	    		if (palabras[i].contains(caracteres)) { // Busco la expresión en la palabra
+					if (palabras[i].charAt(palabras[i].length() - 1) == ',') { //Si la palabra acaba en ",", se la quito
+						palabras[i] = palabras[i].substring(0, palabras[i].length() - 1);
+					}
+					if (palabras[i].charAt(palabras[i].length() - 1) == '.') {//Si la palabra acaba en ".", se la quito
+						palabras[i] = palabras[i].substring(0, palabras[i].length() - 1);
+					}
 	    			for(int j = 0; j < caracteres.length(); j++) {
 	    				if((palabras[i].charAt(0) == caracteres.charAt(0))) {
 	    					if(palabras[i].equals(caracteres)){
@@ -136,6 +144,12 @@ public class ExpresionRegularMas {
 	    	for(int i = 0; i < palabras.length-1; i++) {
 	    		palabras[i] = token.nextToken();
 	    		if (palabras[i].contains(expresion)) { // Busco la expresión en la palabra
+					if (palabras[i].charAt(palabras[i].length() - 1) == ',') { //Si la palabra acaba en ",", se la quito
+						palabras[i] = palabras[i].substring(0, palabras[i].length() - 1);
+					}
+					if (palabras[i].charAt(palabras[i].length() - 1) == '.') {//Si la palabra acaba en ".", se la quito
+						palabras[i] = palabras[i].substring(0, palabras[i].length() - 1);
+					}
 	    			for(int j = 0; j < expresion.length(); j++) {
 	    				if((palabras[i].charAt(palabras[i].length() -1) == expresion.charAt(expresion.length() -1))) {
 	    					if(palabras[i].equals(caracteres)){
@@ -192,6 +206,12 @@ public class ExpresionRegularMas {
 	    			}
 	    			
 	    			if(palabras[i].contains(expre2) && estaEnMedio == true) {
+						if (palabras[i].charAt(palabras[i].length() - 1) == ',') { //Si la palabra acaba en ",", se la quito
+							palabras[i] = palabras[i].substring(0, palabras[i].length() - 1);
+						}
+						if (palabras[i].charAt(palabras[i].length() - 1) == '.') {//Si la palabra acaba en ".", se la quito
+							palabras[i] = palabras[i].substring(0, palabras[i].length() - 1);
+						}
 	    				for(int k = 0; k < expre2.length(); k++) {
 		    				if((palabras[i].charAt(palabras[i].length() -1) == expre2.charAt(expre2.length() -1))) {
 		    					if(palabras[i].equals(expre2)){
@@ -215,11 +235,15 @@ public class ExpresionRegularMas {
 	    }
 
 	    public static void main(String[] args) {
-	    	String texto = "bahfhdsj hfhdfsjb badhfbahifab hjb abhfdhbab abababba abba hikba ghfdhba ba ba ab";
+	    	
+	    	String texto = "9999, El Señor de los anillos, JR Tolkien, novela fantástica.\r\n"
+	    			+ "8888, La columna de la muerte, Francisco Espinosa, ensayo histórico.\r\n"
+	    			+ "7777, El enemigo conoce el sistema, Marta Peirano, ensayo sobre la aplicación capitalista de la informática.\r\n"
+	    			+ "6666, El segundo sexo, Simone de lamer Beauvoir, ensayo sobre la opresión de la mujer. ";
 	    	String expresionRegular = "";
 	    	Scanner sc = new Scanner(System.in);
-	    	System.out.println("Introduce la expresion regular para encontrar una palabra en el texto: \n" + texto);
-	    	System.out.print("Expresion regular: ");
+	    	System.out.println("Introduce la expresion regular para encontrar una palabra en el texto: \n\n" + texto);
+	    	System.out.println("\nExpresion regular: ");
 	    	expresionRegular = sc.nextLine();
 	    	System.out.println("_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-|");
 	    	buscar(expresionRegular, texto);
