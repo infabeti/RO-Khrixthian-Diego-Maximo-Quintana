@@ -33,7 +33,7 @@ import modelo.AgregarAlDocx;
 import modelo.AgregarAlHtml;
 import modelo.AgregarAlOdt;
 import modelo.AgregarAlTxt;
-import modelo.ExpresionRegular;
+import modelo.ExpresionRegularAsterisco;
 import modelo.VariablesEstaticas;
 
 public class VentanaConsultas extends JFrame {
@@ -354,13 +354,13 @@ public class VentanaConsultas extends JFrame {
 	    public void actionPerformed(ActionEvent e) {
 
 		// Para pintar las palabras del texto que coincidan con la expresión regular
-		ExpresionRegular asterisco;
+		ExpresionRegularAsterisco asterisco;
 		int numPalabras, x, y = 0;
 		String contenido, contenidoColoreado;
 		StringTokenizer token;
 		String[] palabras;
 
-		asterisco = new ExpresionRegular();
+		asterisco = new ExpresionRegularAsterisco();
 		contenido = textPane.getText();
 		contenidoColoreado = "";
 		token = new StringTokenizer(contenido);

@@ -4,7 +4,7 @@ import java.util.StringTokenizer;
 
 import vista.VentanaConsultas;
 
-public class ExpresionRegular {
+public class ExpresionRegularAsterisco {
 	static boolean coincidencia = false;
 
 	private static String alfabeto[] = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "ñ", "o",
