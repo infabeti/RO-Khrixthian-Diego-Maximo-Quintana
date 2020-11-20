@@ -40,6 +40,7 @@ public class VentanaTratarFicheros extends JFrame {
 	private ButtonGroup bg;
 	private JButton btnGuardarPermisos;
 	private JButton btnVolver;
+	private JButton btnProp;
 
 	public VentanaTratarFicheros() {
 		getContentPane().setLayout(null);
@@ -69,7 +70,7 @@ public class VentanaTratarFicheros extends JFrame {
 		txtRenameFich.setColumns(10);
 
 		txtPropietario = new JTextField();
-		txtPropietario.setBounds(239, 142, 204, 20);
+		txtPropietario.setBounds(112, 142, 133, 20);
 		getContentPane().add(txtPropietario);
 		txtPropietario.setColumns(10);
 
@@ -111,6 +112,10 @@ public class VentanaTratarFicheros extends JFrame {
 		btnVolver.setBounds(23, 300, 420, 20);
 		getContentPane().add(btnVolver);
 
+		btnProp = new JButton("CAMBIAR PROPIETARIO");
+		btnProp.setBounds(267, 141, 176, 23);
+		getContentPane().add(btnProp);
+
 		cargarComboBox();
 
 		btnGuardarPermisos.addActionListener(new ActionListener() {
@@ -126,6 +131,14 @@ public class VentanaTratarFicheros extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				renombrarFichero();
 				cargarComboBox();
+			}
+
+		});
+
+		btnProp.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
 			}
 
 		});
@@ -158,6 +171,16 @@ public class VentanaTratarFicheros extends JFrame {
 
 		});
 
+	}
+
+	public void cambiarPropietario() {
+		try {
+			Process proceso = Runtime.getRuntime().exec("chown khrixthian Libros.txt");
+			proceso.waitFor();
+		} catch (InterruptedException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void cambiarPermisosWindows() {
@@ -196,11 +219,14 @@ public class VentanaTratarFicheros extends JFrame {
 			auxFich.setWritable(true);
 
 		} else if (rbLectEscr.isSelected()) {
+			auxFich.setExecutable(false);
 			auxFich.setReadable(true);
 			auxFich.setWritable(true);
 
 		} else if (rbLectura.isSelected()) {
+			auxFich.setExecutable(false);
 			auxFich.setReadable(true);
+			auxFich.setWritable(false);
 		}
 	}
 
