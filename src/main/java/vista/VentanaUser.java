@@ -19,9 +19,10 @@ import modelo.ModeloUsers;
 public class VentanaUser extends JFrame {
 	private ModeloUsers modeloUsers = new ModeloUsers();
 	public ControladorUser controladorUser = new ControladorUser(modeloUsers);
-	final VentanaConsultas consultas = new VentanaConsultas();// declaramos la ventana de consultas
+	static VentanaConsultas consultas;// declaramos la ventana de consultas
 	private JPanel contentPane;
-
+	static boolean ES_ADMINISTRADOR;
+	static String nomUsu;
 	private JTextField fieldUser;
 	private JPasswordField fieldPassword;
 	private JLabel lblCabecera;
@@ -66,21 +67,30 @@ public class VentanaUser extends JFrame {
 		botonAcceder = new JButton("Acceder");
 		botonAcceder.setBounds(165, 166, 89, 23);
 		contentPane.add(botonAcceder);
-
-		// ActionListeners
+		
+		//ActionListeners
 		botonAcceder.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				boolean control = controladorUser.validarContrasena(fieldPassword.getText());
-
-				if (control == false) {
-					JOptionPane.showMessageDialog(null,
-							"La contraseña solo puede tener carácteres alfanuméricos, no símbolos.",
-							"ERROR AL INTRODUCIR LA CONTRASEÑA", JOptionPane.ERROR_MESSAGE);
+				
+				if(control == false) {
+					JOptionPane.showMessageDialog(
+							null, "La contraseña solo puede tener carácteres alfanuméricos, no símbolos.", 
+							"ERROR AL INTRODUCIR LA CONTRASEÑA", 
+							JOptionPane.ERROR_MESSAGE);
 				}
 
-				if (control == true) {
-					consultas.setVisible(true); // apertura de la ventana de consultas
+				if(control == true) {
+					nomUsu = fieldUser.getText();
+					if(fieldUser.getText().equals("admin") && !fieldPassword.getText().equals("admin1")) {
+						JOptionPane.showMessageDialog(null,  "La contraseña de admin no es correcta. Se accedera como usuario normal.", "ADMINISTRADOR NO VALIDO", JOptionPane.WARNING_MESSAGE);
+					}else if(fieldUser.getText().equals("admin") && fieldPassword.getText().equals("admin1")) {
+						ES_ADMINISTRADOR = true;
+						JOptionPane.showMessageDialog(null,  "Iniciando Ventana de Administrador", "ADMINISTRADOR VALIDADO", JOptionPane.INFORMATION_MESSAGE);
+					}
+					consultas = new VentanaConsultas();
+					consultas.setVisible(true); //apertura de la ventana de consultas
 					dispose();
 				}
 			}
