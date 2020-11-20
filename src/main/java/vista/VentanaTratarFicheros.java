@@ -1,5 +1,6 @@
 package vista;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -19,7 +20,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import java.awt.Font;
 
 public class VentanaTratarFicheros extends JFrame {
 
@@ -49,7 +49,6 @@ public class VentanaTratarFicheros extends JFrame {
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setUndecorated(true);
-		
 
 		lblNomFicheroEntrada = new JLabel("Nombre del fichero a tratar:");
 		lblNomFicheroEntrada.setBounds(23, 48, 167, 14);
@@ -106,7 +105,7 @@ public class VentanaTratarFicheros extends JFrame {
 		btnGuardarPermisos = new JButton("CAMBIAR PERMISOS");
 		btnGuardarPermisos.setBounds(281, 248, 162, 23);
 		getContentPane().add(btnGuardarPermisos);
-		
+
 		btnVolver = new JButton("VOLVER AL MENU PRINCIPAL");
 		btnVolver.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnVolver.setBounds(23, 300, 420, 20);
@@ -118,7 +117,7 @@ public class VentanaTratarFicheros extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cambiarPermisosLinux();
-				// cambiarPermisosWindows();
+				cambiarPermisosWindows();
 			}
 		});
 
@@ -139,14 +138,15 @@ public class VentanaTratarFicheros extends JFrame {
 				String ruta2 = ".//ficheros2//" + fichSelec;
 				try {
 					moverFichero(ruta1, ruta2);
-					JOptionPane.showMessageDialog(null, "Se ha movido el fichero '" + fichSelec + "' correctamente.", "MOVER FICHERO", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Se ha movido el fichero '" + fichSelec + "' correctamente.",
+							"MOVER FICHERO", JOptionPane.INFORMATION_MESSAGE);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
 			}
 
 		});
-		
+
 		btnVolver.addActionListener(new ActionListener() {
 
 			@Override
@@ -155,7 +155,7 @@ public class VentanaTratarFicheros extends JFrame {
 				VentanaUser.consultas.setVisible(true);
 				dispose();
 			}
-			
+
 		});
 
 	}
@@ -171,11 +171,14 @@ public class VentanaTratarFicheros extends JFrame {
 			fichero.setWritable(true);
 
 		} else if (rbLectEscr.isSelected()) {
+			fichero.setExecutable(false);
 			fichero.setReadable(true);
 			fichero.setWritable(true);
 
 		} else if (rbLectura.isSelected()) {
+			fichero.setExecutable(false);
 			fichero.setReadable(true);
+			fichero.setWritable(false);
 		}
 	}
 
@@ -223,26 +226,30 @@ public class VentanaTratarFicheros extends JFrame {
 		try {
 			File oldfile = new File(ruta + fichSelec);
 			File newfile = new File(ruta + newName);
-			if(fichSelec.endsWith(".docx") && newName.endsWith(".docx")) {
+			if (fichSelec.endsWith(".docx") && newName.endsWith(".docx")) {
 				estatus = oldfile.renameTo(newfile);
-			}else if(fichSelec.endsWith(".log") && newName.endsWith(".log")) {
+			} else if (fichSelec.endsWith(".log") && newName.endsWith(".log")) {
 				estatus = oldfile.renameTo(newfile);
-			}else if(fichSelec.endsWith(".txt") && newName.endsWith(".txt")) {
+			} else if (fichSelec.endsWith(".txt") && newName.endsWith(".txt")) {
 				estatus = oldfile.renameTo(newfile);
-			}else if(fichSelec.endsWith(".ods") && newName.endsWith(".ods")) {
+			} else if (fichSelec.endsWith(".ods") && newName.endsWith(".ods")) {
 				estatus = oldfile.renameTo(newfile);
-			}else if(fichSelec.endsWith(".odt") && newName.endsWith(".odt")) {
+			} else if (fichSelec.endsWith(".odt") && newName.endsWith(".odt")) {
 				estatus = oldfile.renameTo(newfile);
-			}else if(fichSelec.endsWith(".html") && newName.endsWith(".html")) {
+			} else if (fichSelec.endsWith(".html") && newName.endsWith(".html")) {
 				estatus = oldfile.renameTo(newfile);
-			}else if(fichSelec.endsWith(".xml") && newName.endsWith(".xml")) {
+			} else if (fichSelec.endsWith(".xml") && newName.endsWith(".xml")) {
 				estatus = oldfile.renameTo(newfile);
 			}
-			
+
 			if (!estatus) {
-				JOptionPane.showMessageDialog(null, "No puedes renombrar el fichero '" + fichSelec + "' a una extension diferente", "RENOMBRAR FICHERO", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null,
+						"No puedes renombrar el fichero '" + fichSelec + "' a una extension diferente",
+						"RENOMBRAR FICHERO", JOptionPane.ERROR_MESSAGE);
 			} else {
-				JOptionPane.showMessageDialog(null, "Se ha renombrado el fichero de '" + fichSelec + "' a '" + newName + "' correctamente.", "RENOMBRAR FICHERO", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null,
+						"Se ha renombrado el fichero de '" + fichSelec + "' a '" + newName + "' correctamente.",
+						"RENOMBRAR FICHERO", JOptionPane.INFORMATION_MESSAGE);
 				cbFicheros.removeAllItems();
 			}
 		} catch (Exception e) {
